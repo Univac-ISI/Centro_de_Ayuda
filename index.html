@@ -322,8 +322,6 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
     <div class="side-head">Módulos</div>
     <nav id="sideNav"></nav>
     <div class="side-foot">
-      <a href="#/fuentes">Fuentes y alcance</a>
-      <a href="#/revision">Observaciones de documentación</a>
     </div>
   </aside>
   <div class="scrim" id="scrim" hidden></div>
@@ -32455,23 +32453,6 @@ window.UNIVAC_CONTENIDO = {
     paint(); $('#chatQ').focus();
   }
 
-  function viewSources() {
-    setActive(null);
-    const per = {}; DB.articulos.forEach(a => a.fuentes.forEach(f => (per[f.m] = (per[f.m] || new Set()).add(a.id))));
-    main.innerHTML = crumbs([['Inicio', '#/'], ['Fuentes y alcance']]) +
-      '<div class="page-h"><h1>Fuentes y alcance</h1><p>Todo el contenido de este Centro de Ayuda proviene exclusivamente de los siguientes manuales oficiales. Univac.ERP es el nombre actual del sistema anteriormente denominado Wayra ERP.</p></div>' +
-      Object.keys(DB.manuales).map(m => '<div class="manual-row"><span><b>' + esc(m) + '</b></span><span class="small">' + (per[m] ? per[m].size : 0) + ' artículos</span></div>').join('') +
-      '<p class="small" style="margin-top:20px">Las capturas de pantalla y los videos se incorporarán a medida que estén disponibles. Ningún artículo contiene imágenes ni enlaces que no hayan sido provistos oficialmente.</p>';
-  }
-  function viewReview() {
-    setActive(null);
-    const items = DB.articulos.filter(a => a.revision);
-    const byT = {}; items.forEach(a => a.revision.forEach(r => { (byT[r.texto] = byT[r.texto] || { r, arts: [] }).arts.push(a); }));
-    main.innerHTML = crumbs([['Inicio', '#/'], ['Observaciones de documentación']]) +
-      '<div class="page-h"><h1>Observaciones de documentación</h1><p>Diferencias detectadas entre manuales. No se unificaron: se muestran tal como figuran en cada fuente hasta su revisión por el equipo de Univac.</p></div>' +
-      Object.values(byT).map(o => '<div class="notice review"><span class="k">' + esc(o.r.titulo) + '</span>' + fmt(o.r.texto) +
-        '<div class="small" style="margin-top:8px">Artículos afectados: ' + o.arts.map(a => '<a href="#/articulo/' + a.id + '">' + esc(a.titulo) + '</a>').join(' · ') + '</div></div>').join('');
-  }
   function viewNotFound() {
     main.innerHTML = '<div class="empty"><h2>Página no encontrada</h2><p>El contenido solicitado no existe.</p><p><a href="#/">Volver al inicio</a></p></div>';
   }
@@ -32487,8 +32468,6 @@ window.UNIVAC_CONTENIDO = {
     else if (v === 'articulo') viewArticle(p);
     else if (v === 'buscar') viewSearch(parts.slice(1).map(decodeURIComponent).join('/'));
     else if (v === 'asistente') viewAssistant();
-    else if (v === 'fuentes') viewSources();
-    else if (v === 'revision') viewReview();
     else viewNotFound();
     const el = anchor && document.getElementById(anchor);
     if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
