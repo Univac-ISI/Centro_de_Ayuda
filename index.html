@@ -32241,10 +32241,12 @@ window.UNIVAC_CONTENIDO = {
       '<a class="side-cat" data-cat="' + c.id + '" href="#/modulo/' + c.id + '"><span>' + esc(c.nombre) + '</span><span class="n">' + inCat(c.id).length + '</span></a>').join('');
   }
   let lastSearchQuery = null;
+  let lastCategoryId = null;
   const EXAMPLES = ['IVA por alícuota', '¿Cómo hago una venta con diferentes porcentajes de IVA?', 'anular factura', 'cheques de terceros', 'importar precios desde Excel', 'error 1007'];
 
   function viewHome() {
     lastSearchQuery = null;
+    lastCategoryId = null;
     setActive(null);
     main.innerHTML =
       '<section class="hero"><div class="eyebrow">Univac.ERP</div><h1>¿En qué podemos ayudarte?</h1>' +
@@ -32265,6 +32267,7 @@ window.UNIVAC_CONTENIDO = {
   function viewCat(id) {
     const c = CATS[id]; if (!c) return viewNotFound();
     lastSearchQuery = null;
+    lastCategoryId = id;
     setActive(id);
     const list = inCat(id); const temas = {};
     list.forEach(a => { const t = a.tema; (temas[t] = temas[t] || []).push(a); });
@@ -32283,7 +32286,8 @@ window.UNIVAC_CONTENIDO = {
   function viewArticle(id) {
     const a = ARTS[id]; if (!a) return viewNotFound();
     const c = CATS[a.cat]; setActive(a.cat);
-    const backHref = lastSearchQuery !== null ? '#/buscar/' + encodeURIComponent(lastSearchQuery) : '#/modulo/' + a.cat;
+    const returnCategory = lastCategoryId || a.cat;
+    const backHref = lastSearchQuery !== null ? '#/buscar/' + encodeURIComponent(lastSearchQuery) : '#/modulo/' + returnCategory;
     const backLabel = lastSearchQuery !== null ? 'Volver a las preguntas' : 'Volver al módulo';
     let body = '', toc = '';
     GROUPS.forEach(([g, label]) => {
@@ -32394,6 +32398,7 @@ window.UNIVAC_CONTENIDO = {
   }
   function viewAssistant() {
     lastSearchQuery = null;
+    lastCategoryId = null;
     setActive(null);
     main.innerHTML = '<div class="assist">' +
       '<div class="page-h"><h1>Asistente</h1><p>Consultá sobre las funciones y los pasos de uso de Univac.ERP.</p></div>' +
