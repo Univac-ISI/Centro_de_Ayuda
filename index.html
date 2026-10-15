@@ -161,9 +161,13 @@ ol.steps li::before{content:counter(s);position:absolute;left:-15px;top:0;width:
 .tbl tr:last-child td{border-bottom:0}
 .tbl td:first-child{font-weight:500;color:var(--ink)}
 details.det{border:1px solid var(--line);border-radius:6px;margin:10px 0}
-details.det>summary{cursor:pointer;padding:11px 14px;font-weight:500;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:10px}
+details.det>summary{cursor:pointer;padding:11px 14px;font-weight:600;color:var(--navy);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background .15s}
+details.det>summary:hover{background:var(--soft)}
+details.det>summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.back-link{display:inline-flex;align-items:center;gap:7px;margin:0 0 12px;color:var(--blue);font-weight:700;text-decoration:none}
+.back-link:hover{text-decoration:underline}
 details.det>summary::-webkit-details-marker{display:none}
-details.det>summary::after{content:"+";color:var(--muted);font-weight:400}
+details.det>summary::after{content:"+";display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#e9edf7;color:var(--navy);font-size:23px;line-height:1;font-weight:800}
 details.det[open]>summary::after{content:"−"}
 details.det>summary .src{font-size:11.5px;color:var(--muted);font-weight:400;margin-left:auto}
 details.det>.sub{margin:0;padding:4px 14px 6px;border-top:1px solid var(--line-2)}
@@ -32237,9 +32241,11 @@ window.UNIVAC_CONTENIDO = {
       '<a class="side-cat" data-cat="' + c.id + '" href="#/modulo/' + c.id + '"><span>' + esc(c.nombre) + '</span><span class="n">' + inCat(c.id).length + '</span></a>').join('');
   }
   const crumbs = parts => '<nav class="crumbs" aria-label="Ruta">' + parts.map((p, i) => (i ? '<span class="sep">›</span>' : '') + (p[1] ? '<a href="' + p[1] + '">' + esc(p[0]) + '</a>' : '<span>' + esc(p[0]) + '</span>')).join('') + '</nav>';
+  let lastSearchQuery = null;
   const EXAMPLES = ['IVA por alícuota', '¿Cómo hago una venta con diferentes porcentajes de IVA?', 'anular factura', 'cheques de terceros', 'importar precios desde Excel', 'error 1007'];
 
   function viewHome() {
+    lastSearchQuery = null;
     setActive(null);
     main.innerHTML =
       '<section class="hero"><div class="eyebrow">Univac.ERP</div><h1>¿En qué podemos ayudarte?</h1>' +
@@ -32259,6 +32265,7 @@ window.UNIVAC_CONTENIDO = {
 
   function viewCat(id) {
     const c = CATS[id]; if (!c) return viewNotFound();
+    lastSearchQuery = null;
     setActive(id);
     const list = inCat(id); const temas = {};
     list.forEach(a => { const t = a.cat === id ? a.tema : 'Relacionados de otros módulos'; (temas[t] = temas[t] || []).push(a); });
@@ -32278,12 +32285,14 @@ window.UNIVAC_CONTENIDO = {
   function viewArticle(id) {
     const a = ARTS[id]; if (!a) return viewNotFound();
     const c = CATS[a.cat]; setActive(a.cat);
+    const backHref = lastSearchQuery !== null ? '#/buscar/' + encodeURIComponent(lastSearchQuery) : '#/modulo/' + a.cat;
+    const backLabel = lastSearchQuery !== null ? 'Volver a las preguntas' : 'Volver al módulo';
     let body = '', toc = '';
     GROUPS.forEach(([g, label]) => {
       const ss = a.secciones.filter(s => s.g === g); if (!ss.length) return;
       let content = '';
       if (g === 'detalle' && ss.length > 1)
-        content = ss.map((s, i) => '<details class="det"' + (i === 0 ? ' open' : '') + '><summary>' + fmt(s.t || 'Detalle') + '</summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
+        content = ss.map((s, i) => '<details class="det"' + (i === 0 ? ' open' : '') + '><summary title="' + (i === 0 ? 'Contraer sección' : 'Desplegar sección') + '">' + fmt(s.t || 'Detalle') + '</summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
       else content = ss.map(s => g === 'que' ? purposeHTML(s, a.resumen) : subHTML(s)).filter(Boolean).join('');
       if (!content) return;
       const anchor = 'sec-' + g;
@@ -32294,26 +32303,18 @@ window.UNIVAC_CONTENIDO = {
     const vids = (a.videos || []).map(v => '<div class="media-slot"><b>Video</b><a href="' + esc(v.url) + '" target="_blank" rel="noopener">' + esc(v.titulo || v.url) + '</a></div>').join('');
     if (caps || vids)
       body += '<section class="a-sec" id="sec-media"><h2>Capturas y videos</h2><div class="media">' + caps + vids + '</div></section>';
-    const rel = related(a);
-    if (rel.length) {
-      toc += '<a href="#/articulo/' + a.id + '/sec-rel">Artículos relacionados</a>';
-      body += '<section class="a-sec" id="sec-rel"><h2>Artículos relacionados</h2><ul class="rel-list">' + rel.map(r => '<li><a href="#/articulo/' + r.id + '">' + esc(r.titulo) + '</a></li>').join('') + '</ul></section>';
-    }
     const restr = a.restringido ? '<div class="notice"><span class="k">Uso restringido</span>Esta herramienta está disponible solo para el nivel Super Administrador.</div>' : '';
     main.innerHTML = '<div class="art-wrap"><article class="article">' +
+      '<a class="back-link" href="' + backHref + '"><span aria-hidden="true">←</span>' + backLabel + '</a>' +
       crumbs([['Inicio', '#/'], [c.nombre, '#/modulo/' + c.id], [a.tema, '#/modulo/' + c.id]]) +
       '<h1>' + esc(a.titulo) + '</h1>' + (a.resumen ? '<p class="lead">' + fmt(a.resumen) + '</p>' : '') +
       restr + body +
       '<div class="feedback"><span class="feedback-txt">¿No encontraste lo que necesitabas?</span><div class="feedback-btns"><a class="btn ghost" href="#/asistente">Consultar al asistente</a><a class="btn ghost" href="https://wa.me/5493564367491" target="_blank" rel="noopener noreferrer">Contactar al soporte de Univac</a></div></div>' +
       '</article><aside class="toc" aria-label="En este artículo"><div class="h">En este artículo</div>' + toc + '</aside></div>';
-  }
-  function related(a) {
-    const out = (a.relacionados || []).map(id => ARTS[id]).filter(Boolean);
-    if (out.length < 4) {
-      const { res } = score(docs, IDF, AVG, a.titulo + ' ' + a.kw);
-      res.forEach(r => { if (out.length < 6 && r.d.a.id !== a.id && !out.includes(r.d.a)) out.push(r.d.a); });
-    }
-    return out.slice(0, 6);
+    main.querySelectorAll('details.det').forEach(d => {
+      const summary = d.querySelector('summary');
+      d.addEventListener('toggle', () => { summary.title = d.open ? 'Contraer sección' : 'Desplegar sección'; });
+    });
   }
 
   function snippet(a, terms) {
@@ -32331,6 +32332,7 @@ window.UNIVAC_CONTENIDO = {
     return esc(text).replace(/[\p{L}\p{N}]+/gu, w => (words.has(stem(norm(w))) && !STOP.has(norm(w)) ? '<mark>' + w + '</mark>' : w));
   }
   function viewSearch(q) {
+    lastSearchQuery = q;
     setActive(null); $('#topQ').value = q;
     const { terms, res } = search(q);
     let h = crumbs([['Inicio', '#/'], ['Búsqueda']]) + '<div class="page-h"><h1>Resultados para «' + esc(q) + '»</h1></div>';
@@ -32394,6 +32396,7 @@ window.UNIVAC_CONTENIDO = {
     return answerHTML(local);
   }
   function viewAssistant() {
+    lastSearchQuery = null;
     setActive(null);
     main.innerHTML = '<div class="assist">' + crumbs([['Inicio', '#/'], ['Asistente']]) +
       '<div class="page-h"><h1>Asistente</h1><p>Consultá sobre las funciones y los pasos de uso de Univac.ERP.</p></div>' +
