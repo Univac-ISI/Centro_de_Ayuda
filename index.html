@@ -32251,7 +32251,7 @@ window.UNIVAC_CONTENIDO = {
     main.innerHTML =
       '<section class="hero"><div class="eyebrow">Univac.ERP</div><h1>¿En qué podemos ayudarte?</h1>' +
       '<p>Encontrá procedimientos, explicaciones y respuestas para usar Univac.ERP.</p>' +
-      '<form class="big-search" id="homeSearch" role="search"><input id="homeQ" type="search" placeholder="Escribí una función, un botón o tu pregunta…" aria-label="Buscar"><button>Buscar</button></form>' +
+      '<form class="big-search" id="homeSearch" role="search"><input id="homeQ" type="search" placeholder="Escribí qué necesitás hacer…" aria-label="Buscar"><button>Buscar</button></form>' +
       '<div class="examples">Ejemplos: ' + EXAMPLES.map(e => '<button class="chip" data-q="' + esc(e) + '">' + esc(e) + '</button>').join('') + '</div></section>' +
       '<h2 class="sec-title">Explorar por módulo</h2><div class="cat-grid">' +
       DB.categorias.map(c => '<a class="cat-item" href="#/modulo/' + c.id + '"><h3>' + esc(c.nombre) + '</h3><p>' + esc(c.desc) + '</p><span class="count">' + inCat(c.id).length + ' artículos</span></a>').join('') +
@@ -32272,7 +32272,8 @@ window.UNIVAC_CONTENIDO = {
     const list = inCat(id); const temas = {};
     list.forEach(a => { const t = a.tema; (temas[t] = temas[t] || []).push(a); });
     const order = Object.keys(temas).sort((x, y) => x.localeCompare(y, 'es'));
-    main.innerHTML = '<div class="page-h"><h1>' + esc(c.nombre) + '</h1><p>' + esc(c.desc) + '</p></div>' +
+    main.innerHTML = '<a class="back-link" href="#/"><span aria-hidden="true">←</span>Volver al inicio</a>' +
+      '<div class="page-h"><h1>' + esc(c.nombre) + '</h1><p>' + esc(c.desc) + '</p></div>' +
       order.map(t => '<section class="topic"><h2>' + esc(t) + '</h2><ul class="art-list">' + temas[t].map(artItem).join('') + '</ul></section>').join('');
   }
   const artItem = a => '<li><a href="#/articulo/' + a.id + '"><span class="t">' + esc(a.titulo) +
@@ -32336,7 +32337,8 @@ window.UNIVAC_CONTENIDO = {
     lastSearchQuery = q;
     setActive(null); $('#topQ').value = q;
     const { terms, res } = search(q);
-    let h = '<div class="page-h"><h1>Resultados para «' + esc(q) + '»</h1></div>';
+    let h = '<a class="back-link" href="#/"><span aria-hidden="true">←</span>Volver al inicio</a>' +
+      '<div class="page-h"><h1>Resultados para «' + esc(q) + '»</h1></div>';
     if (!q.trim() || !res.length) {
       h += '<div class="empty"><h2>No encontramos información suficiente</h2><p>No hay resultados relacionados con esta búsqueda.</p>' +
         (/wayra/i.test(q) ? '<p>Univac.ERP es el nombre actual del sistema anteriormente denominado Wayra ERP: buscá directamente la función que necesitás.</p>' : '') +
@@ -32376,6 +32378,7 @@ window.UNIVAC_CONTENIDO = {
   }
   function answerHTML(r) {
     if (!r) return '<p>' + esc(SIN_INFO) + '</p>';
+    const a = r.art;
     return '<h4>' + esc(a.titulo) + '</h4>' + (a.resumen ? '<p>' + fmt(a.resumen) + '</p>' : '') +
       r.pick.map(p => p.s.g === 'que' ? purposeHTML(p.s, a.resumen) : subHTML(p.s)).filter(Boolean).join('') +
       r.extra.map(p => '<p class="small">También en <a href="#/articulo/' + p.a.id + '">' + esc(p.a.titulo) + '</a>:</p>' + (p.s.g === 'que' ? purposeHTML(p.s, p.a.resumen) : subHTML(p.s))).join('') +
@@ -32401,8 +32404,9 @@ window.UNIVAC_CONTENIDO = {
     lastCategoryId = null;
     setActive(null);
     main.innerHTML = '<div class="assist">' +
+      '<a class="back-link" href="#/"><span aria-hidden="true">←</span>Volver al inicio</a>' +
       '<div class="page-h"><h1>Asistente</h1><p>Consultá sobre las funciones y los pasos de uso de Univac.ERP.</p></div>' +
-      '<div class="mode"><i></i>' + (ASISTENTE_IA.endpoint ? 'Asistente disponible' : 'Respuestas sobre el uso del sistema') + '</div>' +
+      '<div class="mode"><i></i>' + (ASISTENTE_IA.endpoint ? 'Asistente disponible' : 'Busca en el Centro de Ayuda y muestra las secciones más relacionadas con tu consulta.') + '</div>' +
       '<div class="chat"><div class="chat-log" id="chatLog" aria-live="polite"></div>' +
       '<form class="chat-form" id="chatForm"><textarea id="chatQ" placeholder="Escribí tu consulta, por ejemplo: ¿Cómo registro una cobranza?" aria-label="Consulta"></textarea><button>Enviar</button></form></div>' +
       '<p class="small">Ejemplos: ' + EXAMPLES.slice(0, 4).map(e => '<button class="chip" data-q="' + esc(e) + '">' + esc(e) + '</button>').join(' ') + '</p></div>';
@@ -32415,7 +32419,13 @@ window.UNIVAC_CONTENIDO = {
     const send = async q => {
       q = q.trim(); if (!q) return;
       chatLog.push({ r: 'user', h: esc(q) }); paint();
-      chatLog.push({ r: 'bot', h: await ask(q) }); paint();
+      let response;
+      try { response = await ask(q); }
+      catch (error) {
+        console.error('No se pudo generar la respuesta del asistente.', error);
+        response = '<p>No pude preparar una respuesta en este momento. Probá de nuevo o consultá al soporte de Univac.</p>';
+      }
+      chatLog.push({ r: 'bot', h: response }); paint();
     };
     $('#chatForm').addEventListener('submit', e => { e.preventDefault(); const v = $('#chatQ').value; $('#chatQ').value = ''; send(v); });
     $('#chatQ').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('#chatForm').requestSubmit(); } });
