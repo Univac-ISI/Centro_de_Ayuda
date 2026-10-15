@@ -6115,14 +6115,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "p",
 "x": "✓ Al verificar la cuenta corriente, la Factura B 0001-00004524 aparece con saldo $0,00 y la cobranza asociada. El ciclo de venta quedó completamente cerrado."
-},
-{
-"t": "p",
-"x": "— Fin del Manual de Usuario Operativo — Módulo: Ventas —"
-},
-{
-"t": "p",
-"x": "Sistema Univac.ERP | Clasificación: Uso interno — Personal administrativo"
 }
 ]
 }
@@ -9037,10 +9029,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "li",
 "x": "Nivel 3: no puede re-abrir períodos fiscales cerrados. Solo puede cerrar (si tiene permiso de IVA Compras)."
-},
-{
-"t": "p",
-"x": "— Fin del manual —"
 }
 ]
 }
@@ -10887,15 +10875,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "step",
 "x": "Grabar la orden de pago. El comprobante original quedará con un saldo pendiente de $70.000 en la cuenta corriente."
-},
-{
-"t": "table",
-"rows": [
-[
-"Manual de Usuario — Funciones Comunes Ventas y Compras — Univac.ERP",
-"Clasificación: Uso interno — Personal administrativo"
-]
-]
 }
 ]
 }
@@ -14797,10 +14776,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "p",
 "x": "Adicionalmente, los usuarios de nivel 3 (operadores) tienen la restricción de visualización de costos controlada por el parámetro 'visualiza_costos' en su ficha de usuario. Si este parámetro está desactivado, las columnas de precio de costo, utilidades y precio de última compra se ocultan en todas las pantallas del módulo."
-},
-{
-"t": "p",
-"x": "— Fin del manual —"
 }
 ]
 }
@@ -17104,10 +17079,6 @@ window.UNIVAC_CONTENIDO = {
 "t": "call",
 "k": "warn",
 "x": "Una vez grabado el código, no puede modificarse. Verificar que el código sea correcto antes de grabar."
-},
-{
-"t": "p",
-"x": "— Fin del Manual de Tablas Maestras —"
 }
 ]
 }
@@ -19087,15 +19058,6 @@ window.UNIVAC_CONTENIDO = {
 "t": "call",
 "k": "info",
 "x": "Si en el paso 6 ARCA hubiera devuelto Resultado='R' con el mensaje 'CUIT duplicado', el sistema habría mostrado: 'El comprobante ha sido RECHAZADO con la siguiente Observación: [descripción]'. El operador habría tenido que verificar si el número 42 ya existía previamente y coordinar con contabilidad."
-},
-{
-"t": "table",
-"rows": [
-[
-"Manual de Usuario — Facturación Electrónica (el proceso de Facturación Electrónica) — Univac.ERP",
-"Clasificación: Uso interno — Personal administrativo"
-]
-]
 }
 ]
 }
@@ -26520,10 +26482,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "p",
 "x": "Las fotografías se almacenan en la tabla fotos_articulos como BLOB comprimido en formato ZIP. Al publicar en TiendaNube o MercadoLibre, el sistema extrae la imagen del ZIP, la convierte a Base64 y la envía a la API de la tienda. Los archivos temporales se crean en la carpeta 'Temporal' dentro del directorio de la aplicación y se eliminan automáticamente después de usarlos."
-},
-{
-"t": "p",
-"x": "— Fin del manual —"
 }
 ]
 }
@@ -30296,15 +30254,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "step",
 "x": "Cuando se confirma el pago, seleccionar el flete y presionar 'Cambiar Estado'. Se genera el comprobante de liquidación y el flete pasa a 'Liquidada'."
-},
-{
-"t": "table",
-"rows": [
-[
-"Manual de Usuario — Procesos Especiales — Univac.ERP",
-"Clasificación: Uso interno — Personal administrativo"
-]
-]
 }
 ]
 }
@@ -30326,7 +30275,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "especiales",
 "tema": "Hacienda",
 "titulo": "Glosario de Hacienda",
-"resumen": "Índice de Procesos Documentados",
+"resumen": "Términos y procesos de Hacienda",
 "kw": "glosario hacienda términos media res tropa faena",
 "fuentes": [
 {
@@ -30430,7 +30379,7 @@ window.UNIVAC_CONTENIDO = {
 },
 {
 "t": "p",
-"x": "Índice de Procesos Documentados"
+"x": "Procesos de Hacienda"
 },
 {
 "t": "li",
@@ -32032,15 +31981,6 @@ window.UNIVAC_CONTENIDO = {
 {
 "t": "li",
 "x": "Romaneos: los datos de los remitos cárnicos recibidos pueden complementar el registro manual o por XML de las tropas que llegan al establecimiento."
-},
-{
-"t": "table",
-"rows": [
-[
-"Manual de Usuario — Procesos Especiales Hacienda — Univac.ERP",
-"Clasificación: Uso interno — Personal administrativo"
-]
-]
 }
 ]
 }
@@ -32256,10 +32196,13 @@ window.UNIVAC_CONTENIDO = {
         const lab = { warn: 'Atención', error: 'Importante', info: 'Información', ok: 'Correcto', tip: 'Sugerencia' }[b.k] || 'Nota';
         h += '<div class="notice ' + esc(b.k || '') + '"><span class="k">' + lab + '</span>' + fmt(b.x.replace(/^[ℹ⚠✖✔✓💡]\s*/u, '')) + '</div>';
       } else if (b.t === 'table' && b.rows.length) {
-        const [hd, ...rows] = b.rows;
-        const single = !rows.length;
-        h += '<div class="tbl"><table>' + (single ? '' : '<thead><tr>' + hd.map(c => '<th>' + fmt(c) + '</th>').join('') + '</tr></thead>') +
-          '<tbody>' + (single ? [hd] : rows).map(r => '<tr>' + r.map(c => '<td>' + fmt(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+        const headerLabels = /^(#|n[°º.]?|campo(?: calculado| \/.*)?|columna|bot[oó]n(?: \/.*| \(.*\))?|filtro|modo|vista|nivel(?: \/.*)?|permiso(?: \/.*)?|nombre|tipo(?: \/.*)?|estado|t[eé]rmino|mensaje(?: de error)?|proceso|solapa|opci[oó]n|dato(?: a modificar| enviado a arca)?|primer d[ií]gito|grupo|m[oó]dulo(?: afectado| de origen)?|aspecto|clave(?: de bloqueo)?|elemento|segmento|operaci[oó]n|validaci[oó]n(?: \/.*)?|caracter[ií]stica|fecha|forma|funci[oó]n|sucursal|c[oó]digo|archivo(?: generado)?|formato|paso|pantalla|secci[oó]n|concepto|art[ií]culo|rubro|copia|dato|per[ií]odo|componente|origen|evento|caso|resultado|indicador|atajo|tecla|situaci[oó]n|plataforma|tipo de contribuyente|tipo seleccionado|tipo de maestro|tipo de comprobante|campo calculado|campo \/ validaci[oó]n|qu[eé] verifica|¿reintenta\?|dato a modificar|nombre visible|color en grilla|qu[eé] asienta|qu[eé] puede hacer|qu[eé] hace|qu[eé] hace el sistema|qu[eé] contiene|cu[aá]ndo se usa|cu[aá]ndo se ve afectado|descripci[oó]n|caracter[ií]sticas|funci[oó]n|uso en el sistema|causa y soluci[oó]n|soluci[oó]n|f[oó]rmula(?: \/ regla)?|f[oó]rmula y cu[aá]ndo se calcula|tipo de asiento generado|columna donde aparece|grilla visible|cambios en la pantalla|discrimina iva|tipo de comprobante sugerido|desactivar|eliminar definitivamente|c[oó]mo hacerlo|validaciones|puede hacer|puede hacer el sistema|contenido|datos que contiene|cu[aá]ndo usarlo|tipo \/ formato|oblig\.?|req\.?|requerido|qu[eé] hace\s*)$/i;
+        const first = b.rows[0];
+        const looksLikeHeader = b.rows.length > 1 && first.every(c => String(c).trim().length <= 55) &&
+          first.filter(c => headerLabels.test(String(c).trim())).length >= 1;
+        const dataRows = looksLikeHeader ? b.rows.slice(1) : b.rows;
+        h += '<div class="tbl"><table>' + (looksLikeHeader ? '<thead><tr>' + first.map(c => '<th>' + fmt(c) + '</th>').join('') + '</tr></thead>' : '') +
+          '<tbody>' + dataRows.map(r => '<tr>' + r.map(c => '<td>' + fmt(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
       }
       i++;
     }
@@ -32363,7 +32306,7 @@ window.UNIVAC_CONTENIDO = {
       body += '<section class="a-sec" id="sec-rel"><h2>Artículos relacionados</h2><ul class="rel-list">' + rel.map(r => '<li><a href="#/articulo/' + r.id + '">' + esc(r.titulo) + '</a></li>').join('') + '</ul></section>';
     }
     const rev = (a.revision || []).map(r => '<div class="notice review"><span class="k">Observación de documentación · ' + esc(r.titulo) + '</span>' + fmt(r.texto) + '</div>').join('');
-    const restr = a.restringido ? '<div class="notice"><span class="k">Uso restringido</span>Según la documentación, esta herramienta está disponible solo para el nivel Super Administrador.</div>' : '';
+    const restr = a.restringido ? '<div class="notice"><span class="k">Uso restringido</span>Esta herramienta está disponible solo para el nivel Super Administrador.</div>' : '';
     main.innerHTML = '<div class="art-wrap"><article class="article">' +
       crumbs([['Inicio', '#/'], [c.nombre, '#/modulo/' + c.id], [a.tema, '#/modulo/' + c.id]]) +
       '<h1>' + esc(a.titulo) + '</h1>' + (a.resumen ? '<p class="lead">' + fmt(a.resumen) + '</p>' : '') +
