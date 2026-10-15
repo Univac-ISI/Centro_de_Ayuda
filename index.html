@@ -269,6 +269,24 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
 .feedback-btns{display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px}
 .feedback-btns .btn{justify-content:center;width:100%}
 
+/* Jerarquía visual: acciones, pasos y avisos */
+.btn,.btn-assist,.big-search button,.chat-form button{font-weight:600}
+.btn{box-shadow:0 1px 2px rgba(32,40,80,.12)}
+.ui{font-weight:700;color:var(--navy);background:#eaf0fb;border:1px solid #c9d7ee;border-radius:5px;padding:1px 6px;box-shadow:inset 0 -1px 0 rgba(32,40,80,.05)}
+ol.steps li{color:var(--ink);font-weight:500;line-height:1.7}
+ol.steps li::before{font-size:13px;font-weight:700;box-shadow:0 0 0 3px #fff}
+.a-sec#sec-pasos ol.steps li{margin:0 0 10px;padding:9px 12px 9px 34px;background:#fff;border:1px solid #e1e7f1;border-radius:7px;box-shadow:0 1px 2px rgba(32,40,80,.05)}
+.a-sec#sec-pasos ol.steps li:last-child{margin-bottom:2px;padding-bottom:9px}
+.a-sec#sec-pasos ol.steps li::before{left:-15px;top:9px;background:var(--blue);box-shadow:0 0 0 4px #f7f9fd}
+.notice{border:1px solid #dfe4ed;border-left:4px solid var(--blue);border-radius:8px;padding:14px 16px;line-height:1.6;box-shadow:0 1px 3px rgba(32,40,80,.06)}
+.notice.warn{border-color:#efd9ad;border-left-color:#d99400;background:var(--amber-soft)}
+.notice.error{border-color:#f0c8c5;border-left-color:var(--red);background:var(--red-soft)}
+.notice.ok,.notice.tip{border-color:#cce6d6;border-left-color:#3c9a6a;background:#eef8f2}
+.notice.review{border-color:#efd9ad;border-left-color:#d99400;background:var(--amber-soft)}
+.notice .k{font-weight:700;margin-bottom:4px}
+.notice.warn .k,.notice.review .k{color:#845400}
+.notice.error .k{color:#a6231e}
+.notice.ok .k,.notice.tip .k{color:#24744c}
 </style>
 </head>
 <body>
@@ -2382,7 +2400,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "admin",
 "tema": "Configuración de la empresa",
 "titulo": "¿Cómo configurar los tipos de artículos para compra y venta?",
-"resumen": "Define las categorías de clasificación de artículos que usa la empresa:",
+"resumen": "Define las categorías de clasificación de artículos que usa la empresa.",
 "kw": "tipos de artículos clasificación compra venta cuenta contable",
 "fuentes": [
 {
@@ -2401,7 +2419,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Define las categorías de clasificación de artículos que usa la empresa: si son para compra, para venta o para ambas; si llevan stock; si son bienes de uso o gastos; y las cuentas contables que se usan al registrar movimientos con esos artículos."
+"x": "Cada tipo indica si sus artículos se utilizan en compras, en ventas o en ambas; si llevan control de stock; si corresponden a bienes de uso o gastos; y qué cuentas contables se aplican a sus movimientos."
 }
 ]
 },
@@ -2794,7 +2812,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "comunicacion",
 "tema": "Relaciones empresariales (CRM)",
 "titulo": "¿Cómo usar el módulo de Relaciones Empresariales (CRM)?",
-"resumen": "Módulo de CRM que permite registrar y dar seguimiento a todas las interacciones con clientes y proveedores:",
+"resumen": "El CRM permite registrar y dar seguimiento a las interacciones con clientes y proveedores.",
 "kw": "crm relaciones empresariales contactos seguimiento agenda clientes proveedores",
 "fuentes": [
 {
@@ -2813,7 +2831,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Módulo de CRM que permite registrar y dar seguimiento a todas las interacciones con clientes y proveedores: llamadas, visitas, reclamos, soporte post-venta, garantías, entregas técnicas. Cada gestión queda registrada con fecha, hora, responsable y hasta 3 archivos adjuntos."
+"x": "En el CRM se registran llamadas, visitas, reclamos, consultas de posventa, garantías y entregas técnicas. Cada gestión conserva la fecha, la hora y la persona responsable, y admite hasta tres archivos adjuntos."
 }
 ]
 },
@@ -3379,7 +3397,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "comunicacion",
 "tema": "Soporte",
 "titulo": "¿Cómo consultar la cuenta corriente con Univac?",
-"resumen": "Permite consultar el estado de la cuenta corriente de la empresa con Univac ISI:",
+"resumen": "Permite consultar el estado de la cuenta corriente de la empresa con Univac ISI.",
 "kw": "cuenta corriente con univac abono facturas univac deuda servicio",
 "fuentes": [
 {
@@ -3398,7 +3416,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite consultar el estado de la cuenta corriente de la empresa con Univac ISI: saldo adeudado o a favor, y el detalle de cada movimiento (facturas de abono, pagos, ajustes)."
+"x": "La consulta muestra el saldo adeudado o a favor y detalla cada movimiento, como facturas de abono, pagos y ajustes."
 }
 ]
 },
@@ -3826,7 +3844,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "fe",
 "tema": "Certificados",
 "titulo": "¿Cómo actualizar los certificados AFIP (certificado.crt y clave.key)?",
-"resumen": "Para emitir comprobantes electrónicos con CAE, el sistema necesita tener instalados los archivos de certificado digital de AFIP:",
+"resumen": "Para emitir comprobantes electrónicos con CAE, el sistema necesita tener instalados los certificados digitales de AFIP/ARCA, incluidos certificado.crt y clave.key.",
 "kw": "certificado clave key crt renovar vencimiento afip arca actualizar certificado",
 "fuentes": [
 {
@@ -4008,7 +4026,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Módulo de Ventas",
 "titulo": "¿Cómo está organizado el módulo de Ventas?",
-"resumen": "Es el punto de entrada al módulo comercial del sistema. Desde esta pantalla el usuario accede, mediante solapas, a todos los procesos de ventas:",
+"resumen": "El módulo de Ventas es el punto de entrada a las operaciones comerciales del sistema.",
 "kw": "ventas solapas pantalla principal módulo comercial",
 "fuentes": [
 {
@@ -4027,7 +4045,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Es el punto de entrada al módulo comercial del sistema. Desde esta pantalla el usuario accede, mediante solapas, a todos los procesos de ventas: emisión de comprobantes fiscales, comprobantes no fiscales (remitos, presupuestos), cobranzas, cuentas corrientes de clientes, libro IVA Ventas y consultas al WebService de ARCA/AFIP."
+"x": "Desde esta pantalla se accede, mediante solapas, a la emisión de comprobantes fiscales y no fiscales, las cobranzas, las cuentas corrientes de clientes, el Libro IVA Ventas y las consultas al WebService de ARCA/AFIP."
 }
 ]
 },
@@ -4392,7 +4410,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito y notas de crédito. El sistema autorización los comprobantes electrónicos en ARCA/AFIP en forma automática, descuenta el stock, actualiza la cuenta corriente del cliente y genera el asiento contable correspondiente."
+"x": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito y notas de crédito. El sistema autoriza los comprobantes electrónicos en ARCA/AFIP en forma automática, descuenta el stock, actualiza la cuenta corriente del cliente y genera el asiento contable correspondiente."
 }
 ]
 },
@@ -4803,7 +4821,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Comprobantes fiscales",
 "titulo": "¿Cómo eliminar o anular un comprobante de venta?",
-"resumen": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito y notas de crédito.",
+"resumen": "Permite eliminar un comprobante fiscal seleccionado desde la grilla, con validación del usuario.",
 "kw": "anular factura eliminar factura borrar comprobante baja comprobante",
 "fuentes": [
 {
@@ -4825,7 +4843,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito y notas de crédito. El sistema autorización los comprobantes electrónicos en ARCA/AFIP en forma automática, descuenta el stock, actualiza la cuenta corriente del cliente y genera el asiento contable correspondiente."
+"x": "Antes de confirmar, el sistema solicita la clave del usuario. No se puede eliminar un comprobante que ya fue anulado ni uno asociado a un cliente eliminado o desactivado."
 }
 ]
 },
@@ -5235,7 +5253,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Cuentas corrientes",
 "titulo": "¿Cómo consultar la cuenta corriente de un cliente?",
-"resumen": "Permite consultar el estado de cuenta corriente de los clientes desde tres perspectivas distintas:",
+"resumen": "Permite consultar el estado de cuenta corriente de los clientes desde tres perspectivas distintas.",
 "kw": "saldo cliente deuda cuánto me debe facturas pendientes cuotas interés moratorio resumen de cuenta",
 "fuentes": [
 {
@@ -5254,7 +5272,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite consultar el estado de cuenta corriente de los clientes desde tres perspectivas distintas: consulta individual de un cliente, resumen de saldos por zona, o listado de facturas y cuotas pendientes. También permite modificar movimientos y eliminar movimientos de contado (según permisos)."
+"x": "Ofrece una consulta individual, un resumen de saldos por zona y un listado de facturas y cuotas pendientes. Según los permisos, también se pueden modificar movimientos o eliminar movimientos de contado."
 }
 ]
 },
@@ -5346,7 +5364,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impuestos",
 "tema": "IVA Ventas",
 "titulo": "¿Cómo consultar el Libro IVA Ventas?",
-"resumen": "Muestra el Libro IVA Ventas del período seleccionado con el desglose completo de cada comprobante:",
+"resumen": "Muestra el Libro IVA Ventas del período seleccionado y el detalle impositivo de cada comprobante.",
 "kw": "iva ventas libro iva iva por alícuota percepciones rg 5329 citi ventas posición iva",
 "fuentes": [
 {
@@ -5365,7 +5383,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Muestra el Libro IVA Ventas del período seleccionado con el desglose completo de cada comprobante: neto gravado, IVA por alícuota, exento, impuestos internos, percepciones y total. Desde esta solapa se generan e imprimen los informes impositivos y los archivos de exportación CITI."
+"x": "El detalle incluye neto gravado, IVA por alícuota, importes exentos, impuestos internos, percepciones y total. Desde esta solapa también se generan e imprimen informes impositivos y archivos para CITI."
 }
 ]
 },
@@ -5740,7 +5758,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Mensajes y errores",
 "titulo": "Mensajes del sistema en Ventas y cómo resolverlos",
-"resumen": "Listado completo de los mensajes que puede mostrar el módulo de Ventas, con su causa y cómo resolverlos:",
+"resumen": "Reúne los mensajes que puede mostrar el módulo de Ventas y explica sus causas y formas de resolverlos.",
 "kw": "error mensaje advertencia no deja grabar problema ventas",
 "fuentes": [
 {
@@ -5759,7 +5777,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Listado completo de los mensajes que puede mostrar el módulo de Ventas, con su causa y cómo resolverlos:"
+"x": ""
 },
 {
 "t": "table",
@@ -5905,7 +5923,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Ejemplos prácticos",
 "titulo": "Ejemplo completo: facturar, remitir, cobrar y verificar el saldo",
-"resumen": "Una empresa necesita: (1) emitir una Factura B a un cliente en cuenta corriente por la venta de tres artículos; (2) generar el remito de entrega de esa mercadería; (3) registrar el cobro cuando el cliente paga a los 30 días con cheque y efectivo; y (4) verific",
+"resumen": "El ejemplo muestra el recorrido de una venta a crédito: emisión de la factura, entrega mediante remito, registro del cobro y consulta del saldo.",
 "kw": "ejemplo paso a paso ciclo de venta factura remito cobro",
 "fuentes": [
 {
@@ -5924,7 +5942,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Una empresa necesita: (1) emitir una Factura B a un cliente en cuenta corriente por la venta de tres artículos; (2) generar el remito de entrega de esa mercadería; (3) registrar el cobro cuando el cliente paga a los 30 días con cheque y efectivo; y (4) verificar el saldo en cuenta corriente."
+"x": "El caso parte de una Factura B emitida a crédito por la venta de tres artículos. Luego se genera el remito, se registra el pago a los 30 días con cheque y efectivo y se verifica el saldo de la cuenta corriente."
 }
 ]
 },
@@ -8080,7 +8098,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "compras",
 "tema": "Cuentas corrientes",
 "titulo": "¿Cómo consultar la cuenta corriente de un proveedor?",
-"resumen": "Permite consultar el estado de la cuenta corriente de los proveedores:",
+"resumen": "Permite consultar los movimientos, saldos y estados de pago de las cuentas corrientes de proveedores.",
 "kw": "saldo proveedor deuda cuánto le debo cuenta corriente proveedor",
 "fuentes": [
 {
@@ -8099,7 +8117,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite consultar el estado de la cuenta corriente de los proveedores: saldo total, movimientos individuales de cada factura y su estado de pago, y permite imprimir y exportar el extracto."
+"x": "La consulta muestra el saldo total, los movimientos de cada factura y su estado de pago. El extracto también se puede imprimir o exportar."
 }
 ]
 },
@@ -8456,7 +8474,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impuestos",
 "tema": "Percepciones y retenciones",
 "titulo": "¿Cómo consultar retenciones y percepciones de compras?",
-"resumen": "Accesible desde el botón 'Retenciones y Percepciones'. Ofrece vistas para:",
+"resumen": "La opción «Retenciones y Percepciones» permite consultar la información impositiva relacionada con las compras.",
 "kw": "retenciones percepciones consulta sufridas",
 "fuentes": [
 {
@@ -8707,7 +8725,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impuestos",
 "tema": "Archivos para ARCA",
 "titulo": "¿Cómo generar los archivos CITI e IVA Digital?",
-"resumen": "Genera los archivos TXT en el formato exigido por ARCA/AFIP para la presentación de Compras:",
+"resumen": "Genera los archivos TXT de Compras en los formatos requeridos para las presentaciones CITI e IVA Digital.",
 "kw": "citi iva digital libro iva digital txt archivo arca afip exportar",
 "fuentes": [
 {
@@ -8726,7 +8744,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Genera los archivos TXT en el formato exigido por ARCA/AFIP para la presentación de Compras: comprobantes, alícuotas, importaciones, datos de combustibles, retenciones de Ganancias, retenciones de IIBB, percepciones de IIBB y retenciones sufridas."
+"x": "Los archivos incluyen comprobantes, alícuotas, importaciones, datos de combustibles, retenciones de Ganancias, retenciones y percepciones de IIBB, y retenciones sufridas."
 }
 ]
 },
@@ -8950,7 +8968,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "admin",
 "tema": "Usuarios y permisos",
 "titulo": "Permisos del módulo de Compras",
-"resumen": "El acceso a cada función está controlado por el campo BLOQUEOS_P del usuario activo:",
+"resumen": "Los permisos asignados al usuario determinan a qué funciones del módulo de Compras puede acceder.",
 "kw": "permisos compras restricciones acceso",
 "fuentes": [
 {
@@ -8969,7 +8987,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "El acceso a cada función está controlado por el campo BLOQUEOS_P del usuario activo:"
+"x": "La restricción de acceso se configura mediante el campo BLOQUEOS_P del usuario activo."
 },
 {
 "t": "table",
@@ -9040,7 +9058,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Herramientas comunes",
 "titulo": "¿Cómo filtrar las grillas de comprobantes?",
-"resumen": "Actualiza la grilla (tabla de comprobantes) de cualquier solapa de Compras o Ventas según los criterios de búsqueda que el usuario haya configurado:",
+"resumen": "Permite filtrar las grillas de comprobantes de Compras y Ventas con los criterios elegidos.",
 "kw": "filtro filtrar buscar fecha rango grilla",
 "fuentes": [
 {
@@ -9059,7 +9077,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Actualiza la grilla (tabla de comprobantes) de cualquier solapa de Compras o Ventas según los criterios de búsqueda que el usuario haya configurado: período fiscal, rango de fechas, proveedor/cliente, sucursal, tipo de comprobante y estado. También controla qué botones y columnas se muestran u ocultan según si hay registros disponibles."
+"x": "Se puede filtrar por período fiscal, rango de fechas, proveedor o cliente, sucursal, tipo de comprobante y estado. La grilla también muestra u oculta botones y columnas según los registros disponibles."
 }
 ]
 },
@@ -9553,7 +9571,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Herramientas comunes",
 "titulo": "Consulta de cuenta corriente individual (cliente o proveedor)",
-"resumen": "Muestra el estado completo de la cuenta corriente de un cliente o proveedor específico:",
+"resumen": "Muestra los movimientos y el saldo de la cuenta corriente de un cliente o proveedor específico.",
 "kw": "cuenta corriente saldo debe haber movimientos exportar",
 "fuentes": [
 {
@@ -9572,7 +9590,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Muestra el estado completo de la cuenta corriente de un cliente o proveedor específico: todos sus movimientos históricos (debe, haber, saldo acumulado) y el saldo final. Es una consulta de solo lectura que también permite exportar el movimiento."
+"x": "La consulta detalla el debe, el haber y el saldo acumulado de cada movimiento, además del saldo final. Es de solo lectura y permite exportar los movimientos."
 }
 ]
 },
@@ -10179,7 +10197,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ventas",
 "tema": "Herramientas comunes",
 "titulo": "¿Qué cambia al elegir otro tipo de comprobante?",
-"resumen": "Cuando el usuario selecciona un tipo de comprobante distinto en el formulario (ej.:",
+"resumen": "El tipo de comprobante seleccionado determina los campos y opciones que aparecen en el formulario.",
 "kw": "tipo de comprobante factura nota de crédito nota de débito cambiar",
 "fuentes": [
 {
@@ -10198,7 +10216,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Cuando el usuario selecciona un tipo de comprobante distinto en el formulario (ej.: pasa de Factura a Nota de Crédito, o de NC a Nota de Débito), el sistema reconfigura completamente la pantalla: cambia las grillas visibles, los botones disponibles, las opciones del radio de tipo de factura, los campos de IVA y los controles de condición de pago."
+"x": "Al elegir otro tipo —por ejemplo, pasar de una factura a una nota de crédito o débito— el sistema adapta la pantalla. Pueden cambiar las grillas, los botones, el tipo de factura, los campos de IVA y los controles de condición de pago."
 }
 ]
 },
@@ -10895,7 +10913,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "articulos",
 "tema": "Artículos",
 "titulo": "¿Cómo buscar y filtrar artículos en el listado?",
-"resumen": "Es la pantalla de entrada al módulo. Muestra en una grilla todos los insumos, artículos o productos de la empresa (según desde qué menú se acceda) y da acceso a todas las operaciones:",
+"resumen": "El listado muestra los insumos, artículos o productos de la empresa y permite acceder a sus operaciones.",
 "kw": "listado artículos productos insumos buscar artículo filtrar grilla",
 "fuentes": [
 {
@@ -10914,7 +10932,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Es la pantalla de entrada al módulo. Muestra en una grilla todos los insumos, artículos o productos de la empresa (según desde qué menú se acceda) y da acceso a todas las operaciones: alta, baja, modificación, duplicación, composición y consulta avanzada."
+"x": "Desde la grilla se accede a las operaciones disponibles: alta, baja, modificación, duplicación, composición y consulta avanzada. El contenido varía según el menú desde el que se abra."
 }
 ]
 },
@@ -12328,7 +12346,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "articulos",
 "tema": "Artículos",
 "titulo": "¿Cómo cargar imágenes de un artículo?",
-"resumen": "Permite asociar hasta tres fotos al artículo. Cada imagen tiene su propio par de botones:",
+"resumen": "Permite asociar hasta tres imágenes a la ficha de un artículo.",
 "kw": "imagen foto artículo",
 "fuentes": [
 {
@@ -13573,7 +13591,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "articulos",
 "tema": "Stock",
 "titulo": "¿Cómo ver y ajustar el stock?",
-"resumen": "Pantalla multipropósito que se usa para tres funciones distintas según cómo se acceda:",
+"resumen": "La pantalla permite consultar existencias y ajustar el stock de los artículos.",
 "kw": "stock inventario existencia estado del stock ajuste de stock dónde veo el stock cantidad",
 "fuentes": [
 {
@@ -13597,7 +13615,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Pantalla multipropósito que se usa para tres funciones distintas según cómo se acceda: (1) Inventario — ajuste de stock artículo por artículo, (2) Modificación de Precios — cambio masivo o individual de precios, (3) Estado del Stock — consulta del stock actual con filtros avanzados."
+"x": "Según la opción elegida, se puede ajustar el stock de cada artículo, consultar las existencias con filtros avanzados o acceder a la modificación de precios."
 }
 ]
 },
@@ -13699,7 +13717,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "articulos",
 "tema": "Precios",
 "titulo": "¿Cómo modificar precios de forma individual o masiva?",
-"resumen": "Pantalla multipropósito que se usa para tres funciones distintas según cómo se acceda:",
+"resumen": "Desde esta pantalla se pueden cambiar los precios de un artículo o actualizar varios a la vez.",
 "kw": "modificar precios aumento actualizar precios porcentaje masivo cambiar precio",
 "fuentes": [
 {
@@ -13723,7 +13741,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Pantalla multipropósito que se usa para tres funciones distintas según cómo se acceda: (1) Inventario — ajuste de stock artículo por artículo, (2) Modificación de Precios — cambio masivo o individual de precios, (3) Estado del Stock — consulta del stock actual con filtros avanzados."
+"x": "La opción individual abre la ficha con los costos y precios de un artículo. La modificación masiva permite actualizar varios artículos a la vez y elegir qué listas de precios aplicar."
 }
 ]
 },
@@ -13952,7 +13970,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "articulos",
 "tema": "Stock",
 "titulo": "¿Cómo generar automáticamente un pedido de compra?",
-"resumen": "Desde el listado de inventario/precios, el botón 'Punto de Pedido' abre un menú con dos opciones:",
+"resumen": "La opción «Punto de Pedido» permite iniciar la generación automática de pedidos desde el listado de inventario o precios.",
 "kw": "punto de pedido pedido automático reposición nota de pedido",
 "fuentes": [
 {
@@ -14800,7 +14818,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "tablas",
 "tema": "General",
 "titulo": "¿Cómo funcionan las tablas maestras?",
-"resumen": "Este módulo agrupa todas las tablas maestras (o de soporte) del sistema:",
+"resumen": "Este módulo agrupa las tablas maestras o de soporte que guardan datos de referencia para los demás módulos.",
 "kw": "tablas maestras abm alta baja modificación",
 "fuentes": [
 {
@@ -14819,7 +14837,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Este módulo agrupa todas las tablas maestras (o de soporte) del sistema: los registros base que son utilizados como referencia por los demás módulos (Ventas, Compras, Stock, Producción, Contabilidad). Ningún comprobante puede emitirse sin que estas tablas estén correctamente cargadas."
+"x": "Estas tablas contienen registros de referencia usados por Ventas, Compras, Stock, Producción y Contabilidad. Deben estar correctamente cargadas para poder emitir comprobantes y operar los módulos."
 }
 ]
 },
@@ -17854,7 +17872,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "fe",
 "tema": "Autorización",
 "titulo": "¿Cómo se autoriza un comprobante paso a paso?",
-"resumen": "Desde el momento en que el operador presiona 'Grabar', el sistema ejecuta automáticamente estos pasos:",
+"resumen": "Al grabar un comprobante, el sistema ejecuta automáticamente los controles y pasos de autorización correspondientes.",
 "kw": "autorizar comprobante flujo proceso cae paso a paso",
 "fuentes": [
 {
@@ -17873,7 +17891,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Desde el momento en que el operador presiona 'Grabar', el sistema ejecuta automáticamente estos pasos:"
+"x": ""
 },
 {
 "t": "step",
@@ -18562,7 +18580,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "fe",
 "tema": "Conceptos",
 "titulo": "Exportación, bonos fiscales y Factura de Crédito Electrónica MiPyme",
-"resumen": "Además de los datos estándar, las facturas de exportación requieren:",
+"resumen": "Las facturas de exportación, los bonos fiscales y las Facturas de Crédito Electrónica MiPyME tienen requisitos específicos.",
 "kw": "exportación factura e bonos fiscales mipyme fce factura de crédito",
 "fuentes": [
 {
@@ -19484,7 +19502,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "finanzas",
 "tema": "Tesorería",
 "titulo": "¿Cómo usar la Proyección del Flujo de Fondos?",
-"resumen": "Muestra y permite editar una proyección semanal de los movimientos de fondos futuros de la empresa, organizada en cinco pestañas:",
+"resumen": "La Proyección del Flujo de Fondos permite ver y editar los movimientos futuros de la empresa organizados por semana.",
 "kw": "flujo de fondos proyección proyectado vencimientos",
 "fuentes": [
 {
@@ -19503,7 +19521,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Muestra y permite editar una proyección semanal de los movimientos de fondos futuros de la empresa, organizada en cinco pestañas: resumen financiero general, deudas de clientes, cheques de terceros en cartera, obligaciones con proveedores y movimientos bancarios/préstamos."
+"x": "La proyección se organiza en cinco pestañas: resumen financiero, deudas de clientes, cheques de terceros en cartera, obligaciones con proveedores y movimientos bancarios o préstamos."
 }
 ]
 },
@@ -19833,7 +19851,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "finanzas",
 "tema": "Tesorería",
 "titulo": "¿Cómo registrar ingresos y egresos extra sistema?",
-"resumen": "Permite registrar, modificar, consultar y eliminar movimientos de caja que no se originan en una venta ni en una compra del sistema:",
+"resumen": "Permite administrar movimientos de caja que no se originan en ventas ni compras registradas en el sistema.",
 "kw": "ingresos egresos gasto extra sistema movimiento manual",
 "fuentes": [
 {
@@ -19852,7 +19870,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite registrar, modificar, consultar y eliminar movimientos de caja que no se originan en una venta ni en una compra del sistema: por ejemplo, gastos de caja chica, pagos de servicios, cobros de alquileres, anticipos a empleados, etc."
+"x": "Incluye, por ejemplo, gastos de caja chica, pagos de servicios, cobros de alquileres y anticipos a empleados."
 }
 ]
 },
@@ -20321,7 +20339,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "finanzas",
 "tema": "Bancos",
 "titulo": "¿Cómo gestionar bancos y créditos?",
-"resumen": "Administra los movimientos de todas las cuentas bancarias, créditos, préstamos e inversiones de la empresa:",
+"resumen": "Permite administrar los movimientos de las cuentas bancarias, créditos, préstamos e inversiones de la empresa.",
 "kw": "banco cuenta bancaria crédito préstamo depósito conciliación",
 "fuentes": [
 {
@@ -20340,7 +20358,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Administra los movimientos de todas las cuentas bancarias, créditos, préstamos e inversiones de la empresa: depósitos, extracciones, débitos automáticos, cuotas de préstamos, conciliación bancaria y transferencias."
+"x": "Entre los movimientos disponibles se encuentran depósitos, extracciones, débitos automáticos, cuotas de préstamos, conciliaciones bancarias y transferencias."
 }
 ]
 },
@@ -20697,7 +20715,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "finanzas",
 "tema": "Cheques",
 "titulo": "¿Cómo gestionar los cheques de terceros?",
-"resumen": "Administra la cartera de cheques de terceros recibidos como cobro:",
+"resumen": "Permite administrar los cheques de terceros recibidos como medio de cobro.",
 "kw": "cheque cheques de terceros cartera depositar endosar rechazado",
 "fuentes": [
 {
@@ -20716,7 +20734,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Administra la cartera de cheques de terceros recibidos como cobro: permite dar de alta, modificar y consultar cheques, registrar su entrega a proveedores (endoso), su devolución, su canje y hacer seguimiento de su estado."
+"x": "Se pueden dar de alta, modificar y consultar cheques, además de registrar su entrega a proveedores, devolución o canje y hacer seguimiento de su estado."
 }
 ]
 },
@@ -22683,7 +22701,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "contabilidad",
 "tema": "Asientos",
 "titulo": "¿Cómo dar de alta un asiento contable?",
-"resumen": "Permite al usuario cargar manualmente asientos contables al ejercicio seleccionado y eliminar asientos previamente cargados.",
+"resumen": "Permite cargar asientos contables manuales para el ejercicio seleccionado.",
 "kw": "asiento contable nuevo asiento cargar asiento debe haber",
 "fuentes": [
 {
@@ -22711,7 +22729,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite al usuario cargar manualmente asientos contables al ejercicio seleccionado y eliminar asientos previamente cargados. Los asientos registrados automáticamente por otros módulos (ventas, compras, pagos, cobranzas) se muestran en esta pantalla junto con los manuales, pero para el mes seleccionado."
+"x": "Esta pantalla también muestra, para el mes seleccionado, los asientos generados automáticamente por Ventas, Compras, Pagos y Cobranzas."
 }
 ]
 },
@@ -22994,7 +23012,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "contabilidad",
 "tema": "Asientos",
 "titulo": "¿Cómo eliminar un asiento contable?",
-"resumen": "Permite al usuario cargar manualmente asientos contables al ejercicio seleccionado y eliminar asientos previamente cargados.",
+"resumen": "Permite eliminar un asiento contable completo del ejercicio seleccionado, previa validación del usuario.",
 "kw": "eliminar asiento borrar asiento anular",
 "fuentes": [
 {
@@ -23016,7 +23034,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Permite al usuario cargar manualmente asientos contables al ejercicio seleccionado y eliminar asientos previamente cargados. Los asientos registrados automáticamente por otros módulos (ventas, compras, pagos, cobranzas) se muestran en esta pantalla junto con los manuales, pero para el mes seleccionado."
+"x": "La eliminación afecta al asiento completo y queda registrada en la auditoría. Los asientos de cualquier origen se muestran en la grilla del mes seleccionado."
 }
 ]
 },
@@ -23067,7 +23085,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "contabilidad",
 "tema": "Libros",
 "titulo": "¿Cómo consultar el Libro Diario?",
-"resumen": "Visualizar e imprimir el Libro Diario de Contabilidad del ejercicio, con distintos filtros y modos de presentación.",
+"resumen": "Permite consultar e imprimir los asientos del ejercicio con distintos filtros y modos de presentación.",
 "kw": "libro diario asientos consulta",
 "fuentes": [
 {
@@ -23093,7 +23111,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Visualizar e imprimir el Libro Diario de Contabilidad del ejercicio, con distintos filtros y modos de presentación. Desde esta pantalla también se pueden modificar los importes, la cuenta contable y el comentario de asientos ya grabados (según el nivel de permisos del usuario)."
+"x": "La grilla permite revisar los asientos del período. Según los permisos asignados, también se pueden modificar importes, cuentas contables y comentarios de asientos ya grabados."
 }
 ]
 },
@@ -23285,7 +23303,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "contabilidad",
 "tema": "Asientos",
 "titulo": "¿Cómo modificar un asiento desde el Libro Diario?",
-"resumen": "Visualizar e imprimir el Libro Diario de Contabilidad del ejercicio, con distintos filtros y modos de presentación.",
+"resumen": "Permite modificar desde el Libro Diario los importes, la cuenta contable o el comentario de un asiento, según los permisos del usuario.",
 "kw": "modificar asiento editar asiento corregir",
 "fuentes": [
 {
@@ -23308,7 +23326,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Visualizar e imprimir el Libro Diario de Contabilidad del ejercicio, con distintos filtros y modos de presentación. Desde esta pantalla también se pueden modificar los importes, la cuenta contable y el comentario de asientos ya grabados (según el nivel de permisos del usuario)."
+"x": "Los cambios se realizan directamente desde la grilla del Libro Diario y están sujetos al nivel de permisos del usuario."
 }
 ]
 },
@@ -24929,7 +24947,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "contabilidad",
 "tema": "Ejemplos prácticos",
 "titulo": "Ejemplo práctico de Contabilidad",
-"resumen": "Una pyme con ejercicio calendario (01-01 al 31-12) necesita, al final del año 2025:",
+"resumen": "El ejemplo recorre tareas de revisión y cierre contable que una pyme realiza al finalizar el ejercicio 2025.",
 "kw": "ejemplo paso a paso contabilidad",
 "fuentes": [
 {
@@ -24948,7 +24966,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Una pyme con ejercicio calendario (01-01 al 31-12) necesita, al final del año 2025: (1) cargar un asiento de ajuste por amortización de bienes de uso correspondiente al mes de diciembre; (2) revisar el Libro Diario de diciembre; (3) consultar el Sumas y Saldos del ejercicio completo; (4) ver el Estado de Resultados para confirmar que el ejercicio cerró con ganancia; y (5) ejecutar el cierre del ejercicio con reapertura del 2026."
+"x": "Incluye cinco tareas: cargar un asiento de ajuste por amortización correspondiente a diciembre, revisar el Libro Diario, consultar Sumas y Saldos del ejercicio, verificar el resultado anual y cerrar el ejercicio con apertura de 2026."
 }
 ]
 },
@@ -25191,7 +25209,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "contabilidad",
 "tema": "Mensajes y errores",
 "titulo": "Mensajes del sistema en Contabilidad",
-"resumen": "Listado de los mensajes que puede mostrar el módulo de contabilidad, con su causa y cómo resolverlos:",
+"resumen": "Reúne los mensajes que puede mostrar el módulo de Contabilidad y explica sus causas y soluciones posibles.",
 "kw": "error mensaje contabilidad",
 "fuentes": [
 {
@@ -25210,7 +25228,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Listado de los mensajes que puede mostrar el módulo de contabilidad, con su causa y cómo resolverlos:"
+"x": ""
 },
 {
 "t": "table",
@@ -25306,7 +25324,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ecommerce",
 "tema": "Conceptos",
 "titulo": "¿Qué es el módulo de eCommerce?",
-"resumen": "El módulo de e-Commerce permite sincronizar el catálogo de artículos del sistema ERP con tres plataformas de venta online:",
+"resumen": "El módulo de e-Commerce sincroniza el catálogo del ERP con plataformas de venta online conectadas.",
 "kw": "ecommerce tienda online integración plataformas",
 "fuentes": [
 {
@@ -25325,7 +25343,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "El módulo de e-Commerce permite sincronizar el catálogo de artículos del sistema ERP con tres plataformas de venta online: TiendaNube, MercadoLibre y WooCommerce. La conexión se realiza mediante APIs REST en tiempo real. El sistema puede publicar artículos nuevos, actualizar datos de artículos ya publicados, eliminar artículos de la tienda, sincronizar categorías, consultar ventas realizadas online y descargarlas al sistema como comprobantes no fiscales."
+"x": "La conexión usa APIs REST y permite publicar y actualizar artículos, eliminar artículos de la tienda, sincronizar categorías, consultar ventas online y descargarlas al sistema como comprobantes no fiscales."
 }
 ]
 },
@@ -25392,7 +25410,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "ecommerce",
 "tema": "Preparar artículos",
 "titulo": "¿Qué datos debe tener un artículo para publicarse?",
-"resumen": "Antes de publicar un artículo en cualquier plataforma, la ficha del artículo en el sistema debe tener completados los siguientes campos (se configuran desde el módulo de Artículos/Productos, solapa e-Commerce):",
+"resumen": "Para publicar un artículo en una tienda online, primero hay que completar los datos necesarios en su ficha de e-Commerce.",
 "kw": "sku descripción web precio nube activo online talle color variantes",
 "fuentes": [
 {
@@ -27682,7 +27700,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impresiones",
 "tema": "Contabilidad",
 "titulo": "¿Cómo imprimir comprobantes contables?",
-"resumen": "Imprime el comprobante respaldo de movimientos contables de Ingresos, Egresos y otros rubros que no corresponden a facturas ni recibos (por ejemplo:",
+"resumen": "Permite imprimir comprobantes que respaldan movimientos contables distintos de facturas y recibos, como gastos de caja y ajustes bancarios.",
 "kw": "imprimir asiento comprobante contable",
 "fuentes": [
 {
@@ -27701,7 +27719,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Imprime el comprobante respaldo de movimientos contables de Ingresos, Egresos y otros rubros que no corresponden a facturas ni recibos (por ejemplo: gastos de caja, ajustes de cuentas bancarias, movimientos de fondos internos). Se activa desde el módulo de Ingresos/Egresos."
+"x": "La impresión se inicia desde el módulo de Ingresos/Egresos."
 }
 ]
 },
@@ -27758,7 +27776,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impresiones",
 "tema": "Cuentas corrientes",
 "titulo": "¿Cómo imprimir cuentas corrientes?",
-"resumen": "Genera el estado de cuenta de un cliente o proveedor con el detalle de todos los movimientos del período consultado:",
+"resumen": "Genera el estado de cuenta de un cliente o proveedor con los movimientos y saldos del período consultado.",
 "kw": "imprimir cuenta corriente resumen de cuenta",
 "fuentes": [
 {
@@ -27777,7 +27795,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Genera el estado de cuenta de un cliente o proveedor con el detalle de todos los movimientos del período consultado: comprobantes emitidos, pagos/cobros aplicados, saldos acumulados por comprobante y saldo total."
+"x": "El informe incluye comprobantes emitidos, pagos o cobros aplicados, saldos acumulados por comprobante y saldo total."
 }
 ]
 },
@@ -27865,7 +27883,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impresiones",
 "tema": "Logística",
 "titulo": "¿Cómo imprimir guías de transporte?",
-"resumen": "Imprime los documentos necesarios para el despacho de mercadería:",
+"resumen": "Permite imprimir la Guía de Transporte y las Etiquetas de Bultos para acompañar el despacho de mercadería.",
 "kw": "guía de transporte despacho",
 "fuentes": [
 {
@@ -27884,7 +27902,7 @@ window.UNIVAC_CONTENIDO = {
 "b": [
 {
 "t": "p",
-"x": "Imprime los documentos necesarios para el despacho de mercadería: la Guía de Transporte (3 copias) y las Etiquetas de Bultos (una por cada bulto declarado). Se genera junto al comprobante de venta si tiene datos de transporte, o se puede reimprimir desde la consulta."
+"x": "La guía se genera junto con el comprobante de venta cuando se completan los datos de transporte. También se puede reimprimir desde la consulta de comprobantes."
 }
 ]
 },
@@ -28221,7 +28239,7 @@ window.UNIVAC_CONTENIDO = {
 "cat": "impresiones",
 "tema": "Logística",
 "titulo": "¿Cómo imprimir etiquetas de bultos?",
-"resumen": "Genera una etiqueta en hoja A4 con:",
+"resumen": "Genera etiquetas en hojas A4 para identificar los bultos de una carga.",
 "kw": "etiquetas bultos paquetes",
 "fuentes": [
 {
@@ -32250,6 +32268,25 @@ window.UNIVAC_CONTENIDO = {
   const srcLabel = s => s.m + ' — ' + (s.n ? 'sección ' + s.n : 'sección ' + (s.sec || '')) + (s.t ? ' «' + s.t + '»' : '');
   const subHTML = (s, open) =>
     '<div class="sub"' + (open ? '' : '') + '><h3>' + fmt(s.t || '') + '<span class="src">' + esc(s.m.replace('Manual_', '')) + (s.n ? ' · ' + esc(s.n) : '') + '</span></h3>' + renderBlocks(s.b) + '</div>';
+  function purposeHTML(s, summary) {
+    if (s.t !== 'Propósito' || !summary) return subHTML(s);
+    const blocks = (s.b || []).map(b => ({...b})).filter(b => b.t !== 'p' || String(b.x || '').trim());
+    if (!blocks.length) return '';
+    const pi = blocks.findIndex(b => b.t === 'p');
+    if (pi < 0) return subHTML({...s, b: blocks});
+    const lead = String(summary).trim().replace(/[.!?;:]+\s*$/, '');
+    const text = String(blocks[pi].x || '').trim();
+    if (!lead || text.slice(0, lead.length).toLocaleLowerCase('es') !== lead.toLocaleLowerCase('es')) return subHTML(s);
+    const boundary = text[lead.length] || '';
+    if (boundary && !/[.:;!?]/.test(boundary)) return subHTML(s);
+    let rest = text.slice(lead.length).replace(/^[\s:;,.!?]+/, '').trim();
+    if (rest) {
+      if (boundary === ':') rest = rest.charAt(0).toLocaleUpperCase('es') + rest.slice(1);
+      blocks[pi] = {...blocks[pi], x: rest};
+    } else blocks.splice(pi, 1);
+    const useful = blocks.filter(b => b.t !== 'p' || String(b.x || '').trim());
+    return useful.length ? subHTML({...s, b: useful}) : '';
+  }
 
   /* ---------- Vistas ---------- */
   function setActive(cat) {
@@ -32304,13 +32341,14 @@ window.UNIVAC_CONTENIDO = {
     let body = '', toc = '';
     GROUPS.forEach(([g, label]) => {
       const ss = a.secciones.filter(s => s.g === g); if (!ss.length) return;
+      let content = '';
+      if (g === 'detalle' && ss.length > 1)
+        content = ss.map((s, i) => '<details class="det"' + (i === 0 ? ' open' : '') + '><summary>' + fmt(s.t || 'Detalle') + '<span class="src">' + esc(s.m.replace('Manual_', '')) + (s.n ? ' · ' + esc(s.n) : '') + '</span></summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
+      else content = ss.map(s => g === 'que' ? purposeHTML(s, a.resumen) : subHTML(s)).filter(Boolean).join('');
+      if (!content) return;
       const anchor = 'sec-' + g;
       toc += '<a href="#/articulo/' + a.id + '/' + anchor + '">' + label + '</a>';
-      body += '<section class="a-sec" id="' + anchor + '"><h2>' + label + '</h2>';
-      if (g === 'detalle' && ss.length > 1)
-        body += ss.map((s, i) => '<details class="det"' + (i === 0 ? ' open' : '') + '><summary>' + fmt(s.t || 'Detalle') + '<span class="src">' + esc(s.m.replace('Manual_', '')) + (s.n ? ' · ' + esc(s.n) : '') + '</span></summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
-      else body += ss.map(s => subHTML(s)).join('');
-      body += '</section>';
+      body += '<section class="a-sec" id="' + anchor + '"><h2>' + label + '</h2>' + content + '</section>';
     });
     const caps = (a.capturas || []).map(m => '<figure><img src="' + esc(m.src) + '" alt="' + esc(m.alt || '') + '" loading="lazy"><figcaption class="small">' + esc(m.alt || '') + '</figcaption></figure>').join('');
     const vids = (a.videos || []).map(v => '<div class="media-slot"><b>Video</b><a href="' + esc(v.url) + '" target="_blank" rel="noopener">' + esc(v.titulo || v.url) + '</a></div>').join('');
@@ -32406,8 +32444,8 @@ window.UNIVAC_CONTENIDO = {
     const a = r.art; const parts = r.pick.concat(r.extra);
     const srcs = [...new Map(parts.map(p => [p.s.m + p.s.n + p.s.t, p.s])).values()];
     return '<h4>' + esc(a.titulo) + '</h4>' + (a.resumen ? '<p>' + fmt(a.resumen) + '</p>' : '') +
-      r.pick.map(p => subHTML(p.s)).join('') +
-      r.extra.map(p => '<p class="small">También en <a href="#/articulo/' + p.a.id + '">' + esc(p.a.titulo) + '</a>:</p>' + subHTML(p.s)).join('') +
+      r.pick.map(p => p.s.g === 'que' ? purposeHTML(p.s, a.resumen) : subHTML(p.s)).filter(Boolean).join('') +
+      r.extra.map(p => '<p class="small">También en <a href="#/articulo/' + p.a.id + '">' + esc(p.a.titulo) + '</a>:</p>' + (p.s.g === 'que' ? purposeHTML(p.s, p.a.resumen) : subHTML(p.s))).join('') +
       '<p><a href="#/articulo/' + a.id + '">Ver el artículo completo ›</a></p>' +
       (r.also.length ? '<div class="also">Artículos que también pueden servirte: ' + r.also.map(x => '<a href="#/articulo/' + x.id + '">' + esc(x.titulo) + '</a>').join(' · ') + '</div>' : '') +
       '<div class="srcs"><b>Fuente' + (srcs.length > 1 ? 's' : '') + ':</b>' + srcs.map(s => '<div>' + esc(srcLabel(s)) + '</div>').join('') + '</div>';
