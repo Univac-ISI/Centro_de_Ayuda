@@ -10447,9 +10447,9 @@ window.UNIVAC_CONTENIDO = {
       "id": "imputar-nc-nd",
       "cat": "ventas",
       "tema": "Herramientas comunes",
-      "titulo": "¿Cómo imputar una nota de crédito?",
-      "resumen": "Aplicá una nota de crédito a uno o más comprobantes pendientes. Elegí si corresponde a un descuento o a una devolución de artículos.",
-      "kw": "nota de crédito imputar aplicar comprobante pendiente crédito por descuento crédito por devolución artículos saldo cuenta corriente",
+      "titulo": "¿Cómo generar una nota de crédito en Ventas?",
+      "resumen": "Seguí estos pasos para emitir una nota de crédito y elegí si la vas a aplicar como descuento o por devolución de artículos.",
+      "kw": "nota de crédito ventas emitir generar comprobantes crédito por descuento crédito por devolución ítems devueltos",
       "fuentes": [
         {
           "m": "Manual_Comunes_Ventas_Compras",
@@ -10474,21 +10474,29 @@ window.UNIVAC_CONTENIDO = {
         {
           "g": "pasos",
           "n": "",
-          "t": "Imputar una nota de crédito",
+          "t": "Iniciar una nota de crédito en Ventas",
           "m": "Manual_Comunes_Ventas_Compras",
           "sec": "8",
           "b": [
             {
               "t": "step",
-              "x": "Seleccioná el cliente o proveedor y, en 'Tipo de factura', elegí 'Crédito por Descuento' o 'Crédito por Devolución'."
+              "x": "En la solapa 'Comprobantes Fiscales', presioná el botón '+' (Agrega Comprobantes de Ventas)."
             },
             {
               "t": "step",
-              "x": "Revisá la grilla de comprobantes pendientes. Si la cuenta corriente está activa, muestra sus saldos; podés seleccionar uno o más comprobantes."
+              "x": "Si la empresa tiene más de una sucursal, seleccioná la sucursal desde la que vas a emitir la nota."
             },
             {
               "t": "step",
-              "x": "Usá la columna 'Saldo Comp.' para ver cuánto queda pendiente del comprobante seleccionado."
+              "x": "En el desplegable 'Tipo de Comprobante', elegí el tipo de Nota de Crédito que corresponda (por ejemplo, NC-B-00001)."
+            },
+            {
+              "t": "step",
+              "x": "Seleccioná el cliente habitual, o elegí la modalidad de cliente esporádico y completá sus datos."
+            },
+            {
+              "t": "step",
+              "x": "En 'Tipo de movimiento', elegí 'Crédito por Descuento' o 'Crédito por Devolución'."
             },
             {
               "t": "p",
@@ -10497,27 +10505,81 @@ window.UNIVAC_CONTENIDO = {
           ]
         },
         {
-          "g": "detalle",
+          "g": "pasos",
           "n": "",
-          "t": "Elegir el tipo de nota de crédito",
+          "t": "Cuándo usar cada tipo de nota de crédito",
           "m": "Manual_Comunes_Ventas_Compras",
           "sec": "8",
           "b": [
             {
-              "t": "h3",
-              "x": "Crédito por Descuento"
+              "t": "step",
+              "x": "Elegí “Crédito por Descuento” cuando necesitás aplicar un descuento a un comprobante pendiente y no hay devolución de artículos."
             },
             {
-              "t": "p",
-              "x": "Elegí esta opción para aplicar un descuento a un comprobante pendiente, sin registrar una devolución de artículos."
+              "t": "step",
+              "x": "Elegí “Crédito por Devolución” cuando el cliente devuelve artículos. Seleccioná el comprobante original y los artículos devueltos; el sistema registra su reingreso al stock."
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "8",
+          "t": "Generar una nota de crédito por Crédito por Descuento",
+          "b": [
+            {
+              "t": "step",
+              "x": "Elegí 'Crédito por Descuento' en 'Tipo de comprobante'."
             },
             {
-              "t": "h3",
-              "x": "Crédito por Devolución"
+              "t": "step",
+              "x": "En la grilla de comprobantes, seleccioná el comprobante pendiente al que vas a aplicar el descuento. Podés seleccionar más de uno si corresponde."
             },
             {
-              "t": "p",
-              "x": "Elegí esta opción cuando se devuelven artículos. Seleccioná el comprobante original y los artículos devueltos; el sistema registra su reingreso al stock."
+              "t": "step",
+              "x": "En la grilla de notas, cargá el detalle del concepto y los importes del descuento. Completá los netos y gastos que correspondan."
+            },
+            {
+              "t": "step",
+              "x": "Revisá el total y presioná 'Grabar'. Si el comprobante es electrónico, el sistema solicita la autorización a ARCA/AFIP."
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "8",
+          "t": "Generar una nota de crédito por Crédito por Devolución",
+          "b": [
+            {
+              "t": "step",
+              "x": "Elegí 'Crédito por Devolución' en 'Tipo de comprobante'."
+            },
+            {
+              "t": "step",
+              "x": "Seleccioná el comprobante original al que corresponde la devolución."
+            },
+            {
+              "t": "step",
+              "x": "Presioná 'Seleccionar items devueltos N.C.'. En la pestaña 'Ítems que devuelve', hacé doble clic en la columna 'Cant.Dev.' de cada artículo e indicá la cantidad que devuelve el cliente."
+            },
+            {
+              "t": "step",
+              "x": "Para cada artículo seleccionado, elegí 'Sirve' si vuelve al stock o 'No sirve' si se envía a descarte."
+            },
+            {
+              "t": "step",
+              "x": "Cuando hayas definido el estado de todos los artículos, presioná Aceptar."
+            },
+            {
+              "t": "step",
+              "x": "Presioná el botón '+' verde de la izquierda y revisá los importes de la nota de crédito. En caso de que haya que colocarle un impuesto interno o exento de colocarlo en la nota de crédito."
+            },
+            {
+              "t": "step",
+              "x": "Revisá los totales y presioná 'Grabar comprobante'."
             }
           ]
         },
@@ -10536,9 +10598,7 @@ window.UNIVAC_CONTENIDO = {
           ]
         }
       ],
-      "tambien": [
-        "compras"
-      ],
+      "tambien": [],
       "relacionados": [],
       "capturas": [],
       "videos": [],
@@ -32833,3 +32893,4 @@ window.UNIVAC_CONTENIDO = {
 </script>
 </body>
 </html>
+
