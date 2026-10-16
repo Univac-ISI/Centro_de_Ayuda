@@ -4385,9 +4385,9 @@ window.UNIVAC_CONTENIDO = {
       "id": "emitir-factura",
       "cat": "ventas",
       "tema": "Comprobantes fiscales",
-      "titulo": "¿Cómo emitir una factura, nota de crédito o nota de débito?",
-      "resumen": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito y notas de crédito.",
-      "kw": "hacer una venta vender facturar nueva venta nueva factura factura a b c nota de crédito nota de débito descuento lista de precios iva alícuota contado cuenta corriente",
+      "titulo": "¿Cómo emitir una factura de venta?",
+      "resumen": "Seguí los pasos para preparar y guardar una factura. El sistema verifica los datos y, si corresponde, solicita la autorización electrónica.",
+      "kw": "factura emitir hacer crear comprobante venta cliente artículos grabar factura A B C",
       "fuentes": [
         {
           "m": "Manual_Ventas_ERP",
@@ -4504,14 +4504,69 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "step",
               "x": "Presionar 'Grabar'. El sistema realiza las validaciones (ver punto 3.5). Si es comprobante electrónico, se comunica con ARCA/AFIP para obtener el CAE. Al finalizar, el comprobante queda grabado y se puede imprimir."
+            },
+            {
+              "t": "call",
+              "k": "info",
+              "x": "Para consultar los campos del formulario, buscá “¿Qué datos tiene el formulario de una factura?”. Si no podés guardar, buscá “¿Qué revisar si no se puede grabar un comprobante de venta?”."
+            }
+          ]
+        }
+      ],
+      "tambien": [],
+      "relacionados": [
+        "alicuotas-iva",
+        "flujo-autorizacion",
+        "cobranzas",
+        "remitos-presupuestos",
+        "tipo-contribuyente",
+        "imprimir-fiscales"
+      ],
+      "capturas": [],
+      "videos": [],
+      "ultimaRevision": null
+    },
+    {
+      "id": "campos-comprobante-venta",
+      "cat": "ventas",
+      "tema": "Comprobantes fiscales",
+      "titulo": "¿Qué datos tiene el formulario de una factura?",
+      "resumen": "Consultá los campos principales del comprobante y qué completa el sistema automáticamente.",
+      "kw": "campos formulario factura comprobante cliente sucursal fecha condición venta precio moneda cálculo total venta",
+      "fuentes": [
+        {
+          "m": "Manual_Ventas_ERP",
+          "s": "3. Alta de Comprobante Fiscal (Factura / NC / ND)",
+          "sub": [
+            "3.1",
+            "3.2",
+            "3.3",
+            "3.4",
+            "3.5",
+            "3.6",
+            "3.8"
+          ]
+        }
+      ],
+      "secciones": [
+        {
+          "g": "que",
+          "n": "",
+          "t": "Propósito",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "3",
+          "b": [
+            {
+              "t": "p",
+              "x": "Esta guía explica los datos que aparecen al preparar un comprobante de venta y cuáles se completan automáticamente."
             }
           ]
         },
         {
           "g": "detalle",
-          "n": "3.4",
-          "t": "Campos del formulario de alta",
-          "m": "Manual_Ventas_ERP",
+          "n": "",
+          "t": "Período y datos del comprobante",
+          "m": "Manual_Comunes_Ventas_Compras",
           "sec": "3",
           "b": [
             {
@@ -4564,6 +4619,26 @@ window.UNIVAC_CONTENIDO = {
                   "Fecha (dd-mm-aaaa)",
                   "Sí",
                   "Fecha de emisión. Debe pertenecer al mes y año del período seleccionado. Si no coincide, el sistema rechaza el grabado."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Cliente y condiciones de venta",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "3",
+          "b": [
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo",
+                  "Tipo / Formato",
+                  "Obligatorio",
+                  "Descripción"
                 ],
                 [
                   "Radio de modalidad (1/2/3)",
@@ -4618,6 +4693,26 @@ window.UNIVAC_CONTENIDO = {
                   "Desplegable",
                   "Sí",
                   "Lista que se aplica al cargar artículos: Lista 1, Lista 2, Lista 3, Precio USD, Precio Especial. Se autocompleta del cliente habitual. Si se elige 'Precio Especial', aparece un campo adicional para ingresar el porcentaje de descuento."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Moneda, origen y datos adicionales",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "3",
+          "b": [
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo",
+                  "Tipo / Formato",
+                  "Obligatorio",
+                  "Descripción"
                 ],
                 [
                   "Vendedor",
@@ -4650,6 +4745,103 @@ window.UNIVAC_CONTENIDO = {
                   "Abre una ventana para registrar el transportista, cantidad de bultos, valor declarado y otros datos del flete."
                 ]
               ]
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "3.6",
+          "t": "Cálculos automáticos del comprobante",
+          "m": "Manual_Ventas_ERP",
+          "sec": "3",
+          "b": [
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo calculado",
+                  "Cómo se calcula"
+                ],
+                [
+                  "Precio por ítem",
+                  "Precio unitario × cantidad − bonificación de línea."
+                ],
+                [
+                  "Subtotal por alícuota de IVA",
+                  "Suma de los importes de todos los ítems del mismo porcentaje de IVA."
+                ],
+                [
+                  "IVA por alícuota",
+                  "Subtotal de cada alícuota × porcentaje de IVA."
+                ],
+                [
+                  "Recargo por condición de venta",
+                  "Si la condición tiene recargo definido, se aplica como porcentaje sobre el subtotal neto."
+                ],
+                [
+                  "Recargo por financiación (cuotas)",
+                  "Se calcula en función del número de cuotas y la tasa mensual de parámetros."
+                ],
+                [
+                  "Total del comprobante",
+                  "Neto gravado + IVA + percepciones + impuestos internos + exento + otros."
+                ],
+                [
+                  "Total en dólares (USD)",
+                  "Total en pesos ÷ tipo de cambio del día (parámetros estándares). Solo si el comprobante es en pesos con cotización."
+                ],
+                [
+                  "Número siguiente",
+                  "Máximo número grabado del mismo punto de venta + 1. El número definitivo para comprobantes electrónicos lo asigna ARCA/AFIP."
+                ],
+                [
+                  "Secuencia mensual",
+                  "Se calcula como el máximo de la secuencia del mes en curso + 1."
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "tambien": [],
+      "relacionados": [],
+      "capturas": [],
+      "videos": [],
+      "ultimaRevision": null
+    },
+    {
+      "id": "validaciones-comprobante-venta",
+      "cat": "ventas",
+      "tema": "Comprobantes fiscales",
+      "titulo": "¿Qué revisar si no se puede grabar un comprobante de venta?",
+      "resumen": "Revisá los datos obligatorios y las situaciones que pueden impedir o cambiar la grabación.",
+      "kw": "error no puedo grabar factura comprobante validación fecha cliente ítems total CAE ARCA sucursal",
+      "fuentes": [
+        {
+          "m": "Manual_Ventas_ERP",
+          "s": "3. Alta de Comprobante Fiscal (Factura / NC / ND)",
+          "sub": [
+            "3.1",
+            "3.2",
+            "3.3",
+            "3.4",
+            "3.5",
+            "3.6",
+            "3.8"
+          ]
+        }
+      ],
+      "secciones": [
+        {
+          "g": "que",
+          "n": "",
+          "t": "Propósito",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "3",
+          "b": [
+            {
+              "t": "p",
+              "x": "Antes de guardar, el sistema verifica que el comprobante tenga los datos necesarios y que no haya problemas de configuración."
             }
           ]
         },
@@ -4723,60 +4915,6 @@ window.UNIVAC_CONTENIDO = {
           ]
         },
         {
-          "g": "detalle",
-          "n": "3.6",
-          "t": "Cálculos automáticos del comprobante",
-          "m": "Manual_Ventas_ERP",
-          "sec": "3",
-          "b": [
-            {
-              "t": "table",
-              "rows": [
-                [
-                  "Campo calculado",
-                  "Cómo se calcula"
-                ],
-                [
-                  "Precio por ítem",
-                  "Precio unitario × cantidad − bonificación de línea."
-                ],
-                [
-                  "Subtotal por alícuota de IVA",
-                  "Suma de los importes de todos los ítems del mismo porcentaje de IVA."
-                ],
-                [
-                  "IVA por alícuota",
-                  "Subtotal de cada alícuota × porcentaje de IVA."
-                ],
-                [
-                  "Recargo por condición de venta",
-                  "Si la condición tiene recargo definido, se aplica como porcentaje sobre el subtotal neto."
-                ],
-                [
-                  "Recargo por financiación (cuotas)",
-                  "Se calcula en función del número de cuotas y la tasa mensual de parámetros."
-                ],
-                [
-                  "Total del comprobante",
-                  "Neto gravado + IVA + percepciones + impuestos internos + exento + otros."
-                ],
-                [
-                  "Total en dólares (USD)",
-                  "Total en pesos ÷ tipo de cambio del día (parámetros estándares). Solo si el comprobante es en pesos con cotización."
-                ],
-                [
-                  "Número siguiente",
-                  "Máximo número grabado del mismo punto de venta + 1. El número definitivo para comprobantes electrónicos lo asigna ARCA/AFIP."
-                ],
-                [
-                  "Secuencia mensual",
-                  "Se calcula como el máximo de la secuencia del mes en curso + 1."
-                ]
-              ]
-            }
-          ]
-        },
-        {
           "g": "consid",
           "n": "3.8",
           "t": "Casos especiales",
@@ -4807,14 +4945,7 @@ window.UNIVAC_CONTENIDO = {
         }
       ],
       "tambien": [],
-      "relacionados": [
-        "alicuotas-iva",
-        "flujo-autorizacion",
-        "cobranzas",
-        "remitos-presupuestos",
-        "tipo-contribuyente",
-        "imprimir-fiscales"
-      ],
+      "relacionados": [],
       "capturas": [],
       "videos": [],
       "ultimaRevision": null
@@ -11199,8 +11330,8 @@ window.UNIVAC_CONTENIDO = {
       "cat": "articulos",
       "tema": "Artículos",
       "titulo": "¿Cómo crear o modificar un artículo?",
-      "resumen": "Pantalla central del módulo. Permite cargar o editar la totalidad de los datos de un artículo, insumo o producto.",
-      "kw": "nuevo artículo alta artículo crear producto código rubro familia marca ficha",
+      "resumen": "Seguí los pasos para crear una ficha nueva o actualizar un artículo existente. Los campos están organizados en solapas.",
+      "kw": "artículo alta crear nuevo modificar editar ficha insumo producto guardar",
       "fuentes": [
         {
           "m": "Manual_Articulos_Productos_ERP",
@@ -11292,185 +11423,11 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "step",
               "x": "Presionar Grabar para guardar, o Modificar y continuar si desea guardar y seguir editando sin cerrar la pantalla."
-            }
-          ]
-        },
-        {
-          "g": "detalle",
-          "n": "2.4",
-          "t": "Solapa 1 — Datos generales",
-          "m": "Manual_Articulos_Productos_ERP",
-          "sec": "2",
-          "b": [
-            {
-              "t": "h3",
-              "x": "Campos"
-            },
-            {
-              "t": "table",
-              "rows": [
-                [
-                  "Campo",
-                  "Tipo / Formato",
-                  "Oblig.",
-                  "Descripción y comportamiento"
-                ],
-                [
-                  "Tipo de Artículo",
-                  "Desplegable",
-                  "Sí",
-                  "Define el comportamiento del artículo en el sistema (si lleva stock, si es para compra, venta o ambos, si es bien de uso, gasto, etc.). Al cambiar el tipo, se recarga el desplegable de Rubro y se habilitan/deshabilitan secciones según la configuración del tipo."
-                ],
-                [
-                  "Rubro",
-                  "Desplegable",
-                  "Sí",
-                  "Subcategoría dentro del Tipo. Al cambiar el Tipo, el Rubro se resetea. Puede crearse un rubro nuevo desde el ícono de lupa al lado del campo."
-                ],
-                [
-                  "Familia / Línea",
-                  "Desplegable",
-                  "No",
-                  "Agrupación comercial (ej: 'Línea Premium'). No afecta cálculos; se usa para filtros y reportes. Puede crearse desde el ícono de lupa."
-                ],
-                [
-                  "Marca",
-                  "Desplegable",
-                  "No",
-                  "Marca o fabricante del producto."
-                ],
-                [
-                  "Código de barras",
-                  "Texto (20 chars)",
-                  "No",
-                  "Código EAN, QR u otro. Si se deja vacío en alta, puede completarse después. Al presionar Tab o salir del campo, aparece el código renderizado en formato CODE128 en la pantalla."
-                ],
-                [
-                  "Código accesorio",
-                  "Texto (20 chars)",
-                  "No",
-                  "Código interno o de proveedor alternativo al código de barras."
-                ],
-                [
-                  "SKU",
-                  "Texto (20 chars)",
-                  "No",
-                  "Stock Keeping Unit para identificación en e-commerce. Si se deja vacío al momento del alta y hay código de barras, el sistema lo copia automáticamente."
-                ],
-                [
-                  "Descripción larga",
-                  "Texto (80 chars)",
-                  "Sí",
-                  "Nombre completo del artículo. El sistema avisa si ya existe otra descripción idéntica y pide confirmación antes de grabar."
-                ],
-                [
-                  "Descripción web",
-                  "Texto (200 chars)",
-                  "Sí",
-                  "Nombre que aparece en el sistema de ventas y documentos. Si se deja vacío, el sistema lo exige antes de grabar."
-                ],
-                [
-                  "Descripción abreviada",
-                  "Texto (30 chars)",
-                  "No",
-                  "Nombre corto para tickets o etiquetas."
-                ],
-                [
-                  "NCM",
-                  "Texto (read-only)",
-                  "No",
-                  "Nomenclatura Común del Mercosur. Se selecciona desde un buscador dedicado (botón de lupa). Solo lectura en el campo principal."
-                ],
-                [
-                  "Ubicación en depósito",
-                  "Texto (30 chars)",
-                  "No",
-                  "Estantería, pasillo o código de ubicación física."
-                ],
-                [
-                  "Sucursal",
-                  "Desplegable",
-                  "No",
-                  "Solo visible en empresas con múltiples sucursales. Indica a qué sucursal pertenece el artículo o si es compartido (Casa Central y Sucursales)."
-                ],
-                [
-                  "Alícuota de IVA",
-                  "Desplegable",
-                  "Sí",
-                  "Tipo de IVA que aplica en ventas. Afecta directamente todos los cálculos de precios con IVA incluido."
-                ],
-                [
-                  "Realiza percepción IVA",
-                  "Checkbox",
-                  "No",
-                  "Tilde si el artículo genera percepción de IVA en compras."
-                ],
-                [
-                  "% Impuestos Internos",
-                  "Número (999.99)",
-                  "No",
-                  "Porcentaje de impuestos internos que aplican. Excluyente con el campo de Imp.Int. en pesos: si se carga uno, el otro se deshabilita."
-                ],
-                [
-                  "Imp. Int. por Unidad ($)",
-                  "Importe",
-                  "No",
-                  "Monto fijo de impuestos internos por unidad. Excluyente con el porcentaje."
-                ],
-                [
-                  "Unidad de medida",
-                  "Desplegable",
-                  "No",
-                  "Unidad principal (kg, litro, caja, etc.). Puede crearse una nueva desde el ícono de lupa."
-                ],
-                [
-                  "Cuenta contable compras",
-                  "Desplegable",
-                  "No",
-                  "Solo disponible si el sistema tiene integración contable habilitada. Cuenta del plan de cuentas que se debita en compras."
-                ],
-                [
-                  "Cuenta contable ventas",
-                  "Desplegable",
-                  "No",
-                  "Cuenta que se acredita en ventas."
-                ],
-                [
-                  "Años de amortización",
-                  "Número entero",
-                  "No",
-                  "Solo se habilita si el Tipo de Artículo es 'Bien de Uso'. Cantidad de años para calcular la amortización contable."
-                ],
-                [
-                  "Controla consumo (stock)",
-                  "Checkbox",
-                  "No",
-                  "Si está tildado, el sistema descuenta stock en cada movimiento. El comportamiento exacto depende de la configuración del Tipo."
-                ],
-                [
-                  "En lista de precios",
-                  "Checkbox",
-                  "No",
-                  "Si está tildado, el artículo aparece en el módulo de Lista de Precios y puede imprimirse en catálogos."
-                ],
-                [
-                  "En catálogo",
-                  "Checkbox",
-                  "No",
-                  "Si está tildado, el artículo aparece en el catálogo para e-commerce."
-                ],
-                [
-                  "Imprimir etiqueta",
-                  "Botón ícono",
-                  "—",
-                  "Abre un menú con dos opciones: imprimir el código de barras con precio de venta, o sin precio. En algunas empresas aparece una tercera opción de etiqueta de remisión."
-                ]
-              ]
             },
             {
               "t": "call",
               "k": "info",
-              "x": "El Tipo de Artículo controla silenciosamente qué campos aparecen y cuáles se bloquean. Por ejemplo, si el tipo tiene el flag 'es_gasto', la sección de precios de venta desaparece completamente. Si tiene 'es_buso' (bien de uso), los campos de stock se deshabilitan."
+              "x": "Para buscar un campo por su nombre, consultá “¿Qué datos se completan en la ficha de un artículo?”. Para los cálculos y controles, buscá “¿Qué calcula y valida el sistema al guardar un artículo?”."
             }
           ]
         },
@@ -11505,147 +11462,6 @@ window.UNIVAC_CONTENIDO = {
                   "Cierra la ficha sin guardar cambios. No solicita confirmación."
                 ]
               ]
-            }
-          ]
-        },
-        {
-          "g": "consid",
-          "n": "2.11",
-          "t": "Validaciones al grabar",
-          "m": "Manual_Articulos_Productos_ERP",
-          "sec": "2",
-          "b": [
-            {
-              "t": "call",
-              "k": "warn",
-              "x": "Todas las validaciones ocurren antes de tocar la base de datos. Si falla alguna, la pantalla queda abierta en la solapa correspondiente con el campo en foco."
-            },
-            {
-              "t": "li",
-              "x": "Rubro obligatorio: si no se seleccionó rubro, el sistema lleva a la Solapa 1 con el foco en ese campo y muestra: 'Debe seleccionar un Rubro para el Insumo, Artículo o Producto que desea añadir'."
-            },
-            {
-              "t": "li",
-              "x": "Descripción obligatoria: si el campo Descripción larga está vacío, muestra el mensaje equivalente."
-            },
-            {
-              "t": "li",
-              "x": "Descripción web obligatoria: si el campo Descripción web está vacío, no permite grabar."
-            },
-            {
-              "t": "li",
-              "x": "Descripción duplicada: si ya existe otra ficha con la misma descripción, el sistema avisa y pide confirmación ('¿Igual desea agregarla?'). El usuario puede optar por continuar o cancelar."
-            },
-            {
-              "t": "li",
-              "x": "Stock óptimo < Mínimo: el sistema avisa ('El Stock Óptimo no debe ser menor al Stock Mínimo') pero permite grabar si el usuario confirma."
-            },
-            {
-              "t": "li",
-              "x": "Stock excedido < Mínimo o < Óptimo: mismo comportamiento, avisa pero permite con confirmación."
-            },
-            {
-              "t": "li",
-              "x": "Cantidad a producir = 0: en la Solapa 5, no permite grabar si la cantidad es cero o negativa."
-            },
-            {
-              "t": "li",
-              "x": "Sesión del usuario: el sistema verifica que el usuario siga logueado (CHKUSU). Si la sesión expiró, cancela el grabado."
-            }
-          ]
-        },
-        {
-          "g": "detalle",
-          "n": "2.12",
-          "t": "Cálculos automáticos clave",
-          "m": "Manual_Articulos_Productos_ERP",
-          "sec": "2",
-          "b": [
-            {
-              "t": "p",
-              "x": "La siguiente tabla resume qué campos se calculan solos y a partir de qué datos:"
-            },
-            {
-              "t": "table",
-              "rows": [
-                [
-                  "Campo calculado",
-                  "Fórmula / disparador"
-                ],
-                [
-                  "Precio de Costo neto",
-                  "Precio Lista − Desc.1% − Desc.2% − Desc.3% + Flete% o + Otros gastos. Se recalcula al cambiar cualquiera de esos campos."
-                ],
-                [
-                  "P. Costo con IVA",
-                  "Precio de Costo × (1 + Alícuota IVA / 100). Se recalcula al cambiar el costo o la alícuota."
-                ],
-                [
-                  "SKU",
-                  "Al dar de alta, si SKU está vacío se copia el Código de Barras automáticamente al salir del campo código."
-                ],
-                [
-                  "Precio Venta lista (s/IVA)",
-                  "Si se ingresa % utilidad: Base Cálculo × (1 + utilidad/100). Si se ingresa el precio directamente: no cambia la fórmula, pero recalcula el %."
-                ],
-                [
-                  "Precio Venta lista (c/IVA)",
-                  "Precio s/IVA × (1 + Alícuota IVA / 100). Siempre en solo lectura."
-                ],
-                [
-                  "% Utilidad (inverso)",
-                  "((Precio Venta / Base Cálculo) − 1) × 100. Se actualiza al cambiar el precio manualmente."
-                ],
-                [
-                  "Precio USD",
-                  "Base Cálculo × (1 + % Utilidad USD / 100). Inverso: al cambiar el precio en USD recalcula el %."
-                ],
-                [
-                  "Precios e-Commerce",
-                  "Según método elegido: P.Venta c/IVA, o P.Venta c/IVA ± recargo%. Se recalculan al cambiar P.Venta lista 1 (que es la base)."
-                ],
-                [
-                  "Costo total producción",
-                  "Σ (Tiempo × Costo/hora de cada operación) + Σ (Cantidad × Costo actual de cada insumo)."
-                ],
-                [
-                  "Costo por unidad",
-                  "Costo total ÷ Cantidad a producir. Se actualiza en tiempo real."
-                ],
-                [
-                  "Stock actual (en modificación)",
-                  "Stock anterior − Stock inicial anterior + Stock inicial nuevo. El sistema ajusta el delta."
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "g": "consid",
-          "n": "2.13",
-          "t": "Casos especiales",
-          "m": "Manual_Articulos_Productos_ERP",
-          "sec": "2",
-          "b": [
-            {
-              "t": "li",
-              "x": "Artículo desactivado en modificación: si el artículo está dado de baja (campo borra=1) y se intenta modificar desde el listado, el sistema pregunta si se desea reactivarlo. Si el usuario confirma, la ficha abre en modo Modificación normal."
-            },
-            {
-              "t": "li",
-              "x": "Usuario sin permiso de costos: si el nivel de clave es 3 y el parámetro 'visualiza_costos' está apagado, todos los campos de precio de costo, utilidad y precio de última compra aparecen ocultos en la Solapa 2. El usuario solo puede ver los precios de venta."
-            },
-            {
-              "t": "li",
-              "x": "Tipo de artículo 'C' (Bien de Uso): los campos de precio de venta pueden ocultarse o deshabilitarse según el parámetro pPARAMETROS[13]. Años de amortización se habilita solo para este tipo."
-            },
-            {
-              "t": "li",
-              "x": "Empresa con campo de impuestos internos: si se ingresa % de Imp.Int., el campo de monto fijo se deshabilita automáticamente, y viceversa. No pueden coexistir los dos."
-            },
-            {
-              "t": "li",
-              "x": "Composición con subcostos: si un componente es un semiterminado (nivel 2 o 3), no puede editarse su cantidad ni precio directamente en la grilla. El sistema muestra: 'No se puede modificar la composición de un SubCosto'. Se debe modificar desde la ficha del semiterminado."
             }
           ]
         },
@@ -11737,6 +11553,461 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "step",
               "x": "Presionar Grabar. El sistema valida y guarda. La grilla del listado se refresca y posiciona en el nuevo artículo."
+            }
+          ]
+        }
+      ],
+      "tambien": [],
+      "relacionados": [],
+      "capturas": [],
+      "videos": [],
+      "ultimaRevision": null,
+      "revision": [
+        {
+          "titulo": "Ubicación en el menú a confirmar",
+          "texto": "Este manual indica rutas como «Menú Artículos», «Menú Stock», «Menú Precios», «Menú Producción» o «Menú de Costos». El Manual Principal (sección 5.2) ubica estas opciones dentro de «Tablas → Insumos, Artículos o Productos» y «Tablas → Producción». Ambas referencias se muestran tal como figuran; la ruta exacta debe ser confirmada por Univac."
+        }
+      ]
+    },
+    {
+      "id": "datos-ficha-articulo",
+      "cat": "articulos",
+      "tema": "Artículos",
+      "titulo": "¿Qué datos se completan en la ficha de un artículo?",
+      "resumen": "Encontrá los campos de identificación, impuestos, stock, cuentas y publicación, agrupados para ubicarlos más rápido.",
+      "kw": "campos ficha artículo insumo producto descripción código stock IVA impuestos cuenta e-commerce",
+      "fuentes": [
+        {
+          "m": "Manual_Articulos_Productos_ERP",
+          "s": "2. Ficha de Alta / Modificación de Artículo",
+          "sub": [
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4",
+            "2.10",
+            "2.11",
+            "2.12",
+            "2.13",
+            "2.14",
+            "2.15"
+          ]
+        }
+      ],
+      "secciones": [
+        {
+          "g": "que",
+          "n": "",
+          "t": "Propósito",
+          "m": "Manual_Tablas_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "p",
+              "x": "La ficha reúne los datos que identifican al artículo y determinan cómo se utiliza en compras, ventas, stock y otros módulos."
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Identificación del artículo",
+          "m": "Manual_Tablas_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo",
+                  "Tipo / Formato",
+                  "Oblig.",
+                  "Descripción y comportamiento"
+                ],
+                [
+                  "Tipo de Artículo",
+                  "Desplegable",
+                  "Sí",
+                  "Define el comportamiento del artículo en el sistema (si lleva stock, si es para compra, venta o ambos, si es bien de uso, gasto, etc.). Al cambiar el tipo, se recarga el desplegable de Rubro y se habilitan/deshabilitan secciones según la configuración del tipo."
+                ],
+                [
+                  "Rubro",
+                  "Desplegable",
+                  "Sí",
+                  "Subcategoría dentro del Tipo. Al cambiar el Tipo, el Rubro se resetea. Puede crearse un rubro nuevo desde el ícono de lupa al lado del campo."
+                ],
+                [
+                  "Familia / Línea",
+                  "Desplegable",
+                  "No",
+                  "Agrupación comercial (ej: 'Línea Premium'). No afecta cálculos; se usa para filtros y reportes. Puede crearse desde el ícono de lupa."
+                ],
+                [
+                  "Marca",
+                  "Desplegable",
+                  "No",
+                  "Marca o fabricante del producto."
+                ],
+                [
+                  "Código de barras",
+                  "Texto (20 chars)",
+                  "No",
+                  "Código EAN, QR u otro. Si se deja vacío en alta, puede completarse después. Al presionar Tab o salir del campo, aparece el código renderizado en formato CODE128 en la pantalla."
+                ],
+                [
+                  "Código accesorio",
+                  "Texto (20 chars)",
+                  "No",
+                  "Código interno o de proveedor alternativo al código de barras."
+                ],
+                [
+                  "SKU",
+                  "Texto (20 chars)",
+                  "No",
+                  "Stock Keeping Unit para identificación en e-commerce. Si se deja vacío al momento del alta y hay código de barras, el sistema lo copia automáticamente."
+                ],
+                [
+                  "Descripción larga",
+                  "Texto (80 chars)",
+                  "Sí",
+                  "Nombre completo del artículo. El sistema avisa si ya existe otra descripción idéntica y pide confirmación antes de grabar."
+                ],
+                [
+                  "Descripción web",
+                  "Texto (200 chars)",
+                  "Sí",
+                  "Nombre que aparece en el sistema de ventas y documentos. Si se deja vacío, el sistema lo exige antes de grabar."
+                ],
+                [
+                  "Descripción abreviada",
+                  "Texto (30 chars)",
+                  "No",
+                  "Nombre corto para tickets o etiquetas."
+                ],
+                [
+                  "NCM",
+                  "Texto (read-only)",
+                  "No",
+                  "Nomenclatura Común del Mercosur. Se selecciona desde un buscador dedicado (botón de lupa). Solo lectura en el campo principal."
+                ],
+                [
+                  "Ubicación en depósito",
+                  "Texto (30 chars)",
+                  "No",
+                  "Estantería, pasillo o código de ubicación física."
+                ],
+                [
+                  "Sucursal",
+                  "Desplegable",
+                  "No",
+                  "Solo visible en empresas con múltiples sucursales. Indica a qué sucursal pertenece el artículo o si es compartido (Casa Central y Sucursales)."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Impuestos, unidad y stock",
+          "m": "Manual_Tablas_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo",
+                  "Tipo / Formato",
+                  "Oblig.",
+                  "Descripción y comportamiento"
+                ],
+                [
+                  "Alícuota de IVA",
+                  "Desplegable",
+                  "Sí",
+                  "Tipo de IVA que aplica en ventas. Afecta directamente todos los cálculos de precios con IVA incluido."
+                ],
+                [
+                  "Realiza percepción IVA",
+                  "Checkbox",
+                  "No",
+                  "Tilde si el artículo genera percepción de IVA en compras."
+                ],
+                [
+                  "% Impuestos Internos",
+                  "Número (999.99)",
+                  "No",
+                  "Porcentaje de impuestos internos que aplican. Excluyente con el campo de Imp.Int. en pesos: si se carga uno, el otro se deshabilita."
+                ],
+                [
+                  "Imp. Int. por Unidad ($)",
+                  "Importe",
+                  "No",
+                  "Monto fijo de impuestos internos por unidad. Excluyente con el porcentaje."
+                ],
+                [
+                  "Unidad de medida",
+                  "Desplegable",
+                  "No",
+                  "Unidad principal (kg, litro, caja, etc.). Puede crearse una nueva desde el ícono de lupa."
+                ],
+                [
+                  "Años de amortización",
+                  "Número entero",
+                  "No",
+                  "Solo se habilita si el Tipo de Artículo es 'Bien de Uso'. Cantidad de años para calcular la amortización contable."
+                ],
+                [
+                  "Controla consumo (stock)",
+                  "Checkbox",
+                  "No",
+                  "Si está tildado, el sistema descuenta stock en cada movimiento. El comportamiento exacto depende de la configuración del Tipo."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Cuentas y publicación",
+          "m": "Manual_Tablas_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo",
+                  "Tipo / Formato",
+                  "Oblig.",
+                  "Descripción y comportamiento"
+                ],
+                [
+                  "Cuenta contable compras",
+                  "Desplegable",
+                  "No",
+                  "Solo disponible si el sistema tiene integración contable habilitada. Cuenta del plan de cuentas que se debita en compras."
+                ],
+                [
+                  "Cuenta contable ventas",
+                  "Desplegable",
+                  "No",
+                  "Cuenta que se acredita en ventas."
+                ],
+                [
+                  "En lista de precios",
+                  "Checkbox",
+                  "No",
+                  "Si está tildado, el artículo aparece en el módulo de Lista de Precios y puede imprimirse en catálogos."
+                ],
+                [
+                  "En catálogo",
+                  "Checkbox",
+                  "No",
+                  "Si está tildado, el artículo aparece en el catálogo para e-commerce."
+                ],
+                [
+                  "Imprimir etiqueta",
+                  "Botón ícono",
+                  "—",
+                  "Abre un menú con dos opciones: imprimir el código de barras con precio de venta, o sin precio. En algunas empresas aparece una tercera opción de etiqueta de remisión."
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "tambien": [],
+      "relacionados": [],
+      "capturas": [],
+      "videos": [],
+      "ultimaRevision": null,
+      "revision": [
+        {
+          "titulo": "Ubicación en el menú a confirmar",
+          "texto": "Este manual indica rutas como «Menú Artículos», «Menú Stock», «Menú Precios», «Menú Producción» o «Menú de Costos». El Manual Principal (sección 5.2) ubica estas opciones dentro de «Tablas → Insumos, Artículos o Productos» y «Tablas → Producción». Ambas referencias se muestran tal como figuran; la ruta exacta debe ser confirmada por Univac."
+        }
+      ]
+    },
+    {
+      "id": "calculos-validaciones-articulo",
+      "cat": "articulos",
+      "tema": "Artículos",
+      "titulo": "¿Qué calcula y valida el sistema al guardar un artículo?",
+      "resumen": "Consultá los cálculos automáticos y qué revisar si el sistema no permite guardar los cambios.",
+      "kw": "artículo precio costo cálculo guardar error validación stock rubro descripción",
+      "fuentes": [
+        {
+          "m": "Manual_Articulos_Productos_ERP",
+          "s": "2. Ficha de Alta / Modificación de Artículo",
+          "sub": [
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4",
+            "2.10",
+            "2.11",
+            "2.12",
+            "2.13",
+            "2.14",
+            "2.15"
+          ]
+        }
+      ],
+      "secciones": [
+        {
+          "g": "que",
+          "n": "",
+          "t": "Propósito",
+          "m": "Manual_Tablas_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "p",
+              "x": "Al guardar un artículo, el sistema calcula algunos valores y controla que se hayan completado los datos requeridos."
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "2.12",
+          "t": "Cálculos automáticos clave",
+          "m": "Manual_Articulos_Productos_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "p",
+              "x": "La siguiente tabla resume qué campos se calculan solos y a partir de qué datos:"
+            },
+            {
+              "t": "table",
+              "rows": [
+                [
+                  "Campo calculado",
+                  "Fórmula / disparador"
+                ],
+                [
+                  "Precio de Costo neto",
+                  "Precio Lista − Desc.1% − Desc.2% − Desc.3% + Flete% o + Otros gastos. Se recalcula al cambiar cualquiera de esos campos."
+                ],
+                [
+                  "P. Costo con IVA",
+                  "Precio de Costo × (1 + Alícuota IVA / 100). Se recalcula al cambiar el costo o la alícuota."
+                ],
+                [
+                  "SKU",
+                  "Al dar de alta, si SKU está vacío se copia el Código de Barras automáticamente al salir del campo código."
+                ],
+                [
+                  "Precio Venta lista (s/IVA)",
+                  "Si se ingresa % utilidad: Base Cálculo × (1 + utilidad/100). Si se ingresa el precio directamente: no cambia la fórmula, pero recalcula el %."
+                ],
+                [
+                  "Precio Venta lista (c/IVA)",
+                  "Precio s/IVA × (1 + Alícuota IVA / 100). Siempre en solo lectura."
+                ],
+                [
+                  "% Utilidad (inverso)",
+                  "((Precio Venta / Base Cálculo) − 1) × 100. Se actualiza al cambiar el precio manualmente."
+                ],
+                [
+                  "Precio USD",
+                  "Base Cálculo × (1 + % Utilidad USD / 100). Inverso: al cambiar el precio en USD recalcula el %."
+                ],
+                [
+                  "Precios e-Commerce",
+                  "Según método elegido: P.Venta c/IVA, o P.Venta c/IVA ± recargo%. Se recalculan al cambiar P.Venta lista 1 (que es la base)."
+                ],
+                [
+                  "Costo total producción",
+                  "Σ (Tiempo × Costo/hora de cada operación) + Σ (Cantidad × Costo actual de cada insumo)."
+                ],
+                [
+                  "Costo por unidad",
+                  "Costo total ÷ Cantidad a producir. Se actualiza en tiempo real."
+                ],
+                [
+                  "Stock actual (en modificación)",
+                  "Stock anterior − Stock inicial anterior + Stock inicial nuevo. El sistema ajusta el delta."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "g": "consid",
+          "n": "2.11",
+          "t": "Validaciones al grabar",
+          "m": "Manual_Articulos_Productos_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "call",
+              "k": "warn",
+              "x": "Todas las validaciones ocurren antes de tocar la base de datos. Si falla alguna, la pantalla queda abierta en la solapa correspondiente con el campo en foco."
+            },
+            {
+              "t": "li",
+              "x": "Rubro obligatorio: si no se seleccionó rubro, el sistema lleva a la Solapa 1 con el foco en ese campo y muestra: 'Debe seleccionar un Rubro para el Insumo, Artículo o Producto que desea añadir'."
+            },
+            {
+              "t": "li",
+              "x": "Descripción obligatoria: si el campo Descripción larga está vacío, muestra el mensaje equivalente."
+            },
+            {
+              "t": "li",
+              "x": "Descripción web obligatoria: si el campo Descripción web está vacío, no permite grabar."
+            },
+            {
+              "t": "li",
+              "x": "Descripción duplicada: si ya existe otra ficha con la misma descripción, el sistema avisa y pide confirmación ('¿Igual desea agregarla?'). El usuario puede optar por continuar o cancelar."
+            },
+            {
+              "t": "li",
+              "x": "Stock óptimo < Mínimo: el sistema avisa ('El Stock Óptimo no debe ser menor al Stock Mínimo') pero permite grabar si el usuario confirma."
+            },
+            {
+              "t": "li",
+              "x": "Stock excedido < Mínimo o < Óptimo: mismo comportamiento, avisa pero permite con confirmación."
+            },
+            {
+              "t": "li",
+              "x": "Cantidad a producir = 0: en la Solapa 5, no permite grabar si la cantidad es cero o negativa."
+            },
+            {
+              "t": "li",
+              "x": "Sesión del usuario: el sistema verifica que el usuario siga logueado (CHKUSU). Si la sesión expiró, cancela el grabado."
+            }
+          ]
+        },
+        {
+          "g": "consid",
+          "n": "2.13",
+          "t": "Casos especiales",
+          "m": "Manual_Articulos_Productos_ERP",
+          "sec": "2",
+          "b": [
+            {
+              "t": "li",
+              "x": "Artículo desactivado en modificación: si el artículo está dado de baja (campo borra=1) y se intenta modificar desde el listado, el sistema pregunta si se desea reactivarlo. Si el usuario confirma, la ficha abre en modo Modificación normal."
+            },
+            {
+              "t": "li",
+              "x": "Usuario sin permiso de costos: si el nivel de clave es 3 y el parámetro 'visualiza_costos' está apagado, todos los campos de precio de costo, utilidad y precio de última compra aparecen ocultos en la Solapa 2. El usuario solo puede ver los precios de venta."
+            },
+            {
+              "t": "li",
+              "x": "Tipo de artículo 'C' (Bien de Uso): los campos de precio de venta pueden ocultarse o deshabilitarse según el parámetro pPARAMETROS[13]. Años de amortización se habilita solo para este tipo."
+            },
+            {
+              "t": "li",
+              "x": "Empresa con campo de impuestos internos: si se ingresa % de Imp.Int., el campo de monto fijo se deshabilita automáticamente, y viceversa. No pueden coexistir los dos."
+            },
+            {
+              "t": "li",
+              "x": "Composición con subcostos: si un componente es un semiterminado (nivel 2 o 3), no puede editarse su cantidad ni precio directamente en la grilla. El sistema muestra: 'No se puede modificar la composición de un SubCosto'. Se debe modificar desde la ficha del semiterminado."
             }
           ]
         }
@@ -26953,7 +27224,7 @@ window.UNIVAC_CONTENIDO = {
       "cat": "impresiones",
       "tema": "Comprobantes",
       "titulo": "¿Cómo imprimir o reimprimir comprobantes fiscales?",
-      "resumen": "Imprime facturas de venta, notas de crédito, notas de débito y demás comprobantes fiscales.",
+      "resumen": "Consultá las opciones para imprimir o reimprimir una factura, nota de crédito o nota de débito.",
       "kw": "imprimir factura reimprimir original duplicado copia",
       "fuentes": [
         {
@@ -27032,20 +27303,56 @@ window.UNIVAC_CONTENIDO = {
                   "No imprime; el trabajo se descarta o se guarda como PDF si el sistema está configurado para ello."
                 ]
               ]
+            },
+            {
+              "t": "call",
+              "k": "info",
+              "x": "Para saber qué datos contiene cada formato, buscá “¿Qué información aparece en un comprobante fiscal impreso?”."
+            }
+          ]
+        }
+      ],
+      "tambien": [],
+      "relacionados": [],
+      "capturas": [],
+      "videos": [],
+      "ultimaRevision": null
+    },
+    {
+      "id": "contenido-comprobante-fiscal",
+      "cat": "impresiones",
+      "tema": "Comprobantes",
+      "titulo": "¿Qué información aparece en un comprobante fiscal impreso?",
+      "resumen": "Consultá qué datos se muestran en las facturas, notas y copias impresas, y qué cambia según el formato.",
+      "kw": "qué información factura impresa comprobante fiscal A4 media hoja cliente CAE QR exportación transporte idioma",
+      "fuentes": [
+        {
+          "m": "Manual_Impresiones_ERP",
+          "s": "2. Impresión de comprobantes fiscales de venta",
+          "sub": []
+        }
+      ],
+      "secciones": [
+        {
+          "g": "que",
+          "n": "",
+          "t": "Propósito",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "6",
+          "b": [
+            {
+              "t": "p",
+              "x": "El comprobante impreso reúne los datos de la operación, del emisor y del cliente. Algunos datos cambian según el formato, el tipo de comprobante y la configuración de la empresa."
             }
           ]
         },
         {
           "g": "detalle",
-          "n": "2.4",
-          "t": "Estructura del comprobante fiscal — Formato A4 hoja entera",
-          "m": "Manual_Impresiones_ERP",
-          "sec": "2",
+          "n": "",
+          "t": "Identificación del comprobante",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "6",
           "b": [
-            {
-              "t": "h3",
-              "x": "Cuadro 1 — Identificación del comprobante"
-            },
             {
               "t": "p",
               "x": "Ocupa la parte superior de la hoja. Contiene:"
@@ -27069,11 +27376,16 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "li",
               "x": "Logo de la empresa (si está configurado en el tipo de comprobante). El sistema lo descarga automáticamente del servidor si no existe localmente."
-            },
-            {
-              "t": "h3",
-              "x": "Cuadro 2 — Datos del emisor (solo en modo Estándar)"
-            },
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Datos del emisor (solo en modo Estándar)",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "6",
+          "b": [
             {
               "t": "li",
               "x": "Razón Social de la empresa."
@@ -27093,11 +27405,16 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "li",
               "x": "En comprobantes con CUIT alternativo (sucursal con CUIT propio), los datos de la empresa emisora son los de ese CUIT alternativo."
-            },
-            {
-              "t": "h3",
-              "x": "Cuadro 3 — Datos del cliente"
-            },
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Datos del cliente",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "6",
+          "b": [
             {
               "t": "li",
               "x": "Nombre o razón social. Para clientes esporádicos, nombre ingresado manualmente."
@@ -27125,11 +27442,16 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "li",
               "x": "Para facturas sobre remito o nota de pedido: número/s del comprobante de origen."
-            },
-            {
-              "t": "h3",
-              "x": "Cuadro 4 — Cuerpo: detalle de artículos"
-            },
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Cuerpo: detalle de artículos",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "6",
+          "b": [
             {
               "t": "p",
               "x": "Encabezado de columnas variable según configuración de la empresa:"
@@ -27169,11 +27491,16 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "p",
               "x": "Cada ítem ocupa 0,4 cm de alto. Si la descripción es muy larga (más de 65 caracteres), se reduce a fuente más pequeña y ocupa 0,7 cm. Si el comprobante tiene más ítems que los que entran en una hoja, se generan hojas adicionales automáticamente (el pie con totales y CAE solo aparece en la última hoja)."
-            },
-            {
-              "t": "h3",
-              "x": "Pie — Totales, firma y código QR"
-            },
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "",
+          "t": "Totales, firma y código QR",
+          "m": "Manual_Comunes_Ventas_Compras",
+          "sec": "6",
+          "b": [
             {
               "t": "li",
               "x": "Sub-Total de artículos."
@@ -32309,8 +32636,8 @@ window.UNIVAC_CONTENIDO = {
     '</span>' + (a.resumen ? '<span class="d">' + esc(a.resumen) + '</span>' : '') + '</a></li>';
 
   const GROUPS = [
-    ['que', '¿Qué es y para qué sirve?'], ['donde', '¿Dónde se encuentra?'], ['pasos', '¿Cómo se hace?'],
-    ['detalle', 'Detalle de la pantalla'], ['consid', 'Consideraciones'], ['ejemplo', 'Ejemplo práctico'], ['relacion', 'Relación con otros módulos']
+    ['que', 'Qué vas a hacer'], ['donde', 'Dónde ingresar'], ['pasos', 'Pasos'],
+    ['detalle', 'Más detalles'], ['consid', 'A tener en cuenta'], ['ejemplo', 'Ejemplo práctico'], ['relacion', 'Relación con otros módulos']
   ];
   function viewArticle(id) {
     const a = ARTS[id]; if (!a) return viewNotFound();
@@ -32321,14 +32648,18 @@ window.UNIVAC_CONTENIDO = {
     let body = '', toc = '';
     GROUPS.forEach(([g, label]) => {
       const ss = a.secciones.filter(s => s.g === g); if (!ss.length) return;
+      const headings = ss.map(s => norm(s.t || ''));
+      const troubleshooting = /validaci|error|mensaje|resolver|control|reintento|rechaz|bloqueo|problema/;
+      const priorNotice = /antes|condici[oó]n previa|advertencia|requisito/;
+      const groupTitle = g !== 'consid' ? label : headings.every(t => troubleshooting.test(t)) ? 'Qué revisar si algo no sale' : headings.every(t => priorNotice.test(t)) ? 'Antes de continuar' : 'A tener en cuenta';
       let content = '';
       if (g === 'detalle' && ss.length > 1)
         content = ss.map((s, i) => '<details class="det"' + (i === 0 ? ' open' : '') + '><summary title="' + (i === 0 ? 'Contraer sección' : 'Desplegar sección') + '">' + fmt(s.t || 'Detalle') + '</summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
       else content = ss.map(s => g === 'que' ? purposeHTML(s, a.resumen) : subHTML(s)).filter(Boolean).join('');
       if (!content) return;
       const anchor = 'sec-' + g;
-      toc += '<a href="#/articulo/' + a.id + '/' + anchor + '">' + label + '</a>';
-      body += '<section class="a-sec" id="' + anchor + '"><h2>' + label + '</h2>' + content + '</section>';
+      toc += '<a href="#/articulo/' + a.id + '/' + anchor + '">' + groupTitle + '</a>';
+      body += '<section class="a-sec" id="' + anchor + '"><h2>' + groupTitle + '</h2>' + content + '</section>';
     });
     const caps = (a.capturas || []).map(m => '<figure><img src="' + esc(m.src) + '" alt="' + esc(m.alt || '') + '" loading="lazy"><figcaption class="small">' + esc(m.alt || '') + '</figcaption></figure>').join('');
     const vids = (a.videos || []).map(v => '<div class="media-slot"><b>Video</b><a href="' + esc(v.url) + '" target="_blank" rel="noopener">' + esc(v.titulo || v.url) + '</a></div>').join('');
@@ -32436,8 +32767,8 @@ window.UNIVAC_CONTENIDO = {
       '<div class="page-h"><h1>Asistente</h1><p>Consultá sobre las funciones y los pasos de uso de Univac.ERP.</p></div>' +
       '<div class="mode"><i></i>' + (ASISTENTE_IA.endpoint ? 'Asistente disponible' : 'Busca en el Centro de Ayuda y muestra las secciones más relacionadas con tu consulta.') + '</div>' +
       '<div class="chat"><div class="chat-log" id="chatLog" aria-live="polite"></div>' +
-      '<form class="chat-form" id="chatForm"><textarea id="chatQ" placeholder="Escribí tu consulta, por ejemplo: ¿Cómo registro una cobranza?" aria-label="Consulta"></textarea><button>Enviar</button></form></div>' +
-      '<p class="small">Ejemplos: ' + EXAMPLES.slice(0, 4).map(e => '<button class="chip" data-q="' + esc(e) + '">' + esc(e) + '</button>').join(' ') + '</p></div>';
+      '<form class="chat-form" id="chatForm"><textarea id="chatQ" placeholder="Escribí tu consulta" aria-label="Consulta"></textarea><button>Enviar</button></form></div>' +
+      '</div>';
     const log = $('#chatLog');
     const paint = () => {
       log.innerHTML = chatLog.length ? chatLog.map(m => '<div class="msg ' + m.r + '">' + m.h + '</div>').join('') :
