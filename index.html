@@ -10538,7 +10538,11 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "En la grilla de notas, cargá el detalle del concepto y los importes del descuento. Completá los netos y gastos que correspondan."
+              "x": "En 'Detalle de la nota de crédito', cargá el detalle del concepto y los importes del descuento."
+            },
+            {
+              "t": "step",
+              "x": "Presioná el botón + verde de la izquierda y completá los importes de la nota de crédito. En caso de que haya que colocarle un impuesto interno o exento debe colocarlo en la nota de crédito."
             },
             {
               "t": "step",
@@ -10575,7 +10579,11 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Presioná el botón '+' verde de la izquierda y revisá los importes de la nota de crédito. En caso de que haya que colocarle un impuesto interno o exento de colocarlo en la nota de crédito."
+              "x": "En 'Detalle de la nota de crédito', cargá el detalle del concepto y los importes del descuento."
+            },
+            {
+              "t": "step",
+              "x": "Presioná el botón '+' verde de la izquierda y completá los importes de la nota de crédito. En caso de que haya que colocarle un impuesto interno o exento debe colocarlo en la nota de crédito."
             },
             {
               "t": "step",
@@ -32626,7 +32634,7 @@ window.UNIVAC_CONTENIDO = {
     return h;
   }
   const subHTML = (s, open) =>
-    '<div class="sub"' + (open ? '' : '') + '><h3>' + fmt(s.t || '') + '</h3>' + renderBlocks(s.b) + '</div>';
+    '<div class="sub"' + (open ? '' : '') + '>' + (norm(s.t || '') === 'proposito' ? '' : '<h3>' + fmt(s.t || '') + '</h3>') + renderBlocks(s.b) + '</div>';
   function purposeHTML(s, summary) {
     if (s.t !== 'Propósito' || !summary) return subHTML(s);
     const blocks = (s.b || []).map(b => ({...b})).filter(b => b.t !== 'p' || String(b.x || '').trim());
