@@ -48,9 +48,6 @@ svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .top-search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px}
 .top-search input{width:100%;height:42px;border:1px solid var(--line);border-radius:999px;padding:0 16px 0 40px;background:var(--soft);font-size:14px}
 .top-search input:focus{outline:none;border-color:var(--blue);background:#fff}
-.top-links{display:flex;gap:8px}
-.btn-assist{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:999px;background:var(--navy);color:#fff;font-weight:500;font-size:14px}
-.btn-assist:hover{background:var(--navy-2);text-decoration:none}
 .icon-btn{border:0;background:transparent;width:40px;height:40px;border-radius:8px;display:none;align-items:center;justify-content:center;color:var(--navy);cursor:pointer}
 .icon-btn:hover{background:var(--soft)}
 
@@ -90,7 +87,6 @@ svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .cat-item:nth-child(3n) h3::before{background:var(--sky)}
 .cat-item p{margin:0 0 10px;font-size:13.5px;color:var(--muted)}
 .cat-item .count{font-size:12px;color:var(--blue);font-weight:500}
-.two-col{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
 .faq-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .faq-list li{border-bottom:1px solid var(--line)}
 .faq-list a{display:flex;justify-content:space-between;gap:12px;padding:13px 2px;color:var(--ink);font-weight:500;font-size:14.5px}
@@ -197,25 +193,7 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
 .empty h2{font-size:18px;margin-bottom:6px}
 .empty p{margin:0 0 6px;color:var(--muted)}
 
-/* Asistente */
-.assist{max-width:860px}
-.mode{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 12px;margin-bottom:18px}
-.mode i{width:8px;height:8px;border-radius:50%;background:#3c9a6a;display:inline-block}
-.chat{border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.chat-log{padding:22px;min-height:260px;max-height:62vh;overflow-y:auto;display:flex;flex-direction:column;gap:18px;background:#fff}
-.msg{max-width:100%}
-.msg.user{align-self:flex-end;background:var(--navy);color:#fff;padding:10px 16px;border-radius:14px 14px 4px 14px;max-width:80%}
-.msg.bot{align-self:flex-start;border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:16px 18px;background:var(--soft);width:100%}
-.msg.bot h4{font-size:15px;margin:0 0 6px}
-.msg.bot .srcs{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
-.msg.bot .srcs div{margin-top:2px}
-.msg.bot .also{margin-top:10px;font-size:13px}
-.chat-form{display:flex;border-top:1px solid var(--line);background:#fff}
-.chat-form textarea{flex:1;border:0;resize:none;padding:14px 18px;height:56px;min-width:0}
-.chat-form textarea:focus{outline:none}
-.chat-form button{border:0;background:var(--navy);color:#fff;padding:0 24px;font-weight:500;cursor:pointer}
 .small{font-size:12.5px;color:var(--muted)}
-.manual-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2);font-size:14px}
 
 /* Responsive */
 @media (max-width:1180px){.art-wrap{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
@@ -224,7 +202,6 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
   .sidebar{position:fixed;left:0;top:var(--top);z-index:35;transform:translateX(-105%);transition:transform .2s ease;box-shadow:none;border-right:1px solid var(--line)}
   .sidebar.open{transform:none}
   .main{padding:28px 28px 56px}
-  .two-col{grid-template-columns:1fr}
 }
 @media (max-width:720px){
   :root{--top:60px}
@@ -232,7 +209,6 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
   .brand-logo{height:30px}
   .brand-sep,.brand-txt{display:none}
   .top-search input{height:38px;font-size:13.5px}
-  .btn-assist{padding:0 12px;height:36px;font-size:13px}
   .main{padding:22px 16px 48px}
   .hero h1{font-size:26px}
   .big-search input{height:50px;font-size:15px}
@@ -240,10 +216,7 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
   .page-h h1,.article h1{font-size:23px}
   .media,.rel-list{grid-template-columns:1fr}
   .sub>h3{flex-direction:column;gap:2px}
-  .msg.user{max-width:92%}
-  .chat-log{padding:14px}
 }
-@media (max-width:420px){.top-links{display:none}}
 @media print{.topbar,.sidebar,.toc,.footer,.feedback{display:none}.main{padding:0}}
 .footer{border-top:1px solid var(--line);background:var(--soft)}
 .footer-in{max-width:1600px;margin:0 auto;padding:24px;display:flex;gap:20px;align-items:center;font-size:13px;color:var(--muted)}
@@ -274,7 +247,7 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
 .feedback-btns .btn{justify-content:center;width:100%}
 
 /* Jerarquía visual: acciones, pasos y avisos */
-.btn,.btn-assist,.big-search button,.chat-form button{font-weight:600}
+.btn,.big-search button{font-weight:600}
 .btn{box-shadow:0 1px 2px rgba(32,40,80,.12)}
 .ui{font-weight:700;color:var(--navy);background:#eaf0fb;border:1px solid #c9d7ee;border-radius:5px;padding:1px 6px;box-shadow:inset 0 -1px 0 rgba(32,40,80,.05)}
 ol.steps li{color:var(--ink);font-weight:500;line-height:1.7}
@@ -334,9 +307,6 @@ ol.steps li::before{font-size:13px;font-weight:700;box-shadow:0 0 0 3px #fff}
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input type="search" id="topQ" placeholder="Buscar" aria-label="Buscar en el Centro de Ayuda">
     </form>
-    <nav class="top-links" aria-label="Accesos">
-      <a href="#/asistente" class="btn-assist">Asistente</a>
-    </nav>
   </div>
 </header>
 
@@ -32466,32 +32436,13 @@ window.UNIVAC_CONTENIDO = {
 
 </script>
 <script>
-/* Centro de Ayuda Univac.ERP — lógica de navegación, búsqueda y asistente documental.
+/* Centro de Ayuda Univac.ERP — lógica de navegación y búsqueda.
    Solo HTML + CSS + JavaScript. Fuente única de información: contenido.js (generado desde los manuales). */
 (function () {
   'use strict';
   const DB = window.UNIVAC_CONTENIDO;
   const $ = (s, el = document) => el.querySelector(s);
   const main = $('#contenido');
-
-  /* =========================================================
-     Configuración del asistente.
-     Por defecto funciona con búsquedas locales sobre el contenido de ayuda. Para conectar un modelo de IA,
-     completar `endpoint` con un servicio propio (backend de Univac) que reciba
-     { pregunta, contexto, instrucciones } y devuelva { respuesta, fuentes }.
-     El servicio debe responder SOLO con el contexto enviado.
-     ========================================================= */
-  const ASISTENTE_IA = {
-    endpoint: '',
-    instrucciones:
-      'Sos el asistente de Univac.ERP. Respondé únicamente con la información incluida en el CONTEXTO. ' +
-      'No inventes funcionalidades, botones, campos, procedimientos, módulos ni configuraciones. ' +
-      'No uses conocimiento externo ni de otros ERP. Respetá la terminología del sistema. No menciones manuales, documentos, fuentes ni secciones. Si el contexto no alcanza para responder, ' +
-      'respondé exactamente: "' + 'No encuentro información suficiente para responder esta consulta. ' +
-      'Te recomendamos contactar al equipo de soporte de Univac.' + '". ' +
-      'El nombre oficial del producto es Univac.ERP.'
-  };
-  const SIN_INFO = 'No encuentro información suficiente para responder esta consulta. Te recomendamos contactar al equipo de soporte de Univac.';
 
   /* ---------- Índices ---------- */
   const CATS = {}; DB.categorias.forEach(c => (CATS[c.id] = c));
@@ -32678,11 +32629,9 @@ window.UNIVAC_CONTENIDO = {
       '<div class="examples">Ejemplos: ' + EXAMPLES.map(e => '<button class="chip" data-q="' + esc(e) + '">' + esc(e) + '</button>').join('') + '</div></section>' +
       '<h2 class="sec-title">Explorar por módulo</h2><div class="cat-grid">' +
       DB.categorias.map(c => '<a class="cat-item" href="#/modulo/' + c.id + '"><h3>' + esc(c.nombre) + '</h3><p>' + esc(c.desc) + '</p><span class="count">' + inCat(c.id).length + ' artículos</span></a>').join('') +
-      '</div><div class="two-col"><section><h2 class="sec-title">Preguntas frecuentes</h2><ul class="faq-list">' +
+      '</div><section><h2 class="sec-title">Preguntas frecuentes</h2><ul class="faq-list">' +
       DB.faq.map(f => ARTS[f.articulo]).filter(Boolean).map(a => '<li><a href="#/articulo/' + a.id + '">' + esc(a.titulo) + '</a></li>').join('') +
-      '</ul></section><section><h2 class="sec-title">Asistente</h2><div class="panel"><h3>Asistente</h3>' +
-      '<p>Hacé tu consulta en lenguaje natural y recibí orientación sobre el uso del sistema.</p>' +
-      '<a class="btn" href="#/asistente">Hacer una consulta</a></div></section></div>';
+      '</ul></section>';
     $('#homeSearch').addEventListener('submit', e => { e.preventDefault(); go('#/buscar/' + encodeURIComponent($('#homeQ').value)); });
     main.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => go('#/buscar/' + encodeURIComponent(b.dataset.q))));
   }
@@ -32738,7 +32687,7 @@ window.UNIVAC_CONTENIDO = {
       '<a class="back-link" href="' + backHref + '"><span aria-hidden="true">←</span>' + backLabel + '</a>' +
       '<h1>' + esc(a.titulo) + '</h1>' + (a.resumen ? '<p class="lead">' + fmt(a.resumen) + '</p>' : '') +
       restr + body +
-      '<div class="feedback"><span class="feedback-txt">¿No encontraste lo que necesitabas?</span><div class="feedback-btns"><a class="btn ghost" href="#/asistente">Consultar al asistente</a><a class="btn ghost" href="https://wa.me/5493564367491" target="_blank" rel="noopener noreferrer">Contactar al soporte de Univac</a></div></div>' +
+      '<div class="feedback"><span class="feedback-txt">¿No encontraste lo que necesitabas?</span><div class="feedback-btns"><a class="btn ghost" href="https://wa.me/5493564367491" target="_blank" rel="noopener noreferrer">Contactar al soporte de Univac</a></div></div>' +
       '</article><aside class="toc" aria-label="En este artículo"><div class="h">En este artículo</div>' + toc + '</aside></div>';
     main.querySelectorAll('details.det').forEach(d => {
       const summary = d.querySelector('summary');
@@ -32776,90 +32725,6 @@ window.UNIVAC_CONTENIDO = {
     main.innerHTML = h;
   }
 
-  /* ---------- Asistente documental ---------- */
-  const chatLog = [];
-  function intent(q) {
-    const n = norm(q);
-    if (/^(que es|que son|para que)/.test(n)) return ['que', 'detalle'];
-    if (/^(donde|en que menu|como accedo|como entro)/.test(n)) return ['donde', 'pasos'];
-    if (/(error|mensaje|no me deja|no puedo|problema|rechaz)/.test(n)) return ['consid', 'detalle'];
-    if (/^(como|pasos|que tengo que hacer)/.test(n)) return ['pasos', 'donde'];
-    return [];
-  }
-  function localAnswer(q) {
-    const { terms, res } = search(q);
-    if (!terms.length || !res.length) return null;
-    const top = res[0];
-    const need = terms.length <= 2 ? 1 : 0.6;
-    if (top.cov < need) return null;
-    const pref = intent(q);
-    const cr = score(chunks.filter(c => c.a.id === top.d.a.id), CIDF, CAVG, q).res;
-    let pick = [];
-    pref.forEach(g => { const c = cr.find(x => x.d.s.g === g); if (c && !pick.includes(c)) pick.push(c); });
-    cr.forEach(c => { if (pick.length < 2 && !pick.includes(c)) pick.push(c); });
-    pick = pick.slice(0, 2).sort((x, y) => x.d.i - y.d.i);
-    const second = res.slice(1, 6).filter(r => r.cov >= need && r.sc >= top.sc * 0.45).slice(0, 3).map(r => r.d.a);
-    const bestC = cr.length ? cr[0].sc : 0;
-    const globalC = score(chunks, CIDF, CAVG, q).res.filter(c => c.d.a.id !== top.d.a.id && c.cov >= 0.99 && c.sc >= bestC).slice(0, 1);
-    return { art: top.d.a, pick: pick.map(p => p.d), extra: globalC.map(c => c.d), also: second };
-  }
-  function answerHTML(r) {
-    if (!r) return '<p>' + esc(SIN_INFO) + '</p>';
-    const a = r.art;
-    return '<h4>' + esc(a.titulo) + '</h4>' + (a.resumen ? '<p>' + fmt(a.resumen) + '</p>' : '') +
-      r.pick.map(p => p.s.g === 'que' ? purposeHTML(p.s, a.resumen) : subHTML(p.s)).filter(Boolean).join('') +
-      r.extra.map(p => '<p class="small">También en <a href="#/articulo/' + p.a.id + '">' + esc(p.a.titulo) + '</a>:</p>' + (p.s.g === 'que' ? purposeHTML(p.s, p.a.resumen) : subHTML(p.s))).join('') +
-      '<p><a href="#/articulo/' + a.id + '">Ver el artículo completo ›</a></p>' +
-      (r.also.length ? '<div class="also">Artículos que también pueden servirte: ' + r.also.map(x => '<a href="#/articulo/' + x.id + '">' + esc(x.titulo) + '</a>').join(' · ') + '</div>' : '');
-  }
-  async function ask(q) {
-    const local = localAnswer(q);
-    if (ASISTENTE_IA.endpoint && local) {
-      try {
-        const contexto = local.pick.concat(local.extra).map(p => ({ articulo: p.a.titulo, texto: p.s.b.map(blockText).join('\n') }));
-        const resp = await fetch(ASISTENTE_IA.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pregunta: q, contexto, instrucciones: ASISTENTE_IA.instrucciones }) });
-        if (resp.ok) {
-          const j = await resp.json();
-          if (j && j.respuesta) return '<p>' + fmt(j.respuesta).replace(/\n/g, '<br>') + '</p>';
-        }
-      } catch (e) { /* si el servicio no responde, se usa la respuesta documental local */ }
-    }
-    return answerHTML(local);
-  }
-  function viewAssistant() {
-    lastSearchQuery = null;
-    lastCategoryId = null;
-    setActive(null);
-    main.innerHTML = '<div class="assist">' +
-      '<a class="back-link" href="#/"><span aria-hidden="true">←</span>Volver al inicio</a>' +
-      '<div class="page-h"><h1>Asistente</h1><p>Consultá sobre las funciones y los pasos de uso de Univac.ERP.</p></div>' +
-      '<div class="mode"><i></i>' + (ASISTENTE_IA.endpoint ? 'Asistente disponible' : 'Busca en el Centro de Ayuda y muestra las secciones más relacionadas con tu consulta.') + '</div>' +
-      '<div class="chat"><div class="chat-log" id="chatLog" aria-live="polite"></div>' +
-      '<form class="chat-form" id="chatForm"><textarea id="chatQ" placeholder="Escribí tu consulta" aria-label="Consulta"></textarea><button>Enviar</button></form></div>' +
-      '</div>';
-    const log = $('#chatLog');
-    const paint = () => {
-      log.innerHTML = chatLog.length ? chatLog.map(m => '<div class="msg ' + m.r + '">' + m.h + '</div>').join('') :
-        '<div class="msg bot"><p>Hola. Soy el asistente del Centro de Ayuda de Univac.ERP. Consultame sobre cualquier función del sistema.</p></div>';
-      log.scrollTop = log.scrollHeight;
-    };
-    const send = async q => {
-      q = q.trim(); if (!q) return;
-      chatLog.push({ r: 'user', h: esc(q) }); paint();
-      let response;
-      try { response = await ask(q); }
-      catch (error) {
-        console.error('No se pudo generar la respuesta del asistente.', error);
-        response = '<p>No pude preparar una respuesta en este momento. Probá de nuevo o consultá al soporte de Univac.</p>';
-      }
-      chatLog.push({ r: 'bot', h: response }); paint();
-    };
-    $('#chatForm').addEventListener('submit', e => { e.preventDefault(); const v = $('#chatQ').value; $('#chatQ').value = ''; send(v); });
-    $('#chatQ').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('#chatForm').requestSubmit(); } });
-    main.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => send(b.dataset.q)));
-    paint(); $('#chatQ').focus();
-  }
-
   function viewNotFound() {
     main.innerHTML = '<div class="empty"><h2>Página no encontrada</h2><p>El contenido solicitado no existe.</p><p><a href="#/">Volver al inicio</a></p></div>';
   }
@@ -32874,7 +32739,6 @@ window.UNIVAC_CONTENIDO = {
     else if (v === 'modulo') viewCat(p);
     else if (v === 'articulo') viewArticle(p);
     else if (v === 'buscar') viewSearch(parts.slice(1).map(decodeURIComponent).join('/'));
-    else if (v === 'asistente') viewAssistant();
     else viewNotFound();
     const el = anchor && document.getElementById(anchor);
     if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
@@ -32895,7 +32759,7 @@ window.UNIVAC_CONTENIDO = {
   renderSide();
   window.addEventListener('hashchange', route);
   route();
-  window.UnivacAyuda = { search: q => search(q).res.map(r => r.d.a.id), ask: q => localAnswer(q) };
+  window.UnivacAyuda = { search: q => search(q).res.map(r => r.d.a.id) };
 })();
 
 </script>
