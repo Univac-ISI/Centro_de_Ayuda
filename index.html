@@ -10583,78 +10583,309 @@ window.UNIVAC_CONTENIDO = {
       "ultimaRevision": null
     },
     {
-      "id": "registrar-nota-debito",
-      "cat": "ventas",
-      "tema": "Herramientas comunes",
-      "titulo": "¿Cómo registrar una nota de débito?",
-      "resumen": "Registrá el ajuste de precio o el gasto con su concepto e importe. Para esta nota no se selecciona un comprobante desde la grilla de imputación.",
-      "kw": "nota de débito registrar débito por ajuste precios gastos concepto importe comprobante",
-      "fuentes": [
+    "id": "registrar-nota-debito",
+    "cat": "ventas",
+    "tema": "Notas de débito",
+    "titulo": "¿Cómo registrar una nota de débito?",
+    "resumen": "Elegí si vas a emitirla a un cliente o registrarla de un proveedor, completá el motivo y los importes, y revisá los controles antes de guardar.",
+    "kw": "nota de débito nota débito débito por ajuste de precios débito por gastos cliente proveedor ventas compras emitir registrar cargar concepto importe neto IVA",
+    "fuentes": [
         {
-          "m": "Manual_Comunes_Ventas_Compras",
-          "s": "8. Gestión de Notas de Crédito/Débito y Selección de Comprobantes",
-          "sub": []
-        }
-      ],
-      "secciones": [
-        {
-          "g": "que",
-          "n": "",
-          "t": "Propósito",
-          "m": "Manual_Comunes_Ventas_Compras",
-          "sec": "8",
-          "b": [
-            {
-              "t": "p",
-              "x": "La nota de débito se registra indicando el concepto y el importe que corresponden al ajuste de precio o al gasto."
-            }
-          ]
+            "m": "Manual_Comunes_Ventas_Compras",
+            "s": "8. Gestión de Notas de Crédito/Débito y Selección de Comprobantes",
+            "sub": [
+                "8.2 Cuándo se ejecuta",
+                "8.4 Casos especiales en la selección",
+                "8.5 Condición de pago en NC/ND"
+            ]
         },
         {
-          "g": "pasos",
-          "n": "",
-          "t": "Registrar una nota de débito",
-          "m": "Manual_Comunes_Ventas_Compras",
-          "sec": "8",
-          "b": [
-            {
-              "t": "step",
-              "x": "En 'Tipo de factura', elegí 'Débito por Ajuste Precios' o 'Débito por Gastos', según corresponda."
-            },
-            {
-              "t": "step",
-              "x": "Cargá el concepto y el importe en la grilla de la nota de débito."
-            },
-            {
-              "t": "call",
-              "k": "info",
-              "x": "La grilla para seleccionar comprobantes se oculta. No necesitás elegir una factura para registrar esta nota."
-            }
-          ]
+            "m": "Manual_Ventas_ERP",
+            "s": "3. Alta de Comprobante Fiscal (Factura / NC / ND)",
+            "sub": [
+                "3.2 Cómo acceder",
+                "3.3 Pasos para emitir un comprobante fiscal",
+                "3.4 Campos del formulario de alta",
+                "3.5 Validaciones al grabar el comprobante"
+            ]
         },
         {
-          "g": "consid",
-          "n": "",
-          "t": "Antes de cambiar el tipo",
-          "m": "Manual_Comunes_Ventas_Compras",
-          "sec": "8",
-          "b": [
-            {
-              "t": "call",
-              "k": "warn",
-              "x": "Si ya cargaste conceptos o artículos, al cambiar el tipo el sistema puede pedir confirmación porque se eliminarán los ítems cargados. Si cancelás, se mantiene el tipo anterior y los ítems."
-            }
-          ]
+            "m": "Manual_Compras_ERP",
+            "s": "2. Comprobante de Compra — Alta y consulta",
+            "sub": [
+                "2.2 Cómo acceder",
+                "2.3 Campos del encabezado",
+                "2.4 Grilla de ítems",
+                "2.5 Panel de totales",
+                "2.6 Botones del formulario"
+            ]
+        },
+        {
+            "m": "Manual_Compras_ERP",
+            "s": "3. Validaciones al grabar un comprobante de compra",
+            "sub": [
+                "3.2 Validaciones del encabezado",
+                "3.3 Validaciones del cuerpo",
+                "3.4 Detección de duplicados"
+            ]
         }
-      ],
-      "tambien": [
+    ],
+    "secciones": [
+        {
+            "g": "que",
+            "n": "",
+            "t": "Qué vas a registrar",
+            "m": "Manual_Comunes_Ventas_Compras",
+            "sec": "8",
+            "b": [
+                {
+                    "t": "p",
+                    "x": "La nota de débito permite registrar un ajuste de precios o un gasto a nombre de un cliente (desde Ventas) o de un proveedor (desde Compras). En ambos casos se elige el tipo de débito y se carga el concepto con su importe."
+                },
+                {
+                    "t": "table",
+                    "rows": [
+                        [
+                            "Tipo de débito",
+                            "Elegilo cuando…"
+                        ],
+                        [
+                            "Débito por Ajuste Precios",
+                            "El motivo de la nota es un ajuste de precio."
+                        ],
+                        [
+                            "Débito por Gastos",
+                            "El motivo de la nota es un gasto."
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "g": "donde",
+            "n": "",
+            "t": "Dónde entrar",
+            "m": "Manual_Ventas_ERP",
+            "sec": "3",
+            "b": [
+                {
+                    "t": "li",
+                    "x": "Para emitirla a un cliente: Ventas → solapa “Comprobantes Fiscales” → botón + (Agregar comprobantes de ventas)."
+                },
+                {
+                    "t": "li",
+                    "x": "Para registrarla de un proveedor: Compras → solapa “Comprobantes de Compra” → botón “Nuevo”."
+                },
+                {
+                    "t": "call",
+                    "k": "warn",
+                    "x": "En Compras, el período fiscal debe estar abierto para poder dar de alta el comprobante."
+                }
+            ]
+        },
+        {
+            "g": "pasos",
+            "n": "",
+            "t": "Emitir una nota de débito de venta",
+            "m": "Manual_Ventas_ERP",
+            "sec": "3",
+            "b": [
+                {
+                    "t": "step",
+                    "x": "En la solapa “Comprobantes Fiscales”, verificá que el mes y el año seleccionados correspondan al período de emisión y presioná +."
+                },
+                {
+                    "t": "step",
+                    "x": "Si la empresa tiene más de una sucursal, seleccioná la sucursal emisora."
+                },
+                {
+                    "t": "step",
+                    "x": "En “Tipo de Comprobante”, elegí el tipo de Nota de Débito que corresponda. El sistema propone el siguiente número disponible."
+                },
+                {
+                    "t": "step",
+                    "x": "Seleccioná el cliente. Podés elegir un cliente habitual, cargar los datos de uno esporádico o indicar Consumidor Final, según el caso."
+                },
+                {
+                    "t": "step",
+                    "x": "En “Tipo de movimiento”, elegí “Débito por Ajuste Precios” o “Débito por Gastos”."
+                },
+                {
+                    "t": "step",
+                    "x": "En detalle de nota de débito, cargá el concepto. El detalle del concepto no puede quedar vacío."
+                },
+                {
+                    "t": "step",
+                    "x": "Presioná el botón + verde de la izquierda y completá los importes de la nota de débito. En caso de que haya que colocarle un impuesto interno o exento debe colocarlo en la nota de débito."
+                },
+                {
+                    "t": "step",
+                    "x": "Revisá el total. No puede ser cero ni menor que cero."
+                },
+                {
+                    "t": "step",
+                    "x": "Presioná “Grabar”. Si el comprobante es electrónico, el sistema solicita la autorización fiscal correspondiente; al finalizar, podés imprimirlo."
+                },
+                {
+                  "t": "call",
+                  "k": "warn",
+                  "x": "Para completar esta operación y que el monto del cheque quede debitado en la cuenta,",
+                  "link": {
+                    "text": "click aquí.",
+                    "href": "#/articulo/imprimir-no-fiscales/sec-debito-cheque-rechazado"
+                  }
+                },
+                {
+                    "t": "call",
+                    "k": "info",
+                    "x": "Para la Nota de Débito no se selecciona una factura en la grilla de comprobantes a imputar: esa grilla queda vacía y oculta, y se muestra la grilla de concepto e importe de la nota."
+                }
+            ]
+        },
+        {
+            "g": "pasos",
+            "n": "",
+            "t": "Registrar una nota de débito de compra",
+            "m": "Manual_Compras_ERP",
+            "sec": "2",
+            "b": [
+                {
+                    "t": "step",
+                    "x": "En la solapa “Comprobantes de Compra”, presioná “Nuevo”."
+                },
+                {
+                    "t": "step",
+                    "x": "Verificá el mes y el año de imputación. Seleccioná el tipo de comprobante de Nota de Débito."
+                },
+                {
+                    "t": "step",
+                    "x": "Completá el punto de venta y número del comprobante del proveedor, la fecha de emisión y la fecha de vencimiento. La fecha de vencimiento no puede ser anterior a la de emisión."
+                },
+                {
+                    "t": "step",
+                    "x": "Seleccioná el proveedor habitual o ingresá los datos del proveedor esporádico. Al elegir un proveedor habitual, se completan sus datos fiscales disponibles."
+                },
+                {
+                    "t": "step",
+                    "x": "En “Tipo de movimiento, elegí el tipo de débito que corresponda: “Débito por Ajuste Precios” o “Débito por Gastos”."
+                },
+                {
+                    "t": "step",
+                    "x": "Presioná el botón + verde de la izquierda y completá los importes de la nota de débito. En caso de que haya que colocarle un concepto no gravado o exento debe colocarlo en la nota de débito."
+                },
+                {
+                    "t": "step",
+                    "x": "Revisá el panel de netos y totales. Allí se agrupan los importes por tipo y alícuota; los campos de neto, adicionales/flete, IVA, no gravado y exento pueden editarse según corresponda, haciendo doble click en ellos."
+                },
+                {
+                    "t": "step",
+                    "x": "Para quienes tengan que presentar ante la DGR el informe txt de combustibles liquidos, deberan presionar el icono amarillo y completar los datos, mas información."
+                },
+                {
+                    "t": "step",
+                    "x": "Para dejar el comprobante en cuenta corriente, usá “Grabar (Cuenta Corriente)”. Si corresponde registrar una forma de pago, presioná “Forma de Pago” y completá los datos antes de finalizar."
+                },
+                {
+                    "t": "step",
+                    "x": ""
+                },
+                {
+                    "t": "call",
+                    "k": "info",
+                    "x": "La nota se carga en la grilla de Notas. La validación que exige artículos en la grilla principal corresponde a las facturas, no a las notas de débito ni de crédito."
+                }
+            ]
+        },
+        {
+            "g": "detalle",
+            "n": "",
+            "t": "Datos que se cargan en la nota de compra",
+            "m": "Manual_Compras_ERP",
+            "sec": "2",
+            "b": [
+                {
+                    "t": "table",
+                    "rows": [
+                        [
+                            "Dato",
+                            "Qué completar"
+                        ],
+                        [
+                            "Tipo",
+                            "Clase de concepto (por ejemplo, artículo, servicio o gasto)."
+                        ],
+                        [
+                            "Neto gravado / no gravado",
+                            "Importe del concepto, según corresponda."
+                        ],
+                        [
+                            "Alícuota",
+                            "Porcentaje de IVA que corresponde al concepto gravado."
+                        ],
+                        [
+                            "Concepto no gravado",
+                            "Importe no alcanzado por IVA, si corresponde."
+                        ],
+                        [
+                            "Exento",
+                            "Importe exento de IVA, si corresponde."
+                        ]
+                    ]
+                },
+                {
+                    "t": "p",
+                    "x": "En el panel inferior, el neto, los adicionales/flete, el IVA, el importe no gravado y el exento se muestran agrupados. Si modificás un adicional o el IVA, el sistema actualiza los totales; al editar el IVA, controla que la diferencia con el valor calculado no supere $0,01."
+                }
+            ]
+        },
+        {
+            "g": "consid",
+            "n": "",
+            "t": "Qué revisar antes de guardar",
+            "m": "Manual_Comunes_Ventas_Compras",
+            "sec": "8",
+            "b": [
+                {
+                    "t": "li",
+                    "x": "El concepto de la nota de débito de venta debe tener una descripción."
+                },
+                {
+                    "t": "li",
+                    "x": "El total no puede ser cero. En una nota de débito de venta tampoco puede ser menor que cero."
+                },
+                {
+                    "t": "li",
+                    "x": "En Compras, el número no puede ser cero y el total del comprobante tampoco puede ser cero. Si el período está cerrado, no se permite dar de alta."
+                },
+                {
+                    "t": "li",
+                    "x": "En Compras, la fecha de emisión no puede superar el último día del período de imputación. Si no coincide con el período o tiene más de 240 días de antigüedad, el sistema pide confirmación."
+                },
+                {
+                    "t": "li",
+                    "x": "En Compras, el sistema busca comprobantes duplicados con el mismo tipo, número, sucursal y CUIT. Si encuentra uno, muestra los datos existentes y permite revisar, continuar o cancelar."
+                },
+                {
+                    "t": "call",
+                    "k": "warn",
+                    "x": "Si cambiás el tipo de débito después de cargar conceptos o artículos, el sistema puede pedir confirmación para eliminarlos. Si cancelás el aviso, conserva el tipo anterior y los ítems cargados."
+                },
+                {
+                    "t": "call",
+                    "k": "info",
+                    "x": "En las notas de débito, el campo “Condición de pago” queda deshabilitado y se establece automáticamente según la configuración del comprobante."
+                }
+            ]
+        }
+    ],
+    "tambien": [
         "compras"
-      ],
-      "relacionados": [],
-      "capturas": [],
-      "videos": [],
-      "ultimaRevision": null
-    },
+    ],
+    "relacionados": [],
+    "capturas": [],
+    "videos": [],
+    "ultimaRevision": null
+},
     {
       "id": "grabacion-simultanea",
       "cat": "ventas",
@@ -27729,7 +27960,7 @@ window.UNIVAC_CONTENIDO = {
         {
           "g": "detalle",
           "n": "3.2",
-          "t": "Tipos de comprobantes no fiscales y su título en el pie",
+          "t": "Tipos de comprobantes no fiscales",
           "m": "Manual_Impresiones_ERP",
           "sec": "3",
           "b": [
@@ -27776,7 +28007,11 @@ window.UNIVAC_CONTENIDO = {
                   "Código 980 — Remito de Crédito/Devolución",
                   "Total: 'Total Devolución'."
                 ]
-              ]
+              ],
+              "rowAnchor": {
+                "label": "Código 999 — Débito Cheque Rechazado",
+                "id": "sec-debito-cheque-rechazado"
+              }
             }
           ]
         },
@@ -32570,7 +32805,8 @@ window.UNIVAC_CONTENIDO = {
       else if (b.t === 'h3') h += '<h4>' + fmt(b.x) + '</h4>';
       else if (b.t === 'call') {
         const lab = { warn: 'Atención', error: 'Importante', info: 'Información', ok: 'Correcto', tip: 'Sugerencia' }[b.k] || 'Nota';
-        h += '<div class="notice ' + esc(b.k || '') + '"><span class="k">' + lab + '</span>' + fmt(b.x.replace(/^[ℹ⚠✖✔✓💡]\s*/u, '')) + '</div>';
+        const link = b.link ? ' <a href="' + esc(b.link.href) + '">' + esc(b.link.text) + '</a>' : '';
+        h += '<div class="notice ' + esc(b.k || '') + '"><span class="k">' + lab + '</span>' + fmt(b.x.replace(/^[ℹ⚠✖✔✓💡]\s*/u, '')) + link + '</div>';
       } else if (b.t === 'table' && b.rows.length) {
         const headerLabels = /^(#|n[°º.]?|campo(?: calculado| \/.*)?|columna|bot[oó]n(?: \/.*| \(.*\))?|filtro|modo|vista|nivel(?: \/.*)?|permiso(?: \/.*)?|nombre|tipo(?: \/.*)?|estado|t[eé]rmino|mensaje(?: de error)?|proceso|solapa|opci[oó]n|dato(?: a modificar| enviado a arca)?|primer d[ií]gito|grupo|m[oó]dulo(?: afectado| de origen)?|aspecto|clave(?: de bloqueo)?|elemento|segmento|operaci[oó]n|validaci[oó]n(?: \/.*)?|caracter[ií]stica|fecha|forma|funci[oó]n|sucursal|c[oó]digo|archivo(?: generado)?|formato|paso|pantalla|secci[oó]n|concepto|art[ií]culo|rubro|copia|dato|per[ií]odo|componente|origen|evento|caso|resultado|indicador|atajo|tecla|situaci[oó]n|plataforma|tipo de contribuyente|tipo seleccionado|tipo de maestro|tipo de comprobante|campo calculado|campo \/ validaci[oó]n|qu[eé] verifica|¿reintenta\?|dato a modificar|nombre visible|color en grilla|qu[eé] asienta|qu[eé] puede hacer|qu[eé] hace|qu[eé] hace el sistema|qu[eé] contiene|cu[aá]ndo se usa|cu[aá]ndo se ve afectado|descripci[oó]n|caracter[ií]sticas|funci[oó]n|uso en el sistema|causa y soluci[oó]n|soluci[oó]n|f[oó]rmula(?: \/ regla)?|f[oó]rmula y cu[aá]ndo se calcula|tipo de asiento generado|columna donde aparece|grilla visible|cambios en la pantalla|discrimina iva|tipo de comprobante sugerido|desactivar|eliminar definitivamente|c[oó]mo hacerlo|validaciones|puede hacer|puede hacer el sistema|contenido|datos que contiene|cu[aá]ndo usarlo|tipo \/ formato|oblig\.?|req\.?|requerido|qu[eé] hace\s*)$/i;
         const first = b.rows[0];
@@ -32578,7 +32814,7 @@ window.UNIVAC_CONTENIDO = {
           first.filter(c => headerLabels.test(String(c).trim())).length >= 1;
         const dataRows = looksLikeHeader ? b.rows.slice(1) : b.rows;
         h += '<div class="tbl"><table>' + (looksLikeHeader ? '<thead><tr>' + first.map(c => '<th>' + fmt(c) + '</th>').join('') + '</tr></thead>' : '') +
-          '<tbody>' + dataRows.map(r => '<tr>' + r.map(c => '<td>' + fmt(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+          '<tbody>' + dataRows.map(r => '<tr' + (b.rowAnchor && r[0] === b.rowAnchor.label ? ' id="' + esc(b.rowAnchor.id) + '"' : '') + '>' + r.map(c => '<td>' + fmt(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
       }
       i++;
     }
