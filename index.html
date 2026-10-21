@@ -4574,13 +4574,13 @@ window.UNIVAC_CONTENIDO = {
                 ],
                 [
                   "Puesto de Venta",
-                  "Numérico (5 dígitos), WHEN .F.",
+                  "Numérico (5 dígitos)",
                   "Automático",
                   "Se completa del tipo de comprobante. Solo lectura."
                 ],
                 [
                   "Número",
-                  "Numérico (8 dígitos), WHEN .F.",
+                  "Numérico (8 dígitos)",
                   "Automático",
                   "El sistema propone el último número grabado +1. En comprobantes electrónicos, ARCA/AFIP puede devolver un número distinto."
                 ],
@@ -32813,23 +32813,27 @@ window.UNIVAC_CONTENIDO = {
   const subHTML = (s, open) =>
     '<div class="sub"' + (open ? '' : '') + '>' + (norm(s.t || '') === 'proposito' ? '' : '<h3>' + fmt(s.t || '') + '</h3>') + renderBlocks(s.b) + '</div>';
   function purposeHTML(s, summary) {
-    if (s.t !== 'Propósito' || !summary) return subHTML(s);
+    if (s.t !== 'Propósito' || !summary) return {content: subHTML(s), continuation: ''};
     const blocks = (s.b || []).map(b => ({...b})).filter(b => b.t !== 'p' || String(b.x || '').trim());
-    if (!blocks.length) return '';
+    if (!blocks.length) return {content: '', continuation: ''};
     const pi = blocks.findIndex(b => b.t === 'p');
-    if (pi < 0) return subHTML({...s, b: blocks});
+    if (pi < 0) return {content: subHTML({...s, b: blocks}), continuation: ''};
     const lead = String(summary).trim().replace(/[.!?;:]+\s*$/, '');
     const text = String(blocks[pi].x || '').trim();
-    if (!lead || text.slice(0, lead.length).toLocaleLowerCase('es') !== lead.toLocaleLowerCase('es')) return subHTML(s);
+    if (!lead || text.slice(0, lead.length).toLocaleLowerCase('es') !== lead.toLocaleLowerCase('es')) return {content: subHTML(s), continuation: ''};
     const boundary = text[lead.length] || '';
-    if (boundary && !/[.:;!?]/.test(boundary)) return subHTML(s);
+    if (boundary && !/[.:;!?]/.test(boundary)) return {content: subHTML(s), continuation: ''};
     let rest = text.slice(lead.length).replace(/^[\s:;,.!?]+/, '').trim();
-    if (rest) {
-      if (boundary === ':') rest = rest.charAt(0).toLocaleUpperCase('es') + rest.slice(1);
-      blocks[pi] = {...blocks[pi], x: rest};
-    } else blocks.splice(pi, 1);
+    if (rest && boundary === ':') rest = rest.charAt(0).toLocaleUpperCase('es') + rest.slice(1);
+    if (rest) blocks[pi] = {...blocks[pi], x: rest};
+    else blocks.splice(pi, 1);
     const useful = blocks.filter(b => b.t !== 'p' || String(b.x || '').trim());
-    return useful.length ? subHTML({...s, b: useful}) : '';
+    if (useful.length === 1 && useful[0].t === 'p' && rest) {
+      const summaryPunctuation = String(summary).trim().match(/[.!?;:]+$/);
+      const separator = summaryPunctuation ? ' ' : (/[.:;!?]/.test(boundary) ? boundary + ' ' : ' ');
+      return {content: '', continuation: separator + rest};
+    }
+    return {content: useful.length ? subHTML({...s, b: useful}) : '', continuation: ''};
   }
 
   /* ---------- Vistas ---------- */
@@ -32889,7 +32893,9 @@ window.UNIVAC_CONTENIDO = {
     const backHref = lastSearchQuery !== null ? '#/buscar/' + encodeURIComponent(lastSearchQuery) : '#/modulo/' + returnCategory;
     const backLabel = lastSearchQuery !== null ? 'Volver a las preguntas' : 'Volver al módulo';
     let body = '', toc = '';
-    const purposeContent = a.secciones.filter(s => s.g === 'que').map(s => purposeHTML(s, a.resumen)).filter(Boolean).join('');
+    const purposeViews = a.secciones.filter(s => s.g === 'que').map(s => purposeHTML(s, a.resumen));
+    const purposeContent = purposeViews.map(p => p.content).filter(Boolean).join('');
+    const purposeContinuation = purposeViews.map(p => p.continuation).find(Boolean) || '';
     GROUPS.forEach(([g, label]) => {
       const ss = a.secciones.filter(s => s.g === g); if (!ss.length) return;
       if (g === 'que') return;
@@ -32900,7 +32906,7 @@ window.UNIVAC_CONTENIDO = {
       let content = '';
       if (g === 'detalle' && ss.length > 1)
         content = ss.map((s, i) => '<details class="det"' + (s.n ? ' id="sec-' + esc(s.n.replace(/\./g, '-')) + '"' : '') + (i === 0 ? ' open' : '') + '><summary title="' + (i === 0 ? 'Contraer sección' : 'Desplegar sección') + '">' + fmt(s.t || 'Detalle') + '</summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
-      else content = ss.map(s => g === 'que' ? purposeHTML(s, a.resumen) : subHTML(s)).filter(Boolean).join('');
+      else content = ss.map(s => g === 'que' ? purposeHTML(s, a.resumen).content : subHTML(s)).filter(Boolean).join('');
       if (!content) return;
       const anchor = 'sec-' + g;
       toc += '<a href="#/articulo/' + a.id + '/' + anchor + '">' + groupTitle + '</a>';
@@ -32913,7 +32919,7 @@ window.UNIVAC_CONTENIDO = {
     const restr = a.restringido ? '<div class="notice"><span class="k">Uso restringido</span>Esta herramienta está disponible solo para el nivel Super Administrador.</div>' : '';
     main.innerHTML = '<div class="art-wrap"><article class="article">' +
       '<a class="back-link" href="' + backHref + '"><span aria-hidden="true">←</span>' + backLabel + '</a>' +
-      '<h1>' + esc(a.titulo) + '</h1>' + ((a.resumen || purposeContent) ? '<div class="lead">' + (a.resumen ? '<p>' + fmt(a.resumen) + '</p>' : '') + purposeContent + '</div>' : '') +
+      '<h1>' + esc(a.titulo) + '</h1>' + ((a.resumen || purposeContent) ? '<div class="lead">' + (a.resumen ? '<p>' + fmt(a.resumen) + fmt(purposeContinuation) + '</p>' : '') + purposeContent + '</div>' : '') +
       restr + body +
       '<div class="feedback"><span class="feedback-txt">¿No encontraste lo que necesitabas?</span><div class="feedback-btns"><a class="btn ghost" href="https://wa.me/5493564367491" target="_blank" rel="noopener noreferrer">Contactar al soporte de Univac</a></div></div>' +
       '</article><aside class="toc" aria-label="En este artículo"><div class="h">En este artículo</div>' + toc + '</aside></div>';
@@ -32994,4 +33000,3 @@ window.UNIVAC_CONTENIDO = {
 </script>
 </body>
 </html>
-
