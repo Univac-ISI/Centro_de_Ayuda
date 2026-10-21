@@ -5159,7 +5159,7 @@ window.UNIVAC_CONTENIDO = {
       "cat": "ventas",
       "tema": "Cobranzas",
       "titulo": "¿Cómo registrar una cobranza de un cliente?",
-      "resumen": "Permite registrar, eliminar, modificar el período de imputación e imprimir órdenes de cobranza.",
+      "resumen": "Permite registrar o eliminar un movimiento de cobranza, modificar el período de imputación o imprimir órdenes de cobranza.",
       "kw": "cobrar cobranza recibo cobro pago de cliente cheque efectivo transferencia",
       "fuentes": [
         {
@@ -5178,62 +5178,41 @@ window.UNIVAC_CONTENIDO = {
           "b": [
             {
               "t": "p",
-              "x": "Permite registrar, eliminar, modificar el período de imputación e imprimir órdenes de cobranza. Al registrar una cobranza, el sistema cancela total o parcialmente las facturas pendientes del cliente en cuenta corriente, registra el ingreso en la caja o banco correspondiente y genera el asiento contable de cobranza (tipo I3)."
+              "x": "Permite registrar o eliminar un movimiento de cobranza, modificar el período de imputación o imprimir órdenes de cobranza. Al registrar una cobranza, el sistema cancela total o parcialmente las facturas pendientes del cliente en cuenta corriente, registra el ingreso en la caja o banco correspondiente y genera el asiento contable de cobranza (tipo I3)."
             }
           ]
         },
         {
           "g": "detalle",
           "n": "5.2",
-          "t": "Columnas de la grilla de Cobranzas",
+          "t": "Cómo registrar una cobranza y qué datos se registran",
           "m": "Manual_Ventas_ERP",
           "sec": "5",
           "b": [
             {
-              "t": "table",
-              "rows": [
-                [
-                  "Columna",
-                  "Descripción"
-                ],
-                [
-                  "Fecha",
-                  "Fecha de la cobranza."
-                ],
-                [
-                  "Comprobante",
-                  "Código de la orden de cobranza: abreviatura-sucursal-número."
-                ],
-                [
-                  "Cliente",
-                  "Nombre del cliente cobrado."
-                ],
-                [
-                  "C.U.I.T",
-                  "CUIT del cliente."
-                ],
-                [
-                  "T.Comprob.",
-                  "Total cobrado en la orden de cobranza."
-                ],
-                [
-                  "N.Crédito",
-                  "Si la cobranza incluyó una nota de crédito, muestra su importe."
-                ],
-                [
-                  "Rec(-)NC",
-                  "Total cobrado menos el importe de nota de crédito (cobro neto)."
-                ],
-                [
-                  "Registrado el",
-                  "Fecha y hora de registro."
-                ],
-                [
-                  "Registró",
-                  "Usuario que registró la cobranza (oculto para nivel 3)."
-                ]
-              ]
-            }
+              "t": "step",
+              "x": "En la solapa Cobranzas, presioná '+' para abrir el formulario de alta."
+            },
+            {
+              "t": "step",
+              "x": "Ingresá la fecha de la cobranza."
+            },
+            {
+              "t": "step",
+              "x": "Seleccioná el cliente correspondiente."
+            },
+            {
+              "t": "step",
+              "x": "Seleccioná los comprobantes que querés imputar a la cobranza. El sistema muestra el saldo pendiente de cada uno y actualiza el total a cobrar."
+            },
+            {
+              "t": "step",
+              "x": "Para seleccionar todos los comprobantes pendientes del cliente, tildá la opción 'Selecciona todos los comprobantes'."
+            },
+            {
+              "t": "step",
+              "x": "En el apartado concepto."
+            },
           ]
         },
         {
