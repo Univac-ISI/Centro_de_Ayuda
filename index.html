@@ -146,6 +146,7 @@ svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .sub ul{margin:0 0 12px;padding-left:20px}
 .sub ul li{margin-bottom:4px}
 ol.steps{list-style:none;counter-reset:s;margin:0 0 14px 14px;padding:0;border-left:2px solid #dce5f3}
+ol.steps.nested{margin-left:42px}
 ol.steps li{counter-increment:s;position:relative;padding:1px 0 18px 28px}
 ol.steps li:last-child{padding-bottom:2px}
 ol.steps li::before{content:counter(s);position:absolute;left:-15px;top:0;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center}
@@ -4129,7 +4130,7 @@ window.UNIVAC_CONTENIDO = {
       "cat": "ventas",
       "tema": "Comprobantes fiscales",
       "titulo": "¿Cómo consultar las facturas y comprobantes emitidos?",
-      "resumen": "Permite visualizar, emitir, eliminar e imprimir los comprobantes de venta fiscales (facturas A, B, C, notas de débito y notas de crédito) del período seleccionado.",
+      "resumen": "Permite visualizar, emitir o imprimir los comprobantes de venta fiscales (facturas A, B, C, notas de débito y notas de crédito) del período seleccionado.",
       "kw": "buscar factura consultar comprobantes emitidos filtrar colores estado venta rápida grilla",
       "fuentes": [
         {
@@ -4148,7 +4149,7 @@ window.UNIVAC_CONTENIDO = {
           "b": [
             {
               "t": "p",
-              "x": "Permite visualizar, emitir, eliminar e imprimir los comprobantes de venta fiscales (facturas A, B, C, notas de débito y notas de crédito) del período seleccionado. También desde aquí se accede a la Venta Rápida y al Informe Z de registradoras fiscales."
+              "x": "Permite visualizar, emitir o imprimir los comprobantes de venta fiscales (facturas A, B, C, notas de débito y notas de crédito) del período seleccionado. También desde aquí se accede a la Venta Rápida y al Informe Z de registradoras fiscales."
             }
           ]
         },
@@ -4340,7 +4341,10 @@ window.UNIVAC_CONTENIDO = {
                   "Reimprime en lote todos los comprobantes que estén tildados con el check de la primera columna.",
                   "Para reimprimir múltiples comprobantes a la vez."
                 ]
-              ]
+              ],
+              "cellLinks": {
+                "+ / Agrega Comprobantes de Ventas": "#/articulo/emitir-factura"
+              }
             }
           ]
         }
@@ -5219,7 +5223,43 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Al confirmar el importe ."
+              "x": "Al confirmar el importe (Enter) se procede a registrar la cobranza."
+            },
+            {
+              "t": "p",
+              "x": "Opciones disponibles:"
+            },
+            {
+              "t": "li",
+              "x": "'+' Agrega un comprobante de cobranza. Abre el formulario de registración de la forma de cobranza del comprobante, puede ser de una sola forma de cobranza o combinada/varias."
+            },
+            {
+              "t": "step",
+              "nested": true,
+              "x": "Paso 1: Selecciona la forma de cobranza, completa los datos y aceptar forma de cobranza. El sistema actualiza el total/parcial de la cobranza."
+            },
+            {
+              "t": "step",
+              "nested": true,
+              "x": "Paso 2: Si resta saldar importe, repetir el paso o completar pago."
+            },
+            {
+              "t": "step",
+              "nested": true,
+              "x": "Paso 3: Revisar que el 'Resta para saldar' quede en 0."
+            },
+            {
+              "t": "li",
+              "x": "'Completar pago con efectivo' Clic aquí cuando es una sola forma de cobranza."
+            },
+            {
+              "t": "li",
+              "x": "'Genera nota de crédito por descuento' Si se requiere generar una nota de crédito por descuento completar el porcentaje de descuento y el detalle, grabar. Eso impactará en la cuenta corriente."
+            },
+            {
+              "t": "step",
+              "start": 9,
+              "x": "Cuando 'Resta para saldar' queda en 0 se habilita el botón 'Grabar comprobante'."
             },
           ]
         },
@@ -32782,8 +32822,12 @@ window.UNIVAC_CONTENIDO = {
     while (i < bl.length) {
       const b = bl[i];
       if (b.t === 'step' || b.t === 'li') {
-        const t = b.t; const tag = t === 'step' ? 'ol class="steps"' : 'ul';
-        h += '<' + tag + '>';
+        const t = b.t;
+        const start = t === 'step' && Number.isInteger(b.start) && b.start > 1 ? b.start : 1;
+        const tag = t === 'step'
+          ? '<ol class="steps' + (b.nested ? ' nested' : '') + '"' + (start > 1 ? ' style="counter-reset:s ' + (start - 1) + '"' : '') + '>'
+          : '<ul>';
+        h += tag;
         while (i < bl.length && bl[i].t === t) {
           const link = bl[i].link ? ' <a href="' + esc(bl[i].link.href) + '">' + esc(bl[i].link.text) + '</a>' : '';
           h += '<li>' + fmt(bl[i].x) + link + '</li>'; i++;
@@ -32804,7 +32848,10 @@ window.UNIVAC_CONTENIDO = {
           first.filter(c => headerLabels.test(String(c).trim())).length >= 1;
         const dataRows = looksLikeHeader ? b.rows.slice(1) : b.rows;
         h += '<div class="tbl"><table>' + (looksLikeHeader ? '<thead><tr>' + first.map(c => '<th>' + fmt(c) + '</th>').join('') + '</tr></thead>' : '') +
-          '<tbody>' + dataRows.map(r => '<tr' + (b.rowAnchor && r[0] === b.rowAnchor.label ? ' id="' + esc(b.rowAnchor.id) + '"' : '') + '>' + r.map(c => '<td>' + fmt(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+          '<tbody>' + dataRows.map(r => '<tr' + (b.rowAnchor && r[0] === b.rowAnchor.label ? ' id="' + esc(b.rowAnchor.id) + '"' : '') + '>' + r.map(c => {
+            const link = b.cellLinks && b.cellLinks[String(c)];
+            return '<td>' + (link ? '<a href="' + esc(link) + '">' + fmt(c) + '</a>' : fmt(c)) + '</td>';
+          }).join('') + '</tr>').join('') + '</tbody></table></div>';
       }
       i++;
     }
