@@ -4482,7 +4482,26 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "call",
               "k": "info",
-              "x": "Para consultar los campos del formulario, buscá “¿Qué datos tiene el formulario de una factura?”. Si no podés guardar, buscá “¿Qué revisar si no se puede grabar un comprobante de venta?”."
+              "x": "Para consultar los campos del formulario, ¿Qué datos tiene el formulario de una factura?. Si no podés guardar, ¿Qué revisar si no se puede grabar un comprobante de venta?.",
+              "segments": [
+                {
+                  "text": "Para consultar los campos del formulario, "
+                },
+                {
+                  "text": "¿Qué datos tiene el formulario de una factura?",
+                  "href": "#/articulo/campos-comprobante-venta"
+                },
+                {
+                  "text": ". Si no podés guardar,"
+                },
+                {
+                  "text": "¿Qué revisar si no se puede grabar un comprobante de venta?",
+                  "href": "#/articulo/validaciones-comprobante-venta"
+                },
+                {
+                  "text": "."
+                }
+              ]
             }
           ]
         }
@@ -32841,7 +32860,10 @@ window.UNIVAC_CONTENIDO = {
       else if (b.t === 'call') {
         const lab = { warn: 'Atención', error: 'Importante', info: 'Información', ok: 'Correcto', tip: 'Sugerencia' }[b.k] || 'Nota';
         const link = b.link ? ' <a href="' + esc(b.link.href) + '">' + esc(b.link.text) + '</a>' : '';
-        h += '<div class="notice ' + esc(b.k || '') + '"><span class="k">' + lab + '</span>' + fmt(b.x.replace(/^[ℹ⚠✖✔✓💡]\s*/u, '')) + link + '</div>';
+        const content = b.segments
+          ? b.segments.map(part => part.href ? '<a href="' + esc(part.href) + '">' + fmt(part.text) + '</a>' : fmt(part.text)).join('')
+          : fmt(b.x.replace(/^[ℹ⚠✖✔✓💡]\s*/u, '')) + link;
+        h += '<div class="notice ' + esc(b.k || '') + '"><span class="k">' + lab + '</span>' + content + '</div>';
       } else if (b.t === 'table' && b.rows.length) {
         const headerLabels = /^(#|n[°º.]?|campo(?: calculado| \/.*)?|columna|bot[oó]n(?: \/.*| \(.*\))?|filtro|modo|vista|nivel(?: \/.*)?|permiso(?: \/.*)?|nombre|tipo(?: \/.*)?|estado|t[eé]rmino|mensaje(?: de error)?|proceso|solapa|opci[oó]n|dato(?: a modificar| enviado a arca)?|primer d[ií]gito|grupo|m[oó]dulo(?: afectado| de origen)?|aspecto|clave(?: de bloqueo)?|elemento|segmento|operaci[oó]n|validaci[oó]n(?: \/.*)?|caracter[ií]stica|fecha|forma|funci[oó]n|sucursal|c[oó]digo|archivo(?: generado)?|formato|paso|pantalla|secci[oó]n|concepto|art[ií]culo|rubro|copia|dato|per[ií]odo|componente|origen|evento|caso|resultado|indicador|atajo|tecla|situaci[oó]n|plataforma|tipo de contribuyente|tipo seleccionado|tipo de maestro|tipo de comprobante|campo calculado|campo \/ validaci[oó]n|qu[eé] verifica|¿reintenta\?|dato a modificar|nombre visible|color en grilla|qu[eé] asienta|qu[eé] puede hacer|qu[eé] hace|qu[eé] hace el sistema|qu[eé] contiene|cu[aá]ndo se usa|cu[aá]ndo se ve afectado|descripci[oó]n|caracter[ií]sticas|funci[oó]n|uso en el sistema|causa y soluci[oó]n|soluci[oó]n|f[oó]rmula(?: \/ regla)?|f[oó]rmula y cu[aá]ndo se calcula|tipo de asiento generado|columna donde aparece|grilla visible|cambios en la pantalla|discrimina iva|tipo de comprobante sugerido|desactivar|eliminar definitivamente|c[oó]mo hacerlo|validaciones|puede hacer|puede hacer el sistema|contenido|datos que contiene|cu[aá]ndo usarlo|tipo \/ formato|oblig\.?|req\.?|requerido|qu[eé] hace\s*)$/i;
         const first = b.rows[0];
