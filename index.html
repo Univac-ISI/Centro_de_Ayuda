@@ -4359,8 +4359,7 @@ window.UNIVAC_CONTENIDO = {
       "id": "emitir-factura",
       "cat": "ventas",
       "tema": "Comprobantes fiscales",
-      "titulo": "¿Cómo emitir una factura de venta?",
-      "resumen": "Seguí los pasos para preparar y guardar una factura. El sistema verifica los datos y, si corresponde, solicita la autorización electrónica.",
+      "titulo": "¿Cómo emitir un comprobante de venta?",
       "kw": "factura emitir hacer crear comprobante venta cliente artículos grabar factura A B C",
       "fuentes": [
         {
@@ -4387,7 +4386,7 @@ window.UNIVAC_CONTENIDO = {
           "b": [
             {
               "t": "p",
-              "x": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito y notas de crédito. El sistema autoriza los comprobantes electrónicos en ARCA/AFIP en forma automática, descuenta el stock, actualiza la cuenta corriente del cliente y genera el asiento contable correspondiente."
+              "x": "Permite al usuario emitir comprobantes de venta fiscales: facturas A, B, C, notas de débito, notas de crédito y liquidaciones. El sistema autoriza los comprobantes electrónicos en ARCA/AFIP en forma automática, descuenta el stock, actualiza la cuenta corriente del cliente si asi lo requierey genera el asiento contable correspondiente."
             }
           ]
         },
@@ -4440,24 +4439,38 @@ window.UNIVAC_CONTENIDO = {
               "x": "Verificar la Fecha de emisión (por defecto la fecha del sistema). Debe corresponder al mes y año del período seleccionado."
             },
             {
-              "t": "step",
-              "x": "Seleccionar la modalidad de facturación mediante los botones de radio: (1) Cliente habitual del sistema, (2) Cliente esporádico (datos manuales), o (3) Consumidor Final."
+              "t": "call",
+              "k": "info",
+              "x": "ARCA/AFIP permite emitir comprobantes con hasta 5 días corridos de anterioridad en productos y bienes y 10 días en servicios."
             },
             {
               "t": "step",
-              "x": "Si se eligió 'Cliente habitual': buscar y seleccionar el cliente en el desplegable con búsqueda incremental, o usar el botón lupa para abrir el buscador detallado. El sistema completa automáticamente el CUIT, provincia, zona y lista de precios del cliente."
+              "start": 7,
+              "x": "Seleccionar el tipo de cliente: (1) Cliente habitual del sistema, (2) Cliente esporádico (datos manuales)."
             },
             {
               "t": "step",
-              "x": "Verificar o cambiar la Lista de Precios. Las opciones disponibles son las listas 1, 2, 3 configuradas en parámetros, 'Precio Venta (USD)' y 'Precio Especial ($)'."
+              "x": "Si se eligió 'Cliente habitual': buscar y seleccionar el cliente en el desplegable con búsqueda incremental, o usar el botón lupa para abrir el buscador detallado. El sistema completa automáticamente el CUIT, provincia, zona y lista de precios del cliente. Con 'F9' se abre un acceso rápido a la nomina de clientes."
             },
             {
               "t": "step",
-              "x": "Verificar la Condición de Venta. Se puede modificar usando el botón de búsqueda de condiciones."
+              "x": "Verificar la forma de Venta. Traerá por defecto el asignado al cliente."
             },
             {
               "t": "step",
-              "x": "Para agregar ítems al comprobante: presionar el botón 'Agrega Ítems' o presionar Enter en la grilla. Se abre el buscador de artículos."
+              "x": "En 'Tipo de movimiento' seleccionar el tipo de movimiento correspondiente a la venta que queres realizar."
+            },
+            {
+              "t": "step",
+              "x": "Directa, Sobre remitos, Sobre nota de pedido, Sobre transportes, Sobre liquidaciones, Sobre presupuestos o sobre otros (ordenes de reparaciones)."
+            },
+            {
+              "t": "step",
+              "x": "Verificar o cambiar la Lista de Precios en el desplegable."
+            },
+            {
+              "t": "step",
+              "x": "Para agregar ítems al comprobante: presionar el botón '+' o presionar Enter en la grilla. Se abre el buscador de artículos."
             },
             {
               "t": "step",
@@ -4469,7 +4482,7 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Opcionalmente completar: Vendedor, Zona, Observaciones (botón de notas), datos de Transporte si aplica."
+              "x": "Opcionalmente completar: Vendedor, Zona, Bonificaciones, Datos de Transporte si aplica (Camión amarillo), Observaciones del comprobante (Ojo morado)."
             },
             {
               "t": "step",
@@ -4477,11 +4490,11 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Presionar 'Grabar'. El sistema realiza las validaciones (ver punto 3.5). Si es comprobante electrónico, se comunica con ARCA/AFIP para obtener el CAE. Al finalizar, el comprobante queda grabado y se puede imprimir."
+              "x": "Presionar 'Grabar'. El sistema realiza las validaciones. Si es comprobante electrónico, se comunica con ARCA/AFIP para obtener el CAE. Al finalizar, el comprobante queda grabado y se puede imprimir."
             },
             {
               "t": "call",
-              "k": "info",
+              "k": "warn",
               "x": "Para consultar los campos del formulario, ¿Qué datos tiene el formulario de una factura?. Si no podés guardar, ¿Qué revisar si no se puede grabar un comprobante de venta?.",
               "segments": [
                 {
