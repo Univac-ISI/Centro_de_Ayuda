@@ -19,7 +19,6 @@
 
 :root{
   --navy:#202850; --navy-2:#2e3a6e; --red:#e03028; --blue:#4068b0; --sky:#68b0e0;
-  --ink:#1d2340; --text:#3a4060; --muted:#6b7190; --line:#e3e6ef; --line-2:#eef0f6;
   --bg:#ffffff; --soft:#f6f7fb; --blue-soft:#eef3fb; --red-soft:#fdf0ef; --amber-soft:#fff7e8; --amber:#a86a00;
   --radius:8px; --side:272px; --top:68px;
 }
@@ -4491,6 +4490,39 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "step",
               "x": "Presionar 'Grabar'. El sistema realiza las validaciones. Si es comprobante electrónico, se comunica con ARCA/AFIP para obtener el CAE. Al finalizar, el comprobante queda grabado y se puede imprimir."
+            }
+          ]
+        },
+        {
+          "g": "pasos",
+          "n": "3.3",
+          "t": "Pasos para emitir un comprobante fiscal en venta rápida",
+          "m": "Manual_Ventas_ERP",
+          "sec": "3",
+          "b": [
+            {
+              "t": "step",
+              "x": "En la solapa 'Comprobantes Fiscales', verificar que el Mes y Año del desplegable superior corresponden al período de emisión."
+            },
+            {
+              "t": "step",
+              "x": "Presionar el botón '+'. Se abre el formulario de alta."
+            },
+            {
+              "t": "step",
+              "x": "Seleccionar la Sucursal si la empresa tiene más de una. El sistema puede cambiar los tipos de comprobantes disponibles al cambiar la sucursal."
+            },
+            {
+              "t": "step",
+              "x": "Seleccionar el Tipo de Comprobante del desplegable (ej.: 'FAC-A-00001', 'FAC-B-00001', 'NC-B-00001'). El sistema propone el último tipo usado por defecto."
+            },
+            {
+              "t": "step",
+              "x": "El campo 'Puesto de Venta' se completa automáticamente con el del tipo de comprobante. El campo 'Número' propone el siguiente correlativo."
+            },
+            {
+              "t": "step",
+              "x": "Verificar la Fecha de emisión (por defecto la fecha del sistema). Debe corresponder al mes y año del período seleccionado."
             },
             {
               "t": "call",
