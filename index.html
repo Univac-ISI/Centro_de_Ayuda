@@ -67,15 +67,12 @@ svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
 .hero h1{font-size:34px;font-weight:600;margin-bottom:8px}
 .hero p{margin:0 0 24px;color:var(--muted);max-width:640px}
-.big-search{display:flex;max-width:720px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.big-search:focus-within{border-color:var(--blue)}
+.big-search{display:flex;max-width:720px;border:2px solid #c9d7ee;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 3px 12px rgba(32,40,80,.08)}
+.big-search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(64,104,176,.12),0 3px 12px rgba(32,40,80,.08)}
 .big-search input{flex:1;border:0;padding:0 18px;height:56px;font-size:16px;min-width:0}
 .big-search input:focus{outline:none}
 .big-search button{border:0;background:var(--navy);color:#fff;padding:0 26px;font-weight:500;cursor:pointer}
 .big-search button:hover{background:var(--navy-2)}
-.examples{margin-top:14px;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.chip{border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:#fff;color:var(--text);font-size:13px;cursor:pointer}
-.chip:hover{border-color:var(--blue);color:var(--blue)}
 .sec-title{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin-bottom:44px}
 .cat-item{display:block;padding:22px 22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--text)}
@@ -134,8 +131,8 @@ svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .notice .k{font-weight:600;color:var(--ink);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
 .notice.review{border-color:#d99400;background:var(--amber-soft)}
 .a-sec{margin:36px 0 0}
-.a-sec#sec-pasos{margin-top:28px;padding:20px 22px 8px;border:1px solid #dce5f3;border-left:4px solid var(--blue);border-radius:8px;background:#f7f9fd}
-.a-sec#sec-pasos>h2{margin-bottom:16px}
+.a-sec#sec-pasos,.a-sec#sec-pasos-venta-rapida{margin-top:28px;padding:20px 22px 8px;border:1px solid #dce5f3;border-left:4px solid var(--blue);border-radius:8px;background:#f7f9fd}
+.a-sec#sec-pasos>h2,.a-sec#sec-pasos-venta-rapida>h2{margin-bottom:16px}
 .a-sec>h2{font-size:20px;font-weight:600;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line-2)}
 .sub{margin:18px 0 0}
 .sub>h3{font-size:15.5px;font-weight:600;margin-bottom:8px;color:var(--navy);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
@@ -252,9 +249,9 @@ mark{background:#fff1b8;color:inherit;padding:0 1px;border-radius:2px}
 .ui{font-weight:700;color:var(--navy);background:#eaf0fb;border:1px solid #c9d7ee;border-radius:5px;padding:1px 6px;box-shadow:inset 0 -1px 0 rgba(32,40,80,.05)}
 ol.steps li{color:var(--ink);font-weight:500;line-height:1.7}
 ol.steps li::before{font-size:13px;font-weight:700;box-shadow:0 0 0 3px #fff}
-.a-sec#sec-pasos ol.steps li{margin:0 0 10px;padding:9px 12px 9px 34px;background:#fff;border:1px solid #e1e7f1;border-radius:7px;box-shadow:0 1px 2px rgba(32,40,80,.05)}
-.a-sec#sec-pasos ol.steps li:last-child{margin-bottom:2px;padding-bottom:9px}
-.a-sec#sec-pasos ol.steps li::before{left:-15px;top:9px;background:var(--blue);box-shadow:0 0 0 4px #f7f9fd}
+.a-sec#sec-pasos ol.steps li,.a-sec#sec-pasos-venta-rapida ol.steps li{margin:0 0 10px;padding:9px 12px 9px 34px;background:#fff;border:1px solid #e1e7f1;border-radius:7px;box-shadow:0 1px 2px rgba(32,40,80,.05)}
+.a-sec#sec-pasos ol.steps li:last-child,.a-sec#sec-pasos-venta-rapida ol.steps li:last-child{margin-bottom:2px;padding-bottom:9px}
+.a-sec#sec-pasos ol.steps li::before,.a-sec#sec-pasos-venta-rapida ol.steps li::before{left:-15px;top:9px;background:var(--blue);box-shadow:0 0 0 4px #f7f9fd}
 .notice{border:1px solid #dfe4ed;border-left:4px solid var(--blue);border-radius:8px;padding:14px 16px;line-height:1.6;box-shadow:0 1px 3px rgba(32,40,80,.06)}
 .notice.warn{border-color:#efd9ad;border-left-color:#d99400;background:var(--amber-soft)}
 .notice.error{border-color:#f0c8c5;border-left-color:var(--red);background:var(--red-soft)}
@@ -4494,7 +4491,7 @@ window.UNIVAC_CONTENIDO = {
           ]
         },
         {
-          "g": "pasos",
+          "g": "pasos-venta-rapida",
           "n": "3.3",
           "t": "Pasos para emitir un comprobante fiscal en venta rápida",
           "m": "Manual_Ventas_ERP",
@@ -4506,7 +4503,7 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Presionar el botón '+'. Se abre el formulario de alta."
+              "x": "Presionar en el ícono del carrito de compras. Se abre el formulario de alta."
             },
             {
               "t": "step",
@@ -4532,7 +4529,7 @@ window.UNIVAC_CONTENIDO = {
                 {
                   "text": "Para consultar los campos del formulario, "
                 },
-                {
+            {
                   "text": "¿Qué datos tiene el formulario de una factura?",
                   "href": "#/articulo/campos-comprobante-venta"
                 },
@@ -32961,8 +32958,6 @@ window.UNIVAC_CONTENIDO = {
   }
   let lastSearchQuery = null;
   let lastCategoryId = null;
-  const EXAMPLES = ['IVA por alícuota', '¿Cómo hago una venta con diferentes porcentajes de IVA?', 'anular factura', 'cheques de terceros', 'importar precios desde Excel', 'error 1007'];
-
   function viewHome() {
     lastSearchQuery = null;
     lastCategoryId = null;
@@ -32971,14 +32966,13 @@ window.UNIVAC_CONTENIDO = {
       '<section class="hero"><div class="eyebrow">Univac.ERP</div><h1>¿En qué podemos ayudarte?</h1>' +
       '<p>Encontrá procedimientos, explicaciones y respuestas para usar Univac.ERP.</p>' +
       '<form class="big-search" id="homeSearch" role="search"><input id="homeQ" type="search" placeholder="Escribí qué necesitás hacer…" aria-label="Buscar"><button>Buscar</button></form>' +
-      '<div class="examples">Ejemplos: ' + EXAMPLES.map(e => '<button class="chip" data-q="' + esc(e) + '">' + esc(e) + '</button>').join('') + '</div></section>' +
+      '</section>' +
       '<h2 class="sec-title">Explorar por módulo</h2><div class="cat-grid">' +
       DB.categorias.map(c => '<a class="cat-item" href="#/modulo/' + c.id + '"><h3>' + esc(c.nombre) + '</h3><p>' + esc(c.desc) + '</p><span class="count">' + inCat(c.id).length + ' artículos</span></a>').join('') +
       '</div><section><h2 class="sec-title">Preguntas frecuentes</h2><ul class="faq-list">' +
       DB.faq.map(f => ARTS[f.articulo]).filter(Boolean).map(a => '<li><a href="#/articulo/' + a.id + '">' + esc(a.titulo) + '</a></li>').join('') +
       '</ul></section>';
     $('#homeSearch').addEventListener('submit', e => { e.preventDefault(); go('#/buscar/' + encodeURIComponent($('#homeQ').value)); });
-    main.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => go('#/buscar/' + encodeURIComponent(b.dataset.q))));
   }
 
   function viewCat(id) {
@@ -32999,6 +32993,7 @@ window.UNIVAC_CONTENIDO = {
 
   const GROUPS = [
     ['que', 'Qué vas a hacer'], ['donde', 'Dónde ingresar'], ['pasos', 'Pasos'],
+    ['pasos-venta-rapida', 'Pasos para emitir un comprobante fiscal en venta rápida'],
     ['detalle', 'Más detalles'], ['consid', 'A tener en cuenta'], ['ejemplo', 'Ejemplo práctico'], ['relacion', 'Relación con otros módulos']
   ];
   function viewArticle(id) {
@@ -33018,14 +33013,18 @@ window.UNIVAC_CONTENIDO = {
       const troubleshooting = /validaci|error|mensaje|resolver|control|reintento|rechaz|bloqueo|problema/;
       const priorNotice = /antes|condici[oó]n previa|advertencia|requisito/;
       const groupTitle = g !== 'consid' ? label : headings.every(t => troubleshooting.test(t)) ? 'Qué revisar si algo no sale' : headings.every(t => priorNotice.test(t)) ? 'Antes de continuar' : 'A tener en cuenta';
-      let content = '';
+      let content = '', afterContent = '';
       if (g === 'detalle' && ss.length > 1)
         content = ss.map((s, i) => '<details class="det"' + (s.n ? ' id="sec-' + esc(s.n.replace(/\./g, '-')) + '"' : '') + (i === 0 ? ' open' : '') + '><summary title="' + (i === 0 ? 'Contraer sección' : 'Desplegar sección') + '">' + fmt(s.t || 'Detalle') + '</summary>' + '<div class="sub">' + renderBlocks(s.b) + '</div></details>').join('');
+      else if (g === 'pasos-venta-rapida') {
+        content = ss.map(s => renderBlocks(s.b.filter(b => b.t !== 'call'))).join('');
+        afterContent = ss.map(s => renderBlocks(s.b.filter(b => b.t === 'call'))).join('');
+      }
       else content = ss.map(s => g === 'que' ? purposeHTML(s, a.resumen).content : subHTML(s)).filter(Boolean).join('');
       if (!content) return;
       const anchor = 'sec-' + g;
       toc += '<a href="#/articulo/' + a.id + '/' + anchor + '">' + groupTitle + '</a>';
-      body += '<section class="a-sec" id="' + anchor + '"><h2>' + groupTitle + '</h2>' + content + '</section>';
+      body += '<section class="a-sec" id="' + anchor + '"><h2>' + groupTitle + '</h2>' + content + '</section>' + afterContent;
     });
     const caps = (a.capturas || []).map(m => '<figure><img src="' + esc(m.src) + '" alt="' + esc(m.alt || '') + '" loading="lazy"><figcaption class="small">' + esc(m.alt || '') + '</figcaption></figure>').join('');
     const vids = (a.videos || []).map(v => '<div class="media-slot"><b>Video</b><a href="' + esc(v.url) + '" target="_blank" rel="noopener">' + esc(v.titulo || v.url) + '</a></div>').join('');
