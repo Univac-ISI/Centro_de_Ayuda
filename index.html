@@ -4420,10 +4420,6 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Seleccionar la Sucursal si la empresa tiene más de una. El sistema puede cambiar los tipos de comprobantes disponibles al cambiar la sucursal."
-            },
-            {
-              "t": "step",
               "x": "Seleccionar el Tipo de Comprobante del desplegable (ej.: 'FAC-A-00001', 'FAC-B-00001', 'NC-B-00001'). El sistema propone el último tipo usado por defecto."
             },
             {
@@ -4441,7 +4437,7 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "start": 7,
+              "start": 6,
               "x": "Seleccionar el tipo de cliente: (1) Cliente habitual del sistema, (2) Cliente esporádico (datos manuales)."
             },
             {
@@ -4458,7 +4454,13 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Directa, Sobre remitos, Sobre nota de pedido, Sobre transportes, Sobre liquidaciones, Sobre presupuestos o sobre otros (ordenes de reparaciones)."
+              "x": "Directa, Sobre remitos, Sobre nota de pedido, Sobre transportes, Sobre liquidaciones, Sobre presupuestos o sobre otros (ordenes de reparaciones).",
+              "segments": [
+                {
+                  "text": "Directa, Sobre remitos, Sobre nota de pedido, Sobre transportes, Sobre liquidaciones, Sobre presupuestos o sobre otros (ordenes de reparaciones).",
+                  "href": "#/articulo/remitos-presupuestos/sec-pasos"
+                }
+              ]
             },
             {
               "t": "step",
@@ -4507,10 +4509,6 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Seleccionar la Sucursal si la empresa tiene más de una. El sistema puede cambiar los tipos de comprobantes disponibles al cambiar la sucursal."
-            },
-            {
-              "t": "step",
               "x": "Seleccionar el Tipo de Comprobante del desplegable (ej.: 'FAC-A-00001', 'FAC-B-00001', 'NC-B-00001'). El sistema propone el último tipo usado por defecto."
             },
             {
@@ -4520,6 +4518,46 @@ window.UNIVAC_CONTENIDO = {
             {
               "t": "step",
               "x": "Verificar la Fecha de emisión (por defecto la fecha del sistema). Debe corresponder al mes y año del período seleccionado."
+            },
+            {
+              "t": "step",
+              "x": "Seleccionar el tipo de cliente: (1) Cliente habitual del sistema, (2) Cliente esporádico (datos manuales)."
+            },
+            {
+              "t": "step",
+              "x": "Si se eligió 'Cliente habitual': buscar y seleccionar el cliente en el desplegable con búsqueda incremental, o usar el botón lupa para abrir el buscador detallado. El sistema completa automáticamente el CUIT, provincia, zona y lista de precios del cliente. Con 'F9' se abre un acceso rápido a la nomina de clientes."
+            },
+            {
+              "t": "step",
+              "x": "Verificar o cambiar la Lista de Precios en el desplegable."
+            },
+            {
+              "t": "step",
+              "x": "Para agregar ítems al comprobante: presionar el botón '+' o presionar Enter en la grilla. Se abre el buscador de artículos."
+            },
+            {
+              "t": "step",
+              "x": "En el caso que el usurio del sistema tenga habilitado el lector de código de barras puede usarse para cargar los artículos al cuerpo de la factura leyendo desde 'Código de barras'."
+            },
+            {
+              "t": "step",
+              "x": "Otra opción es en el buscador de artículos, tipear el código o nombre del artículo, seleccionarlo y confirmar la cantidad. El sistema completa precio, alícuota de IVA y unidad de medida automáticamente."
+            },
+            {
+              "t": "step",
+              "x": "Repetir el paso anterior para cada artículo del comprobante. Se pueden modificar y eliminar ítems con los botones correspondientes."
+            },
+            {
+              "t": "step",
+              "x": "Si el comprobante es de contado, el sistema mostrará la sección de pago para registrar el mismo."
+            },
+            {
+              "t": "step",
+              "x": "En los accesos rápidos 'F8' (Tarjeta u otros medios de cobro) y 'F9' (Cobro en efectivo)."
+            },
+            {
+              "t": "step",
+              "x": "Si el cobro es combinado se registra desde la opción 'Conformar cobranza'."
             },
             {
               "t": "call",
@@ -5062,8 +5100,8 @@ window.UNIVAC_CONTENIDO = {
       "id": "remitos-presupuestos",
       "cat": "ventas",
       "tema": "Comprobantes no fiscales",
-      "titulo": "¿Cómo gestionar remitos, presupuestos y notas de pedido?",
-      "resumen": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido (presupuestos), órdenes de compra y otros documentos internos.",
+      "titulo": "¿Cómo emitir un comprobante no fiscal?",
+      "resumen": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, débitos por cheques rechazados, compensación de compras y guía interna de transportes.",
       "kw": "remito presupuesto nota de pedido comprobante no fiscal unificar facturar remito entrega",
       "fuentes": [
         {
@@ -5082,13 +5120,46 @@ window.UNIVAC_CONTENIDO = {
           "b": [
             {
               "t": "p",
-              "x": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido (presupuestos), órdenes de compra y otros documentos internos. Estos comprobantes pueden estar sin procesar (pendientes de facturar), en proceso de facturación, o procesados (ya facturados)."
+              "x": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, débitos por cheques rechazados, compensación de compras y guía interna de transportes. Para los remitos los comprobantes pueden estar sin procesar (pendientes de facturar), en proceso de facturación, o procesados (ya facturados)."
+            }
+          ]
+        },
+        {
+          "g": "pasos",
+          "n": "4.2",
+          "t": "Cómo emitir un comprobante no fiscal",
+          "m": "Manual_Ventas_ERP",
+          "sec": "4",
+          "b": [
+            {
+              "t": "step",
+              "x": "En el módulo Ventas, abrir la solapa 2 'Comprobantes No Fiscales'."
+            },
+            {
+              "t": "step",
+              "x": "Presionar el botón '+' (Agrega Comprobantes No Fiscales) para abrir el formulario de alta."
+            },
+            {
+              "t": "step",
+              "x": "Seleccionar el tipo de comprobante que se desea emitir (por ejemplo, remito, presupuesto o nota de pedido)."
+            },
+            {
+              "t": "step",
+              "x": "Completar los datos del comprobante, como cliente, fecha y los artículos o conceptos correspondientes. Si se parte de otro comprobante, elegir el origen y seleccionar el documento que se desea cargar."
+            },
+            {
+              "t": "step",
+              "x": "Revisar los datos y presionar 'Grabar'. El comprobante quedará registrado en la grilla como 'Sin Procesar/Activo'."
+            },
+            {
+              "t": "step",
+              "x": "Para imprimirlo, seleccionar el comprobante en la grilla y presionar el botón de la impresora."
             }
           ]
         },
         {
           "g": "detalle",
-          "n": "4.2",
+          "n": "4.3",
           "t": "Columnas de la grilla",
           "m": "Manual_Ventas_ERP",
           "sec": "4",
@@ -32892,7 +32963,10 @@ window.UNIVAC_CONTENIDO = {
         h += tag;
         while (i < bl.length && bl[i].t === t) {
           const link = bl[i].link ? ' <a href="' + esc(bl[i].link.href) + '">' + esc(bl[i].link.text) + '</a>' : '';
-          h += '<li>' + fmt(bl[i].x) + link + '</li>'; i++;
+          const text = bl[i].segments
+            ? bl[i].segments.map(part => part.href ? '<a href="' + esc(part.href) + '">' + fmt(part.text) + '</a>' : fmt(part.text)).join('')
+            : fmt(bl[i].x);
+          h += '<li>' + text + link + '</li>'; i++;
         }
         h += t === 'step' ? '</ol>' : '</ul>';
         continue;
