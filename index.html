@@ -4480,7 +4480,7 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Opcionalmente completar: Vendedor, Zona, Bonificaciones, Datos de Transporte si aplica (Camión amarillo), Observaciones del comprobante (Ojo morado)."
+              "x": "Opcionalmente completar: Vendedor, Zona, Bonificaciones, Datos de Transporte, que generan la guía interna de transpote, la cual puede ser visualizada o reimpresa en comprobantes no fiscales, si aplica (Camión amarillo), Observaciones del comprobante (Ojo morado)."
             },
             {
               "t": "step",
@@ -5101,7 +5101,33 @@ window.UNIVAC_CONTENIDO = {
       "cat": "ventas",
       "tema": "Comprobantes no fiscales",
       "titulo": "¿Cómo emitir un comprobante no fiscal?",
-      "resumen": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, débitos por cheques rechazados, compensación de compras y guía interna de transportes.",
+      "resumen": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, débitos por cheques rechazados, compensación de compras/ventas y guía interna de transportes.",
+      "resumenSegments": [
+        {
+          "text": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, "
+        },
+        {
+          "text": "débitos por cheques rechazados",
+          "href": "#/articulo/remitos-presupuestos/sec-4-6"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "compensación de compras/ventas",
+          "href": "#/articulo/remitos-presupuestos/sec-4-7"
+        },
+        {
+          "text": " y "
+        },
+        {
+          "text": "guía interna de transportes",
+          "href": "#/articulo/remitos-presupuestos/sec-4-8"
+        },
+        {
+          "text": "."
+        }
+      ],
       "kw": "remito presupuesto nota de pedido comprobante no fiscal unificar facturar remito entrega",
       "fuentes": [
         {
@@ -5120,7 +5146,7 @@ window.UNIVAC_CONTENIDO = {
           "b": [
             {
               "t": "p",
-              "x": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, débitos por cheques rechazados, compensación de compras y guía interna de transportes. Para los remitos los comprobantes pueden estar sin procesar (pendientes de facturar), en proceso de facturación, o procesados (ya facturados). De contado el estado puede ser: Sin Procesar/Activo, Procesado/Activo, Sin Procesar/Anulado, Procesado/Anulado, Comenzado, Faltante de insumos, Finalizado, Listo para facturar, Despachado/entregado."
+              "x": "Permite gestionar comprobantes de venta no fiscales: remitos de entrega, notas de pedido, presupuestos, débitos por cheques rechazados, compensación de compras/ventas y guía interna de transportes."
             }
           ]
         },
@@ -5137,19 +5163,19 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
-              "x": "Presionar el botón '+' (Agrega Comprobantes No Fiscales) para abrir el formulario de alta."
-            },
-            {
-              "t": "step",
               "x": "Seleccionar el tipo de comprobante que se desea emitir (por ejemplo, remito, presupuesto o nota de pedido)."
             },
             {
               "t": "step",
-              "x": "Completar los datos del comprobante, como cliente, fecha y los artículos o conceptos correspondientes. Si se parte de otro comprobante, elegir el origen y seleccionar el documento que se desea cargar."
+              "x": "Presionar el botón '+' (Agrega Comprobantes No Fiscales) para abrir el formulario de alta."
             },
             {
               "t": "step",
-              "x": "Revisar los datos y presionar 'Grabar'. El comprobante quedará registrado en la grilla como 'Sin Procesar/Activo'."
+              "x": "Completar los datos del comprobante, como cliente, fecha y los artículos o conceptos correspondientes."
+            },
+            {
+              "t": "step",
+              "x": "Revisar los datos y presionar 'Grabar'. El comprobante quedará registrado en la grilla como 'Sin Procesar/Activo'. Presionando botón derecho se podra cambiar el estado del comprobante."
             },
             {
               "t": "step",
@@ -5193,7 +5219,7 @@ window.UNIVAC_CONTENIDO = {
                 ],
                 [
                   "Estado",
-                  "Sin Procesar/Activo | Procesado/Activo | Comenzado | Faltante de Insumos | Finalizado | Sin Procesar/Anulado | Procesado/Anulado."
+                  "Sin Procesar/Activo, Procesado/Activo, Sin procesar/Anulado, Procesado/Anulado, Comenzado, Faltante de Insumos, Finalizado, Listo para facturar o Despachado/Entregado | ."
                 ],
                 [
                   "Moneda",
@@ -5230,7 +5256,52 @@ window.UNIVAC_CONTENIDO = {
         },
         {
           "g": "detalle",
-          "n": "4.3",
+          "n": "4.4",
+          "t": "Estados de los comprobantes no fiscales",
+          "m": "Manual_Ventas_ERP",
+          "sec": "4",
+          "b": [
+            {
+              "t": "li",
+              "x": "Sin Procesar/Activo"
+            },
+            {
+              "t": "li",
+              "x": "Procesado/Activo"
+            },
+            {
+              "t": "li",
+              "x": "Sin procesar/Anulado"
+            },
+            {
+              "t": "li",
+              "x": "Procesado/Anulado"
+            },
+            {
+              "t": "li",
+              "x": "Comenzado"
+            },
+            {
+              "t": "li",
+              "x": "Faltante de Insumos"
+            },
+            {
+              "t": "li",
+              "x": "Finalizado"
+            },
+            {
+              "t": "li",
+              "x": "Listo para facturar"
+            },
+            {
+              "t": "li",
+              "x": "Despachado/Entregado"
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "4.5",
           "t": "Botones de la solapa Comprobantes No Fiscales",
           "m": "Manual_Ventas_ERP",
           "sec": "4",
@@ -5280,6 +5351,45 @@ window.UNIVAC_CONTENIDO = {
               "t": "call",
               "k": "warn",
               "x": "No se pueden modificar ítems de un comprobante no fiscal que ya fue procesado (facturado). Mensaje: 'No se pueden modificar los items de un comprobante que ya fue procesado...'"
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "4.6",
+          "t": "Débitos por cheques rechazados",
+          "m": "Manual_Ventas_ERP",
+          "sec": "4",
+          "b": [
+            {
+              "t": "p",
+              "x": "Se genera un comprobante no fiscal donde se registra el valor rechazado y al grabarlo queda imputado en la cuenta corriente."
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "4.7",
+          "t": "Compensación de compras/ventas",
+          "m": "Manual_Ventas_ERP",
+          "sec": "4",
+          "b": [
+            {
+              "t": "p",
+              "x": "Permite compensar saldos pendientes entre compras y ventas mediante un comprobante no fiscal. Se utiliza cuando una misma entidad es cliente y proveedor, para compensar los saldos y actualizar las cuentas corrientes."
+            }
+          ]
+        },
+        {
+          "g": "detalle",
+          "n": "4.8",
+          "t": "Guía interna de transportes",
+          "m": "Manual_Ventas_ERP",
+          "sec": "4",
+          "b": [
+            {
+              "t": "p",
+              "x": "Permite visualizar e imprimir guías internas de transportes, y además ingresando a la guía permite imprimir la etiqueta de transporte correspondiente."
             }
           ]
         }
@@ -33102,12 +33212,15 @@ window.UNIVAC_CONTENIDO = {
     });
     const caps = (a.capturas || []).map(m => '<figure><img src="' + esc(m.src) + '" alt="' + esc(m.alt || '') + '" loading="lazy"><figcaption class="small">' + esc(m.alt || '') + '</figcaption></figure>').join('');
     const vids = (a.videos || []).map(v => '<div class="media-slot"><b>Video</b><a href="' + esc(v.url) + '" target="_blank" rel="noopener">' + esc(v.titulo || v.url) + '</a></div>').join('');
+    const summaryHTML = a.resumenSegments
+      ? a.resumenSegments.map(part => part.href ? '<a href="' + esc(part.href) + '">' + fmt(part.text) + '</a>' : fmt(part.text)).join('')
+      : fmt(a.resumen);
     if (caps || vids)
       body += '<section class="a-sec" id="sec-media"><h2>Capturas y videos</h2><div class="media">' + caps + vids + '</div></section>';
     const restr = a.restringido ? '<div class="notice"><span class="k">Uso restringido</span>Esta herramienta está disponible solo para el nivel Super Administrador.</div>' : '';
     main.innerHTML = '<div class="art-wrap"><article class="article">' +
       '<a class="back-link" href="' + backHref + '"><span aria-hidden="true">←</span>' + backLabel + '</a>' +
-      '<h1>' + esc(a.titulo) + '</h1>' + ((a.resumen || purposeContent) ? '<div class="lead">' + (a.resumen ? '<p>' + fmt(a.resumen) + fmt(purposeContinuation) + '</p>' : '') + purposeContent + '</div>' : '') +
+      '<h1>' + esc(a.titulo) + '</h1>' + ((a.resumen || purposeContent) ? '<div class="lead">' + (a.resumen ? '<p>' + summaryHTML + fmt(purposeContinuation) + '</p>' : '') + purposeContent + '</div>' : '') +
       restr + body +
       '<div class="feedback"><span class="feedback-txt">¿No encontraste lo que necesitabas?</span><div class="feedback-btns"><a class="btn ghost" href="https://wa.me/5493564367491" target="_blank" rel="noopener noreferrer">Contactar al soporte de Univac</a></div></div>' +
       '</article><aside class="toc" aria-label="En este artículo"><div class="h">En este artículo</div>' + toc + '</aside></div>';
