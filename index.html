@@ -4480,6 +4480,7 @@ window.UNIVAC_CONTENIDO = {
             },
             {
               "t": "step",
+              "anchor": "paso-datos-transporte",
               "x": "Opcionalmente completar: Vendedor, Zona, Bonificaciones, Datos de Transporte, que generan la guía interna de transpote, la cual puede ser visualizada o reimpresa en comprobantes no fiscales, si aplica (Camión amarillo), Observaciones del comprobante (Ojo morado)."
             },
             {
@@ -5219,7 +5220,7 @@ window.UNIVAC_CONTENIDO = {
                 ],
                 [
                   "Estado",
-                  "Sin Procesar/Activo, Procesado/Activo, Sin procesar/Anulado, Procesado/Anulado, Comenzado, Faltante de Insumos, Finalizado, Listo para facturar o Despachado/Entregado | ."
+                  "Sin Procesar/Activo | Procesado/Activo | Sin procesar/Anulado | Procesado/Anulado | Comenzado | Faltante de Insumos | Finalizado | Listo para facturar | Despachado/Entregado."
                 ],
                 [
                   "Moneda",
@@ -5389,7 +5390,16 @@ window.UNIVAC_CONTENIDO = {
           "b": [
             {
               "t": "p",
-              "x": "Permite visualizar e imprimir guías internas de transportes, y además ingresando a la guía permite imprimir la etiqueta de transporte correspondiente."
+              "x": "Permite visualizar e imprimir guías internas de transportes, y además ingresando a la guía permite imprimir la etiqueta de transporte correspondiente. Generar una guía interna de transporte.",
+              "segments": [
+                {
+                  "text": "Permite visualizar e imprimir guías internas de transportes, y además ingresando a la guía permite imprimir la etiqueta de transporte correspondiente. "
+                },
+                {
+                  "text": "Generar una guía interna de transporte.",
+                  "href": "#/articulo/emitir-factura/paso-datos-transporte"
+                }
+              ]
             }
           ]
         }
@@ -33076,12 +33086,18 @@ window.UNIVAC_CONTENIDO = {
           const text = bl[i].segments
             ? bl[i].segments.map(part => part.href ? '<a href="' + esc(part.href) + '">' + fmt(part.text) + '</a>' : fmt(part.text)).join('')
             : fmt(bl[i].x);
-          h += '<li>' + text + link + '</li>'; i++;
+          const anchor = bl[i].anchor ? ' id="' + esc(bl[i].anchor) + '"' : '';
+          h += '<li' + anchor + '>' + text + link + '</li>'; i++;
         }
         h += t === 'step' ? '</ol>' : '</ul>';
         continue;
       }
-      if (b.t === 'p') h += '<p>' + fmt(b.x) + '</p>';
+      if (b.t === 'p') {
+        const text = b.segments
+          ? b.segments.map(part => part.href ? '<a href="' + esc(part.href) + '">' + fmt(part.text) + '</a>' : fmt(part.text)).join('')
+          : fmt(b.x);
+        h += '<p>' + text + '</p>';
+      }
       else if (b.t === 'h3') h += '<h4>' + fmt(b.x) + '</h4>';
       else if (b.t === 'call') {
         const lab = { warn: 'Atención', error: 'Importante', info: 'Información', ok: 'Correcto', tip: 'Sugerencia' }[b.k] || 'Nota';
